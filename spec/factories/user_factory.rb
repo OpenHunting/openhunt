@@ -14,10 +14,12 @@
 
 FactoryGirl.define do
   factory :user do
-     screen_name "asdf"
-     name "asdf"
-     profile_image_url "asdf"
-     twitter_id "asdf"
-     location "asdf"
+    sequence :screen_name do |n|
+      "asdf#{n}"
+    end
+    name "asdf"
+    profile_image_url "asdf"
+    twitter_id "asdf"
+ location "asdf"
   end
 end

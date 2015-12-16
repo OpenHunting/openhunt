@@ -14,9 +14,9 @@
 
 FactoryGirl.define do
   factory :project do
-     name "Asdf"
+     name "asdf"
      description "asdfasdf"
-     url "asdf"
+     url "asd"
     # association :user, factory: :user
   end
 end
