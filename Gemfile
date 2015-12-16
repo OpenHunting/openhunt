@@ -77,6 +77,8 @@ group :development, :test do
   gem 'poltergeist'
   gem 'launchy'
   gem 'sqlite3'
+  
+  gem 'timecop'
 end
 
 group :development do
