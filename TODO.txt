@@ -7,11 +7,11 @@ X ajax voting / unvoting
 X seed data
 X add intro / about
 
-- add user login panel (with icon)
-
 - bucket projects by date (weekends are a single bucket)
 - infinite scrolling
 - load more projects for a single date
+
+- add user login panel (with icon)
 
 - Email List subscription
 

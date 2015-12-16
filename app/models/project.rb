@@ -51,7 +51,7 @@ class Project < ActiveRecord::Base
 
     # Project.all.sort_by(&:score).limit(per_page).offset(offset)
     # 'sort_by' returns an array. Do we need an ActiveRecord Relation instead?
-    Project.all.sort_by(&:score).reverse.slice(offset, per_page)
+    Project.all.order(:votes_count => :desc).limit(per_page).offset(offset)
   end
 
   # Discussing HackerNews algorithm:
