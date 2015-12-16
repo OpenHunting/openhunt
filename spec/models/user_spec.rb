@@ -11,9 +11,25 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+require 'rails_helper'
 
-# require 'rails_helper'
-#
-# RSpec.describe User, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe User, type: :model do
+
+  let(:submitter) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
+
+  context "voting" do
+    before :each do
+      proj = FactoryGirl.build(:project)
+      submitter.projects << proj
+    end
+
+    it "cannot vote twice for same project" do
+      user = FactoryGirl.create(:user)
+      proj = submitter.projects.first
+      user.vote(proj)
+      user.vote(proj)
+      expect(user.votes.count).to eql 1
+    end
+  end
+end

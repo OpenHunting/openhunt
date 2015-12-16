@@ -16,14 +16,12 @@ require 'rails_helper'
 
 RSpec.describe Project, type: :model do
 
-  it "user cannot vote twice for same project" do
-    user = FactoryGirl.create(:user)
-    proj = FactoryGirl.build(:project)
-    user.projects << proj
-    user.vote(proj)
-    user.vote(proj)
-    expect(user.votes.count).to eql 1
+  context "single project" do
+    it "calculates a score" do
+      pending 'doublecheck our algorithm returns what we expect'
+    end
   end
+
 
   context "featured" do
     before :all do
