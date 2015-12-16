@@ -6,7 +6,7 @@
     = javascript_include_tag "dependencies", "application"
     = csrf_meta_tags
     :javascript
-      OAuth.initialize( raw Settings.oauth_public_key.to_json );
+      OAuth.initialize( #{raw Settings.oauth_public_key.to_json} );
 
 
 %body
