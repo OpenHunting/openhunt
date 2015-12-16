@@ -22,6 +22,11 @@ RSpec.describe Project, type: :model do
     let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
     before :each do
       DatabaseCleaner.clean
+      new_time = Time.local(2015, 12, 15, 12, 0, 0)
+      Timecop.freeze(new_time)
+    end
+    after do
+      Timecop.return
     end
     it "calculates a score" do
       project.stub(:votes_count).and_return(5)
@@ -30,6 +35,15 @@ RSpec.describe Project, type: :model do
       #   votes / (hours_since_submission + 2) ** gravity
       #   5     / (         4            + 2 ) **   1.8   = 0.412346
       expect(project.score.round(6)).to eql 0.412346
+    end
+    it "calculates the right bucket" do
+      expect(Project.bucket(Time.now)).to eql "20151215"
+    end
+    it "calculates sat/sun in same bucket" do
+      saturday = Time.local(2015,12,12,12,0,0)
+      sunday = Time.local(2015,12,13,12,0,0)
+      expect(Project.bucket(saturday)).to eql "20151212-20151213"
+      expect(Project.bucket(sunday)).to eql "20151212-20151213"
     end
   end
 

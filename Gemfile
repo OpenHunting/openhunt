@@ -77,6 +77,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'faker'
+  gem 'timecop'
 end
 
 group :development do

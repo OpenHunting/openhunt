@@ -68,4 +68,19 @@ class Project < ActiveRecord::Base
 
     votes / (hours_since_submission + 2) ** gravity
   end
+
+  def self.bucket(time)
+    case time.wday
+    when 0 # sunday
+      saturday = (time - 1.day).strftime("%Y%_m%d")
+      sunday = time.strftime("%Y%_m%d")
+      return "#{saturday}-#{sunday}"
+    when 6 # saturday
+      saturday = time.strftime("%Y%_m%d")
+      sunday = (time + 1.day).strftime("%Y%_m%d")
+      return "#{saturday}-#{sunday}"
+    else
+      return time.strftime("%Y%_m%d")
+    end
+  end
 end
