@@ -9,4 +9,12 @@ module ApplicationHelper
 
     react_component("App.Layout", react_props)
   end
+
+  def skip_header
+    @skip_header = true
+  end
+
+  def skip_header?
+    !!@skip_header
+  end
 end
