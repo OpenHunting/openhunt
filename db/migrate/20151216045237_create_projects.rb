@@ -9,6 +9,8 @@ class CreateProjects < ActiveRecord::Migration
 
       t.references(:user, null: false)
 
+      t.integer :votes_count, default: 0
+
       t.timestamps null: false
     end
   end

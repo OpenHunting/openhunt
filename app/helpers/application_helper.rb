@@ -39,6 +39,11 @@ module ApplicationHelper
     %{
       <p class="help-block">#{h messages.join(", ")}</p>
     }.html_safe
+  end
 
+  def upvoted?(project_id)
+    return false unless @vote_ids.present?
+
+    @vote_ids.include?(project_id)
   end
 end

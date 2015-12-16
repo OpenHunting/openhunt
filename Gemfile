@@ -26,7 +26,10 @@ gem 'react-rails', '~> 1.5.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'haml-rails'
+
 gem "validate_url"
+
 
 # use rails assets to pull assets from bower
 source 'https://rails-assets.org' do

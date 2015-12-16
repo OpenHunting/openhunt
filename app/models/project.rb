@@ -8,6 +8,7 @@
 #  url            :string           not null
 #  normalized_url :string           not null
 #  user_id        :integer          not null
+#  votes_count    :integer          default(0)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -33,5 +34,20 @@ class Project < ActiveRecord::Base
     # TODO: remove url junk like UTM, etc
 
     url
+  end
+
+
+  def self.featured(page = nil, per_page = nil)
+    page ||= 1
+    per_page ||= Settings.featured_per_page
+
+    # TODO: sort projects by ranking
+
+    # calculate offset
+    offset = (page - 1)*per_page
+    offset = 0 if offset <= 0
+
+    Project.all.order(:created_at => :desc).limit(per_page).offset(offset)
+
   end
 end

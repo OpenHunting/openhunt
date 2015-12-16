@@ -2,7 +2,10 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
 
   def index
-
+    @projects = Project.featured(params[:page]).includes(:user).to_a
+    if current_user.present?
+      @vote_ids = current_user.match_votes(@projects.map(&:id))
+    end
   end
 
   def vote
