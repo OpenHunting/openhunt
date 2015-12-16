@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def login_user(user)
+    session[:user_id] = user.try(:id)
+  end
+
+  def logout_user
+    session[:user_id] = nil
+  end
+
 end
