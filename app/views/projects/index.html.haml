@@ -5,17 +5,19 @@
     .date
       = Time.now.strftime('%A, %b %d')
   .clearfix
-  .item
-    .item-vote
-      .box
-        .arrow
-          %span.glyphicon.glyphicon-chevron-up{"aria-hidden" => "true"}
-        .counter
-          123
-    .item-details
-      .title
-        Coupons at Checkout
-      .description
-        Automagically finds coupon codes during online checkout
-    .item-comments
-      %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+
+  - @projects.each do |project|
+    .item
+      .item-vote
+        .box
+          .arrow
+            %span.glyphicon.glyphicon-chevron-up{"aria-hidden" => "true"}
+          .counter
+            = project.votes_count
+      .item-details
+        .title
+          = project.name
+        .description
+          = project.description
+      .item-comments
+        %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
