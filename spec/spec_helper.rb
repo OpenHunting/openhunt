@@ -24,6 +24,7 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
+  config.color = true
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

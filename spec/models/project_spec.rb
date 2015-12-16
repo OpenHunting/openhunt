@@ -23,14 +23,12 @@ RSpec.describe Project, type: :model do
       DatabaseCleaner.clean
     end
     it "calculates a score" do
-      project.update_attributes(created_at: 4.hours.ago.to_datetime)
-      5.times do |i|
-        FactoryGirl.create(:user).vote(project)
-      end
+      project.stub(:votes_count).and_return(5)
+      project.stub(:created_at).and_return(4.hours.ago.to_datetime)
       # using the simple, old algorithm:
       #   votes / (hours_since_submission + 2) ** gravity
       #   5     / (         4            + 2 ) **   1.8   = 0.412346
-      expect(project.reload.score.round(6)).to eql 0.412346
+      expect(project.score.round(6)).to eql 0.412346
     end
   end
 
