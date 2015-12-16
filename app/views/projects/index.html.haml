@@ -20,4 +20,7 @@
         .description
           = project.description
       .item-comments
-        %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+        .user-image
+          %img{src: current_user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{current_user.screen_name} #{current_user.location}"}
+        .comments-gif
+          %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
