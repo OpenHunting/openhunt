@@ -1,28 +1,11 @@
 //= require components
 //= require_self
 
-
-// $navbar-default-color:             #fff !default
-// $navbar-default-bg:                #4e555d !default
-// $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default
-
-
-@import "bootstrap"
+@import "_bootstrap-override-variables.scss"
+@import "bootstrap/assets/stylesheets/_bootstrap.scss"
 
 body
-  background: #eee
-
-
-
-.navbar-default
-  background: #4e555d
-  color: #fff
-  .navbar-brand
-    color: #fff
-  .navbar-nav
-    li > a
-      color: #fff
-//
+  padding-top: 70px
 // .navbar-about
 //   margin-top: 12px
 //   display: inline-block
@@ -38,9 +21,7 @@ body
   //border: 1px solid #ccc
 
   .head
-    background: rgba(255,255,255,0.6)
-    border-radius: 3px
-    padding: 15px 15px
+    border-bottom: 1px solid #eee
     @extend .row
     @extend .col-md-12
     margin-bottom: 20px
