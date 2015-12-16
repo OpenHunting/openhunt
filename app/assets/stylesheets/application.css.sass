@@ -16,10 +16,11 @@ body
 
 .navbar
   padding-top: 8px
-.navbar-header
-  .navbar-brand
-    padding-left: 10px
-
+  .navbar-header
+    .navbar-brand
+      padding-left: 10px
+  .navbar-right
+    margin-right: 30px
 .row-valign
   display: flex
   align-items: center
@@ -53,7 +54,7 @@ body
     border-radius: 0px
     margin-bottom: 0px
     position: relative
-    width: 100%
+    width: auto
     transition: background-color 0.5s ease
     background-color: white
     -webkit-box-align: center
@@ -126,3 +127,21 @@ body
   width: 500px
   height: 300px
   margin-top: 30px
+
+
+#about-screen
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 100
+  width: 100%
+  height: 100%
+  padding: 50px
+  background: rgba(255,255,255,0.93)
+  padding-top: 90px
+  overflow: auto
+  p
+    font-size: 18px
+    line-height: 1.5

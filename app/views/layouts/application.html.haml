@@ -15,37 +15,9 @@
       .navbar-header
         %a.navbar-brand{:href => "/"} Open Hunt
 
-      %ul.nav.navbar-nav
-        / %li.active
-        /   %a{:href => "#"}
-        /     Link
-        /     %span.sr-only (current)
-        / %li
-        /   %a{:href => "#"} Link
-        / %li.dropdown
-        /   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        /     Dropdown
-        /     %span.caret
-        /   %ul.dropdown-menu
-        /     %li
-        /       %a{:href => "#"} Action
-        /     %li
-        /       %a{:href => "#"} Another action
-        /     %li
-        /       %a{:href => "#"} Something else here
-        /     %li.divider{:role => "separator"}
-        /     %li
-        /       %a{:href => "#"} Separated link
-        /     %li.divider{:role => "separator"}
-        /     %li
-        /       %a{:href => "#"} One more separated link
-      -# %form.navbar-form.navbar-right{:role => "search"}
-      -#   .form-group
-      -#     %input.form-control{:placeholder => "Search", :type => "text"}
-      -#   %button.btn.btn-default{:type => "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a.navbar-about{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
+          %a.navbar-about.toggle-about{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
         %li
           %a{:href => "/new"} + Post
         - if current_user.present?
@@ -73,16 +45,48 @@
   .container
     = yield
 
-  / Modal
-  #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog{:role => "document"}
-      .modal-content
-        .modal-header
-          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-            %span{"aria-hidden" => "true"} &times;
-          %h4#myModalLabel.modal-title Modal title
-        .modal-body
-          \...
-        .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-          %button.btn.btn-primary{:type => "button"} Save changes
+  #about-screen(style="display:none;")
+    .container
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+
+      %p
+        - if request.path == "/about"
+          %a(href="/").btn.btn-primary Get Started
+        - else
+          %button.btn.btn-primary.close-about Get Started

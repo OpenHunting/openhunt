@@ -6,6 +6,7 @@ X Voting / Unvoting
 X ajax voting / unvoting
 
 - add user login panel (with icon)
+- add intro / about
 
 - bucket projects by date (weekends are a single bucket)
 - infinite scrolling
@@ -14,8 +15,6 @@ X ajax voting / unvoting
 - Email List subscription
 
 - Styling / cleanup
-
-- add intro
 
 - better login (via popup instead of redirect)
 
@@ -27,3 +26,4 @@ X ajax voting / unvoting
 minor tweaks:
 - replicate the validation messages of ProductHunt (ask ash)
 - minify assets, remove glyphicon fonts
+- responsive pass, fix navbar
