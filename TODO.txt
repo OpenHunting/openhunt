@@ -3,19 +3,21 @@ X Authentication (login via oauth.io / twitter)
 X Submit Project
 X Setup basic Index Page
 X Voting / Unvoting
-
-- ajax voting / unvoting
+X ajax voting / unvoting
 
 - add user login panel (with icon)
 
-- index page grouping by day
+- bucket projects by date (weekends are a single bucket)
 - infinite scrolling
+- load more projects for a single date
 
 - Email List subscription
 
 - Styling / cleanup
 
 - add intro
+
+- better login (via popup instead of redirect)
 
 - leave feedback for project owner
 - view feedback as project owner
