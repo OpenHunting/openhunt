@@ -25,16 +25,36 @@ RSpec.describe Project, type: :model do
   context "featured" do
     before :each do
       DatabaseCleaner.clean
-      20.times do
+      # setup projects
+      20.times do |i|
         user = FactoryGirl.create(:user)
         proj = FactoryGirl.build(:project)
         user.projects << proj
       end
+      # setup more users who will vote.
+      50.times do |i|
+        user = FactoryGirl.create(:user)
+        # each user votes 3 times
+        3.times do
+          rand_proj = Project.offset(rand(Project.count)).first
+          user.vote(rand_proj)
+        end
+      end
     end
 
-    it "created 20 projects" do
-      expect(Project.count).to eql 20
+    it "user cannot vote twice for same project" do
+      user = FactoryGirl.create(:user)
+      proj = Project.first
+      user.vote(proj)
+      user.vote(proj)
+      expect(user.votes.count).to eql 1
     end
+
+    it "sorts by featured" do
+      byebug
+      expect(Project.featured.first).to eql Project.last
+    end
+
   end
 
 end
