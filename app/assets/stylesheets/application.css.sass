@@ -4,6 +4,8 @@
 @import "_bootstrap-override-variables.scss"
 @import "bootstrap/assets/stylesheets/_bootstrap.scss"
 
+@import "bourbon"
+
 body
   padding-top: 70px
 // .navbar-about
@@ -69,8 +71,6 @@ body
 
       color: #333
 
-      &.on
-        color: green
       .box
         // background-color: #ccc
         height: 50px
@@ -79,10 +79,19 @@ body
           text-align: center
           height: 30px
           font-size: 2rem
+          .triangle
+            font-size: 1.2rem
+            +transition(all, 0.5)
         .counter
           text-align: center
           height: 20px
           font-size: 1.1rem
+      &:hover .box .arrow .triangle
+        font-size: 1.5rem
+      &.on
+        color: green
+        &:hover .box .arrow .triangle
+          font-size: 1.2rem
 
 
     .item-details

@@ -11,7 +11,8 @@
       %a.item-vote{project_vote_attributes(project)}
         .box
           .arrow
-            %span.glyphicon.glyphicon-chevron-up{"aria-hidden" => "true"}
+            %span.triangle{"aria-hidden" => "true"}
+              ▲
           .counter
             = project.votes_count
 
