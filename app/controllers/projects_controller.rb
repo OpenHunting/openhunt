@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def vote_confirm
+    get_project  
+  end
+
   def vote
     get_project
 

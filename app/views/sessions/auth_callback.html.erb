@@ -1,16 +1,12 @@
 <% skip_header %>
 
-<%
-  # TODO:
-  # SPLASH BOX ("Processing login...")
-%>
+<div class="splash-box">
+  <h2>Completing login...</h2>
+</div>
 
 <script type="text/javascript">
   OAuth.callback('twitter')
   .done(function(result) {
-    console.log("Twitter login", result)
-    //use result.access_token in your API request
-    //or use result.get|post|put|del|patch|me methods (see below)
 
     $.ajax({
       url: "/login/success",
@@ -21,20 +17,20 @@
       },
       dataType: "json",
       success: function(json){
-        // TODO: change splash box to "Login successful, redirecting..."
+        $(".splash-box h2").text("Login successful, redirecting...")
         window.location = json.redirect_to || "/"
       },
       error: function(xhr){
-        // TODO: show an error splash box
         console.error("Unable to process login", xhr)
+        $(".splash-box h2").text("Login unsuccessful. Something went wrong.")
+
       }
     })
 
   })
   .fail(function (err) {
     console.error("Unable to login via twitter", err)
-    //handle error with err
+    $(".splash-box h2").text("Login unsuccessful. Something went wrong: "+err)
 
-    // TODO: change splash box to "Login failed: error"
   });
 </script>

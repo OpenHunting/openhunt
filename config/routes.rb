@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   post "/new" => "projects#create"
   get "/validate" => "projects#validate_project"
 
-  get "/vote/:id" => "projects#vote"
+  get "/vote/:id" => "projects#vote_confirm"  
+  post "/vote/:id" => "projects#vote"
   delete "/vote/:id" => "projects#unvote"
 
   get "/about" => "pages#about"

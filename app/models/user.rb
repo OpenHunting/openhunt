@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
       user_id: self.id,
       project_id: project.id,
     })
+
+    project.reload
+
+    self
   end
 
   def unvote(project)
@@ -34,6 +38,10 @@ class User < ActiveRecord::Base
       user_id: self.id,
       project_id: project.id,
     }).destroy_all
+
+    project.reload
+
+    self
   end
 
   def match_votes(project_ids)

@@ -54,13 +54,14 @@ module ApplicationHelper
   def project_vote_attributes(project)
     result = {}
 
-    if upvoted?(project.id)
-      result[:class] = "on"
-      result["data-method"] = "DELETE"
-    end
 
     if current_user.present?
       result[:href] = "/vote/#{project.id}"
+      if upvoted?(project.id)
+        result[:class] = "on ajax"
+      else
+        result[:class] = "ajax"
+      end
     else
       result[:href] = "/login?vote=#{project.id}"
     end
