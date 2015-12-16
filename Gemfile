@@ -4,7 +4,6 @@ ruby "2.1.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 
-gem 'sqlite3'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -74,6 +73,8 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
+  gem 'sqlite3'
+
 end
 
 group :development do
