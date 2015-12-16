@@ -1,0 +1,87 @@
+!!!
+%html
+  %head
+    %title Open Hunt - discover new products, give feedback, help each other
+    = stylesheet_link_tag "dependencies", "application", media: 'all'
+    = javascript_include_tag "dependencies", "application"
+    = csrf_meta_tags
+    :javascript
+      OAuth.initialize( raw Settings.oauth_public_key.to_json );
+
+
+%body
+  %nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} OpenHunt Beta
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          / %li.active
+          /   %a{:href => "#"}
+          /     Link
+          /     %span.sr-only (current)
+          / %li
+          /   %a{:href => "#"} Link
+          / %li.dropdown
+          /   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          /     Dropdown
+          /     %span.caret
+          /   %ul.dropdown-menu
+          /     %li
+          /       %a{:href => "#"} Action
+          /     %li
+          /       %a{:href => "#"} Another action
+          /     %li
+          /       %a{:href => "#"} Something else here
+          /     %li.divider{:role => "separator"}
+          /     %li
+          /       %a{:href => "#"} Separated link
+          /     %li.divider{:role => "separator"}
+          /     %li
+          /       %a{:href => "#"} One more separated link
+        %form.navbar-form.navbar-right{:role => "search"}
+          .form-group
+            %input.form-control{:placeholder => "Search", :type => "text"}
+          %button.btn.btn-default{:type => "submit"} Submit
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{:href => "/login"} Login
+          %li
+            %a{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              More
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} Action
+              %li
+                %a{:href => "#"} Another action
+              %li
+                %a{:href => "#"} Something else here
+              %li.divider{:role => "separator"}
+              %li
+                %a{:href => "#"} Separated link
+
+
+
+  = yield
+
+  / Modal
+  #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %h4#myModalLabel.modal-title Modal title
+        .modal-body
+          \...
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          %button.btn.btn-primary{:type => "button"} Save changes

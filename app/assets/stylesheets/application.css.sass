@@ -1,2 +1,59 @@
 //= require components
 //= require_self
+
+@import "bootstrap"
+
+
+.row-valign
+  display: flex
+  align-items: center
+
+.feed
+  @extend .container 
+  //border: 1px solid #ccc
+
+  .head
+    @extend .row 
+    @extend .col-md-12
+    margin-bottom: 20px
+    .today
+      display: inline-block
+      font-size: 2rem
+      padding-right: 10px
+
+    .date
+      display: inline-block
+      font-size: 1.2rem
+      color: #ccc
+  
+  .item
+    @extend .row 
+    @extend .row-valign
+    height: 60px
+    .item-vote
+      @extend .col-md-1
+      
+      .box
+        background-color: #ccc
+        height: 50px
+        width: 35px
+        .arrow
+          text-align: center
+          height: 30px
+          font-size: 2rem
+        .counter
+          text-align: center
+          height: 20px
+          font-size: 1.1rem
+
+
+    .item-details
+      @extend .col-md-10
+
+      .title
+        font-size: 1.5rem
+      .description
+        font-size: 1rem
+
+    .item-comments
+      @extend .col-md-1
