@@ -5,6 +5,7 @@
 @import "bootstrap/assets/stylesheets/_bootstrap.scss"
 
 @import "bourbon"
+@import "responsive"
 
 body
   padding-top: 70px
@@ -20,6 +21,17 @@ body
       padding-left: 10px
   .navbar-right
     margin-right: 30px
+  +xs
+    +clearfix
+    .nav > li
+      display: inline-block
+    .navbar-right
+      margin-right: 0
+      float: right
+      margin-top: 4px
+      margin-right: -13px
+    .navbar-header
+      float: left
 .row-valign
   display: flex
   align-items: center
@@ -141,6 +153,12 @@ body
   background: rgba(255,255,255,0.93)
   padding-top: 90px
   overflow: auto
+  +xs
+    padding: 11px
+    padding-top: 68px
   p
     font-size: 18px
     line-height: 1.5
+    margin-bottom: 1em
+    +xs
+      font-size: 14px

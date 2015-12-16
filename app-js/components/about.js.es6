@@ -5,14 +5,14 @@
     var openAbout = () => {
       if(aboutScreen.is(".about-static")){ return; }
 
-      aboutScreen.slideDown("fast", () => {
+      aboutScreen.fadeIn("normal", () => {
         aboutScreen.scrollTop(0);
       });
     };
     var closeAbout = () => {
       if(aboutScreen.is(".about-static")){ return; }
 
-      aboutScreen.slideUp("fast");
+      aboutScreen.fadeOut("fast");
     };
 
     $(document).on("click", ".close-about", (e) => {

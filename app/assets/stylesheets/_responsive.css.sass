@@ -1,0 +1,87 @@
+// traditional media queries below
+$media-phone-landscape: 480px
+$media-tablet-portrait: 768px
+$media-tablet-landscape: 980px
+
+// bootstrap labeled mixins
+@mixin sm
+  @media (max-width: 991px) and (min-width: 768px)
+    @content
+
+@mixin xs
+  @media (max-width: 767px)
+    @content
+
+@mixin xs-sm
+  @media (max-width: 991px)
+    @content
+
+@mixin sm-and-up
+  @media (min-width: 768px)
+    @content
+
+@mixin md-and-up
+  @media (min-width: 992px)
+    @content
+
+@mixin md
+  @media (min-width: 992px) and (max-width: 1199px)
+    @content
+
+@mixin lg
+  @media (min-width: 1200px)
+    @content
+
+// NEED MORE
+
+@mixin min-width($width)
+  @media only screen and (min-width: $width)
+    @content
+
+@mixin tablet-portrait-and-up
+  @media only screen and (min-width: $media-tablet-portrait)
+    @content
+
+@mixin tablet-portrait-and-down
+  @media only screen and (max-width: ($media-tablet-landscape - 1px))
+    @content
+
+@mixin tablet-landscape-and-up
+  @media only screen and (min-width: $media-tablet-landscape)
+    @content
+
+@mixin phone-landscape-and-down
+  @media only screen and (max-width: ($media-tablet-portrait - 1px))
+    @content
+
+@mixin phone-portrait-and-down
+  @media only screen and (max-width: ($media-phone-landscape - 1px))
+    @content
+
+@mixin tablet-landscape
+  +tablet-landscape-and-up
+    @content
+
+@mixin tablet-portrait
+  @media only screen and (min-width: ($media-tablet-portrait)) and (max-width: ($media-tablet-landscape - 1px))
+    @content
+
+@mixin touch-disabled
+  body.touch-disabled
+    @content
+
+@mixin touch-enabled
+  body.touch-enabled
+    @content
+
+@mixin phone-landscape
+  @media only screen and (min-width: ($media-phone-landscape)) and (max-width: ($media-tablet-portrait - 1px))
+    @content
+
+@mixin phone-portrait
+  +phone-portrait-and-down
+    @content
+
+@mixin retina-only
+  @media only screen and (-webkit-min-device-pixel-ratio: 2)
+    @content
