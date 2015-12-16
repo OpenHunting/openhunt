@@ -12,18 +12,11 @@
 #  updated_at     :datetime         not null
 #
 
-require 'rails_helper'
-
-RSpec.describe Project, type: :model do
-  it "exists" do
-    user = FactoryGirl.create(:user)
-    proj = FactoryGirl.build(:project)
-    user.projects << proj
-    expect(proj.name).to eql "Asdf"
+FactoryGirl.define do
+  factory :project do
+     name "Asdf"
+     description "asdfasdf"
+     url "asdf"
+    # association :user, factory: :user
   end
-
-  context "featured" do
-
-  end
-
 end

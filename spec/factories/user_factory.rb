@@ -12,8 +12,12 @@
 #  updated_at        :datetime         not null
 #
 
-# require 'rails_helper'
-#
-# RSpec.describe User, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+FactoryGirl.define do
+  factory :user do
+     screen_name "asdf"
+     name "asdf"
+     profile_image_url "asdf"
+     twitter_id "asdf"
+     location "asdf"
+  end
+end
