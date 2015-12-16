@@ -18,10 +18,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @errors = {
-      name: ["this is fuct"]
-    }
-    render :new
+    form = ProjectForm.new(params)
+    if form.valid?
+      project = Project.create(form.attributes)
+      current_user.vote(project)
+      redirect_to "/"
+    else
+      @errors = form.errors
+      render :new
+    end
   end
 
   def validate_project

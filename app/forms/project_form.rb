@@ -3,13 +3,14 @@ class ProjectForm
 
   attribute :name
   validates_presence_of :name
-  # TODO: validate it isnt too long
+  validates_length_of :description, maximum: 80, allow_blank: true
 
   attribute :url
   validates_presence_of :url
-  # validate it's a real url
+  validates_url :url, :allow_blank => true
 
   attribute :description
   validates_presence_of :description
-  # TODO: validate it isnt too long
+  validates_length_of :description, maximum: 80, allow_blank: true
+
 end

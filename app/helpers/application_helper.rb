@@ -21,7 +21,7 @@ module ApplicationHelper
   def error_class(key)
     return unless @errors.present?
 
-    if @errors.with_indifferent_access[key].present?
+    if @errors[key].present?
       "has-error"
     end
   end
@@ -29,7 +29,7 @@ module ApplicationHelper
   def error_messages(key)
     return unless @errors.present?
 
-    Array.wrap(@errors.with_indifferent_access[key])
+    Array.wrap(@errors[key])
   end
 
   def field_errors(key)
