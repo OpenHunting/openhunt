@@ -8,7 +8,6 @@
 #  profile_image_url :string
 #  twitter_id        :string
 #  location          :string
-#  email             :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -16,5 +15,6 @@
 class User < ActiveRecord::Base
   has_many :votes
   has_many :projects
-    
+
+  has_one :list_subscriber
 end

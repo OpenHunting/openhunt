@@ -8,8 +8,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :twitter_id
       t.string :location
 
-      t.string :email
-
       t.timestamps null: false
     end
   end
