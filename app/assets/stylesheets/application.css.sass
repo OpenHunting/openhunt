@@ -40,7 +40,6 @@ body
     border-radius: 3px 3px 0px 0px
 
   .item
-    @extend .row
     @extend .row-valign
     height: 60px
     border-radius: 0px
@@ -56,8 +55,8 @@ body
     align-items: center
     &:hover
       background-color: rgba(#eee, 0.5)
+
     .item-vote
-      @extend .col-md-1
       cursor: pointer
       display: block
       text-decoration: none
@@ -82,8 +81,6 @@ body
 
 
     .item-details
-      @extend .col-md-9
-
       .title
         font-size: 1.8rem
         color: #000
@@ -92,7 +89,6 @@ body
         font-size: 1.2rem
 
     .item-comments
-      @extend .col-md-2
       text-align: right
       .user-image
         display: inline-block
