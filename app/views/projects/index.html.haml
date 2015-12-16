@@ -16,7 +16,7 @@
             = project.votes_count
 
       .item-details
-        .title
+        %a.title{href: project.url, target: "_blank"}
           = project.name
         .description
           = project.description
