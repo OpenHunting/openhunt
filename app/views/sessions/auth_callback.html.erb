@@ -1,3 +1,5 @@
+<% skip_header %>
+
 <%
   # TODO:
   # SPLASH BOX ("Processing login...")
@@ -10,7 +12,24 @@
     //use result.access_token in your API request
     //or use result.get|post|put|del|patch|me methods (see below)
 
-    // TODO: change splash box to "Login successful, redirecting..."
+    $.ajax({
+      url: "/login/success",
+      type: "POST",
+      data: {
+        oauth_token: result.oauth_token,
+        oauth_secret: result.oauth_token_secret,
+      },
+      dataType: "json",
+      success: function(json){
+        // TODO: change splash box to "Login successful, redirecting..."
+        window.location = json.redirect_to || "/"
+      },
+      error: function(xhr){
+        // TODO: show an error splash box
+        console.error("Unable to process login", xhr)
+      }
+    })
+
   })
   .fail(function (err) {
     console.error("Unable to login via twitter", err)

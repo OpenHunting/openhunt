@@ -1,0 +1,16 @@
+%h2 Post a new product
+= form_tag "/new" do
+  %div{:class => "form-group #{error_class(:name)}"}
+    %label{:for => "name"} Name
+    = text_field_tag "name", params[:name], class: "form-control", placeholder: "Enter the product's name"
+    = field_errors(:name)
+  %div{:class => "form-group #{error_class(:url)}"}
+    %label{:for => "url"} Link
+    = text_field_tag "url", params[:url], class: "form-control", placeholder: "http://www..."
+    = field_errors(:url)
+  %div{:class => "form-group #{error_class(:description)}"}
+    %label{:for => "description"} Tagline
+    = text_field_tag "description", params[:description], class: "form-control", placeholder: "Describe the product in a few words"
+    = field_errors(:description)
+  .form-actions
+    %button.btn.btn-primary{:type => "submit"} Submit Product

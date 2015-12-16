@@ -17,4 +17,22 @@ class User < ActiveRecord::Base
   has_many :projects
 
   has_one :list_subscriber
+
+  def vote(project)
+    return unless project.present?
+
+    Vote.find_or_create_by({
+      user_id: self.id,
+      project_id: project.id,
+    })
+  end
+
+  def unvote(project)
+    return unless project.present?
+
+    Vote.where({
+      user_id: self.id,
+      project_id: project.id,
+    }).destroy_all
+  end
 end

@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
+
   def index
 
   end
@@ -9,5 +11,27 @@ class ProjectsController < ApplicationController
 
   def unvote
 
+  end
+
+  def new
+
+  end
+
+  def create
+    form = ProjectForm.new(params)
+    if form.valid?
+      project = Project.new(form.attributes)
+      project.user = current_user
+      project.save!
+      current_user.vote(project)
+      redirect_to "/"
+    else
+      @errors = form.errors
+      render :new
+    end
+  end
+
+  def validate_project
+    # TODO: validate project fields (name, url, description)
   end
 end

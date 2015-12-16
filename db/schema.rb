@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(version: 20151216052011) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "url"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",           null: false
+    t.string   "description",    null: false
+    t.string   "url",            null: false
+    t.string   "normalized_url", null: false
+    t.integer  "user_id",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
