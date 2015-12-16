@@ -9,11 +9,11 @@
   align-items: center
 
 .feed
-  @extend .container 
+  @extend .container
   //border: 1px solid #ccc
 
   .head
-    @extend .row 
+    @extend .row
     @extend .col-md-12
     margin-bottom: 20px
     .today
@@ -25,16 +25,24 @@
       display: inline-block
       font-size: 1.2rem
       color: #ccc
-  
+
   .item
-    @extend .row 
+    @extend .row
     @extend .row-valign
     height: 60px
     .item-vote
       @extend .col-md-1
-      
+
+      cursor: pointer
+      display: block
+      text-decoration: none
+
+      color: #333
+
+      &.on
+        color: green
       .box
-        background-color: #ccc
+        // background-color: #ccc
         height: 50px
         width: 35px
         .arrow

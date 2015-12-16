@@ -1,11 +1,20 @@
 X Data Model
 X Authentication (login via oauth.io / twitter)
 X Submit Project
-- Setup basic Index Page
+X Setup basic Index Page
+
 - Voting / Unvoting
+- index page grouping by day
+
 - Email List subscription
+
 - Styling / cleanup
+
 - add intro
+
+- leave feedback for project owner
+- view feedback as project owner
+- verify project owner
 
 
 minor tweaks:

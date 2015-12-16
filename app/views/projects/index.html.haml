@@ -8,19 +8,22 @@
 
   - @projects.each do |project|
     .item
-      .item-vote
+      %a.item-vote{project_vote_attributes(project)}
         .box
           .arrow
             %span.glyphicon.glyphicon-chevron-up{"aria-hidden" => "true"}
           .counter
             = project.votes_count
+
       .item-details
         .title
           = project.name
         .description
           = project.description
       .item-comments
-        .user-image
-          %img{src: current_user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{current_user.screen_name} #{current_user.location}"}
-        .comments-gif
-          %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+        - user = project.user
+        - if user
+          .user-image
+            %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
+        -# .comments-gif
+        -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}

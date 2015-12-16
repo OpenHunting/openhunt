@@ -46,4 +46,26 @@ module ApplicationHelper
 
     @vote_ids.include?(project_id)
   end
+
+  def project_vote_href(project)
+
+  end
+
+  def project_vote_attributes(project)
+    result = {}
+
+    if upvoted?(project.id)
+      result[:class] = "on"
+      result["data-method"] = "DELETE"
+    end
+
+    if current_user.present?
+      result[:href] = "/vote/#{project.id}"
+    else
+      result[:href] = "/login?vote=#{project.id}"
+    end
+
+
+    result
+  end
 end

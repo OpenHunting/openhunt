@@ -9,10 +9,40 @@ class ProjectsController < ApplicationController
   end
 
   def vote
+    get_project
+
+    current_user.vote(@project)
+
+    respond_to do |format|
+      format.html do
+        flash[:message] = "Your vote has been counted."
+
+        # TODO: redirect to the project detail page instead
+        redirect_to "/"
+      end
+      format.json do
+        render json: @project, root: "project"
+      end
+    end
 
   end
 
   def unvote
+    get_project
+
+    current_user.unvote(@project)
+
+    respond_to do |format|
+      format.html do
+        flash[:message] = "Your vote has been removed."
+
+        # TODO: redirect to the project detail page instead
+        redirect_to "/"
+      end
+      format.json do
+        render json: @project, root: "project"
+      end
+    end
 
   end
 
@@ -36,5 +66,11 @@ class ProjectsController < ApplicationController
 
   def validate_project
     # TODO: validate project fields (name, url, description)
+  end
+
+  protected
+
+  def get_project
+    @project = Project.where(id: params[:id]).first
   end
 end
