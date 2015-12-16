@@ -15,26 +15,29 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  it "exists" do
+
+  it "user cannot vote twice for same project" do
     user = FactoryGirl.create(:user)
     proj = FactoryGirl.build(:project)
     user.projects << proj
-    expect(proj.name).to eql "asdf"
+    user.vote(proj)
+    user.vote(proj)
+    expect(user.votes.count).to eql 1
   end
 
   context "featured" do
-    before :each do
+    before :all do
       DatabaseCleaner.clean
-      # setup projects
-      20.times do |i|
+      # create projects
+      25.times do |i|
         user = FactoryGirl.create(:user)
-        proj = FactoryGirl.build(:project)
+        proj = FactoryGirl.build(:project, created_at: Time.now - (i * 2).hours)
         user.projects << proj
       end
-      # setup more users who will vote.
+      # create more users
+      # each user will vote on 3 random projects.
       50.times do |i|
         user = FactoryGirl.create(:user)
-        # each user votes 3 times
         3.times do
           rand_proj = Project.offset(rand(Project.count)).first
           user.vote(rand_proj)
@@ -42,19 +45,21 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    it "user cannot vote twice for same project" do
-      user = FactoryGirl.create(:user)
-      proj = Project.first
-      user.vote(proj)
-      user.vote(proj)
-      expect(user.votes.count).to eql 1
+    let(:projects_page_1) { Project.featured(1) }
+    let(:projects_page_2) { Project.featured(2) }
+    let(:projects_page_3) { Project.featured(3) }
+
+    # One big test because the setup is slow
+    it "return paginated results" do
+      expect(projects_page_1.length).to eql 10
+      expect(projects_page_2.length).to eql 10
+      expect(projects_page_3.length).to eql 5
     end
 
-    it "sorts by featured" do
-      byebug
-      expect(Project.featured.first).to eql Project.last
+    it "orders by score" do
+      expect(projects_page_1.first.score).to be > projects_page_1.last.score
+      expect(projects_page_1.last.score).to be > projects_page_2.first.score
     end
-
   end
 
 end
