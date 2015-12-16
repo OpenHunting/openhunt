@@ -21,10 +21,10 @@ class SessionsController < ApplicationController
 
     login_user(result.user)
 
-    PostAuth.call(user: current_user, session: session)
+    post_auth = PostAuth.call(user: current_user, session: session)
 
     render json: {
-      redirect_to: "/"
+      redirect_to: post_auth.redirect_to || "/"
     }
   end
 

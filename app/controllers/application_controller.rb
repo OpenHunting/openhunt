@@ -28,4 +28,13 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
   end
 
+  def require_user
+    if current_user.present?
+      return true
+    else
+      redirect_to "/login?redirect_to=#{request.path}"
+      return false
+    end
+  end
+
 end

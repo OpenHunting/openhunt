@@ -11,7 +11,27 @@
 </head>
 <body>
 
-  <%= yield %>
+  <div class="container">
+    <div class="top-header">
+      <h1>Open Hunt</h1>
 
+      <ul>
+        <li>
+          <a href="/new">Submit Project</a>
+        </li>
+        <% if current_user.present? %>
+          <li>
+            <a href="/logout" data-method="POST">Logout</a>
+          </li>
+        <% else %>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <%= yield %>
+  </div>
 </body>
 </html>
