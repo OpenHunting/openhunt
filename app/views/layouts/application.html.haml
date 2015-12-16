@@ -13,67 +13,61 @@
   %nav.navbar.navbar-default.navbar-fixed-top
     .container
       .navbar-header
-        %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
         %a.navbar-brand{:href => "/"} Open Hunt
 
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          / %li.active
-          /   %a{:href => "#"}
-          /     Link
-          /     %span.sr-only (current)
-          / %li
-          /   %a{:href => "#"} Link
-          / %li.dropdown
-          /   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          /     Dropdown
-          /     %span.caret
-          /   %ul.dropdown-menu
-          /     %li
-          /       %a{:href => "#"} Action
-          /     %li
-          /       %a{:href => "#"} Another action
-          /     %li
-          /       %a{:href => "#"} Something else here
-          /     %li.divider{:role => "separator"}
-          /     %li
-          /       %a{:href => "#"} Separated link
-          /     %li.divider{:role => "separator"}
-          /     %li
-          /       %a{:href => "#"} One more separated link
-        -# %form.navbar-form.navbar-right{:role => "search"}
-        -#   .form-group
-        -#     %input.form-control{:placeholder => "Search", :type => "text"}
-        -#   %button.btn.btn-default{:type => "submit"} Submit
-        %ul.nav.navbar-nav.navbar-right
+      %ul.nav.navbar-nav
+        / %li.active
+        /   %a{:href => "#"}
+        /     Link
+        /     %span.sr-only (current)
+        / %li
+        /   %a{:href => "#"} Link
+        / %li.dropdown
+        /   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        /     Dropdown
+        /     %span.caret
+        /   %ul.dropdown-menu
+        /     %li
+        /       %a{:href => "#"} Action
+        /     %li
+        /       %a{:href => "#"} Another action
+        /     %li
+        /       %a{:href => "#"} Something else here
+        /     %li.divider{:role => "separator"}
+        /     %li
+        /       %a{:href => "#"} Separated link
+        /     %li.divider{:role => "separator"}
+        /     %li
+        /       %a{:href => "#"} One more separated link
+      -# %form.navbar-form.navbar-right{:role => "search"}
+      -#   .form-group
+      -#     %input.form-control{:placeholder => "Search", :type => "text"}
+      -#   %button.btn.btn-default{:type => "submit"} Submit
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a.navbar-about{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
+        %li
+          %a{:href => "/new"} + Post
+        - if current_user.present?
           %li
-            %a.navbar-about{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
+            %a{"data-method" => "POST", :href => "/logout"} Logout
+        - else
           %li
-            %a{:href => "/new"} Submit Project
-          - if current_user.present?
-            %li
-              %a{"data-method" => "POST", :href => "/logout"} Logout
-          - else
-            %li
-              %a{:href => "/login"} Login
-          -# %li.dropdown
-          -#   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          -#     More
-          -#     %span.caret
-          -#   %ul.dropdown-menu
-          -#     %li
-          -#       %a{:href => "#"} Action
-          -#     %li
-          -#       %a{:href => "#"} Another action
-          -#     %li
-          -#       %a{:href => "#"} Something else here
-          -#     %li.divider{:role => "separator"}
-          -#     %li
-          -#       %a{:href => "#"} Separated link
+            %a{:href => "/login"} Login
+        -# %li.dropdown
+        -#   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        -#     More
+        -#     %span.caret
+        -#   %ul.dropdown-menu
+        -#     %li
+        -#       %a{:href => "#"} Action
+        -#     %li
+        -#       %a{:href => "#"} Another action
+        -#     %li
+        -#       %a{:href => "#"} Something else here
+        -#     %li.divider{:role => "separator"}
+        -#     %li
+        -#       %a{:href => "#"} Separated link
 
 
   .container

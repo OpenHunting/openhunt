@@ -12,6 +12,12 @@ body
 //   text-transform: uppercase
 //   font-size: 10px
 
+.navbar
+  padding-top: 8px
+.navbar-header
+  .navbar-brand
+    padding-left: 10px
+
 .row-valign
   display: flex
   align-items: center
@@ -21,10 +27,10 @@ body
   //border: 1px solid #ccc
 
   .head
-    border-bottom: 1px solid #eee
     @extend .row
     @extend .col-md-12
-    margin-bottom: 20px
+    margin-bottom: 10px
+    margin-top: 20px
     .today
       display: inline-block
       font-size: 2rem
@@ -44,7 +50,6 @@ body
     height: 60px
     border-radius: 0px
     margin-bottom: 0px
-    border-bottom: 1px solid #eee
     position: relative
     width: 100%
     transition: background-color 0.5s ease
@@ -90,9 +95,14 @@ body
 
     .item-comments
       text-align: right
+      white-space: nowrap
+      .posted-by
+        color: #999
+        font-size: 12px
+        margin-right: 3px
       .user-image
         display: inline-block
-        padding: 0 5px
+        padding: 0 0
         img
           width: 30px
           height: 30px
