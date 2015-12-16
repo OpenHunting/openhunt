@@ -57,7 +57,11 @@ class Project < ActiveRecord::Base
   # https://medium.com/hacking-and-gonzo/how-hacker-news-ranking-algorithm-works-1d9b0cf2c08d#.bkaj2mpm1
   # Here is the older, simpler algorithm
   def score
-    votes = votes_count - 1 # votes_count minus the submitter's own vote
+    # NOTE: if the code changes, so that a submitter automatically
+    # creates a vote for his submission, then we will want to
+    # subtract that vote before calculating the score:
+    # votes = votes_count - 1
+    votes = votes_count
     hours_since_submission = (Time.now.hour - created_at.hour).abs
     gravity = 1.8 # gravity defaults to 1.8 in news.arc
 

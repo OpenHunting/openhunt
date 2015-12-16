@@ -17,8 +17,20 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
 
   context "single project" do
+    let(:submitter) { FactoryGirl.create(:user) }
+    let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
+    before :each do
+      DatabaseCleaner.clean
+    end
     it "calculates a score" do
-      pending 'doublecheck our algorithm returns what we expect'
+      project.update_attributes(created_at: 4.hours.ago.to_datetime)
+      5.times do |i|
+        FactoryGirl.create(:user).vote(project)
+      end
+      # using the simple, old algorithm:
+      #   votes / (hours_since_submission + 2) ** gravity
+      #   5     / (         4            + 2 ) **   1.8   = 0.412346
+      expect(project.reload.score.round(6)).to eql 0.412346
     end
   end
 
@@ -29,7 +41,7 @@ RSpec.describe Project, type: :model do
       # create projects
       25.times do |i|
         user = FactoryGirl.create(:user)
-        proj = FactoryGirl.build(:project, created_at: Time.now - (i * 2).hours)
+        proj = FactoryGirl.build(:project, created_at: Time.now + (i * 2).hours)
         user.projects << proj
       end
       # create more users
@@ -56,7 +68,8 @@ RSpec.describe Project, type: :model do
 
     it "orders by score" do
       expect(projects_page_1.first.score).to be > projects_page_1.last.score
-      expect(projects_page_1.last.score).to be > projects_page_2.first.score
+      expect(projects_page_1.last.id).to_not eql projects_page_2.first.id
+      expect(projects_page_1.last.score).to be >= projects_page_2.first.score
     end
   end
 
