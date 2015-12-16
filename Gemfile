@@ -30,6 +30,8 @@ gem 'haml-rails'
 
 gem "validate_url"
 
+gem 'rails_12factor', group: :production
+
 
 # use rails assets to pull assets from bower
 source 'https://rails-assets.org' do
