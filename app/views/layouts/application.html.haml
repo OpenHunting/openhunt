@@ -10,83 +10,10 @@
 
 
 %body
-  %nav.navbar.navbar-default.navbar-fixed-top
-    .container
-      .navbar-header
-        %a.navbar-brand{:href => "/"} Open Hunt
-
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a.navbar-about.toggle-about{:href => "#", 'data-toggle'=>"modal", 'data-target'=>"#myModal"} About
-        %li
-          %a{:href => "/new"} + Post
-        - if current_user.present?
-          %li
-            %a{"data-method" => "POST", :href => "/logout"} Logout
-        - else
-          %li
-            %a{:href => "/login"} Login
-        -# %li.dropdown
-        -#   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        -#     More
-        -#     %span.caret
-        -#   %ul.dropdown-menu
-        -#     %li
-        -#       %a{:href => "#"} Action
-        -#     %li
-        -#       %a{:href => "#"} Another action
-        -#     %li
-        -#       %a{:href => "#"} Something else here
-        -#     %li.divider{:role => "separator"}
-        -#     %li
-        -#       %a{:href => "#"} Separated link
-
+  - unless @skip_header
+    = render "layouts/navbar"
 
   .container
     = yield
 
-  #about-screen(style="display:none;")
-    .container
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-
-      %p
-        - if request.path == "/about"
-          %a(href="/").btn.btn-primary Get Started
-        - else
-          %button.btn.btn-primary.close-about Get Started
+  = render "pages/about_screen"
