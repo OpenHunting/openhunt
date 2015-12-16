@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
 
   def index
-    @projects = Project.featured(params[:page]).includes(:user).to_a
+    # @projects = Project.featured(params[:page]).includes(:user).to_a
+    @projects = Project.featured(params[:page]) # if Project featured returns an array instead of an ActiveRecord Relation
     if current_user.present?
       @vote_ids = current_user.match_votes(@projects.map(&:id))
     end
