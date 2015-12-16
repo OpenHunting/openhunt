@@ -1,11 +1,25 @@
 X Data Model
 X Authentication (login via oauth.io / twitter)
 X Submit Project
-- Setup basic Index Page
-- Voting / Unvoting
+X Setup basic Index Page
+X Voting / Unvoting
+
+- ajax voting / unvoting
+
+- add user login panel (with icon)
+
+- index page grouping by day
+- infinite scrolling
+
 - Email List subscription
+
 - Styling / cleanup
+
 - add intro
+
+- leave feedback for project owner
+- view feedback as project owner
+- verify project owner
 
 
 minor tweaks:

@@ -5,9 +5,9 @@ class PreAuth < BaseInteractor
     require_context(:session)
 
     # go through session items and store actons for later (such as vote, etc)
-    context.session[:vote_project_id] = context.params[:vote_project_id]
+    context.session[:vote_project_id] = context.params[:vote]
 
     # save redirect_to
-    context.session[:redirect_to] = context.params[:redirect_to]
+    context.session[:redirect_to] = context.params[:redirect_ffto]
   end
 end
