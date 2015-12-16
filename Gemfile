@@ -67,6 +67,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
 
   gem "quiet_assets"
@@ -74,6 +75,8 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
+
+  gem 'faker'
 end
 
 group :development do

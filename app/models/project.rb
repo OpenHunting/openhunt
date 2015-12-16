@@ -41,13 +41,31 @@ class Project < ActiveRecord::Base
     page ||= 1
     per_page ||= Settings.featured_per_page
 
-    # TODO: sort projects by ranking
-
     # calculate offset
     offset = (page - 1)*per_page
     offset = 0 if offset <= 0
 
-    Project.all.order(:created_at => :desc).limit(per_page).offset(offset)
+    # TODO: improve performance:
+    #         - use pure SQL to run calculation & sorting on the database
+    #         - http://sorentwo.com/2013/12/30/let-postgres-do-the-work.html
 
+    # Project.all.sort_by(&:score).limit(per_page).offset(offset)
+    # 'sort_by' returns an array. Do we need an ActiveRecord Relation instead?
+    Project.all.sort_by(&:score).reverse.slice(offset, per_page)
+  end
+
+  # Discussing HackerNews algorithm:
+  # https://medium.com/hacking-and-gonzo/how-hacker-news-ranking-algorithm-works-1d9b0cf2c08d#.bkaj2mpm1
+  # Here is the older, simpler algorithm
+  def score
+    # NOTE: if the code changes, so that a submitter automatically
+    # creates a vote for his submission, then we will want to
+    # subtract that vote before calculating the score:
+    # votes = votes_count - 1
+    votes = votes_count
+    hours_since_submission = (Time.now.hour - created_at.hour).abs
+    gravity = 1.8 # gravity defaults to 1.8 in news.arc
+
+    votes / (hours_since_submission + 2) ** gravity
   end
 end

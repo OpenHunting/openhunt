@@ -3,7 +3,6 @@ class ProjectForm
 
   attribute :name
   validates_presence_of :name
-  validates_length_of :description, maximum: 80, allow_blank: true
 
   attribute :url
   validates_presence_of :url
