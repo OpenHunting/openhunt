@@ -20,7 +20,9 @@ class ProjectsController < ApplicationController
   def create
     form = ProjectForm.new(params)
     if form.valid?
-      project = Project.create(form.attributes)
+      project = Project.new(form.attributes)
+      project.user = current_user
+      project.save!
       current_user.vote(project)
       redirect_to "/"
     else

@@ -2,11 +2,12 @@ class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
 
-      t.string :name
-      t.string :description
-      t.string :url
+      t.string :name, null: false
+      t.string :description, null: false
+      t.string :url, null: false
+      t.string :normalized_url, null: false
 
-      t.references(:user)
+      t.references(:user, null: false)
 
       t.timestamps null: false
     end

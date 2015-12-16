@@ -1,6 +1,6 @@
 X Data Model
 X Authentication (login via oauth.io / twitter)
-- Submit Project
+X Submit Project
 - Setup basic Index Page
 - Voting / Unvoting
 - Email List subscription
