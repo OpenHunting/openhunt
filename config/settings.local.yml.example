@@ -1,0 +1,3 @@
+# MOVE THIS FILE TO config/settings.local.yml and replace the twitter_key and twitter_secret 
+twitter_key: ""
+twitter_secret: ""
