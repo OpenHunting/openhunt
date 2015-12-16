@@ -35,4 +35,11 @@ class User < ActiveRecord::Base
       project_id: project.id,
     }).destroy_all
   end
+
+  def match_votes(project_ids)
+    Vote.select(:project_id).where({
+      user_id: self.id,
+      project_id: project_ids
+    }).map(&:project_id)
+  end
 end
