@@ -1,11 +1,12 @@
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %a.navbar-brand{:href => "/"} Open Hunt
-
+      %a.navbar-brand{href: "/"} Open Hunt
+      %a.navbar-about.toggle-about{href: "/about", class: ("active" if current_page?(action: "about", controller: "pages"))}
+        Why?
     %ul.nav.navbar-nav.navbar-right
-      %li{class: ("active" if current_page?(action: "about", controller: "pages"))}
-        %a.navbar-about.toggle-about{href: "/about" } About
+      -# %li{class: ("active" if current_page?(action: "about", controller: "pages"))}
+      -#   %a.navbar-about.toggle-about{href: "/about" } About
       %li{class: ("active" if current_page?(action: "new", controller: "projects"))}
         %a{:href => "/new"} + Post
       - if current_user.present?

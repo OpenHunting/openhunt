@@ -10,16 +10,28 @@
 body
   padding-top: 55px
   padding-bottom: 30px
-// .navbar-about
-//   margin-top: 12px
-//   display: inline-block
-//   text-transform: uppercase
-//   font-size: 10px
+  &.about-screen-opened
+    overflow: hidden
 
 .navbar
+  .navbar-about
+    margin-top: 11px
+    display: inline-block
+    font-size: 10px
+    padding: 1px 3px
+    border-radius: 3px
+    background: #fff
+    text-decoration: none
+    &:hover
+      background: #508FE6
+      color: #fff
+    &.active
+      background: #333
+      color: #fff
   .navbar-header
     .navbar-brand
       padding-left: 10px
+      padding-right: 10px
   .navbar-right
     margin-right: -10px
   +xs
@@ -160,14 +172,15 @@ body
   height: 100%
   padding: 50px
   background: rgba(255,255,255,0.93)
-  padding-top: 90px
   overflow: auto
+  margin-top: 52px
+  padding-top: 20px
   +xs
     padding: 11px
-    padding-top: 68px
+    padding-top: 24px
   p
     font-size: 18px
     line-height: 1.5
     margin-bottom: 1em
     +xs
-      font-size: 14px
+      font-size: 16px
