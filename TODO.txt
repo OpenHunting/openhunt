@@ -1,0 +1,5 @@
+X Data Model
+- Setup basic Index Page
+- Authentication (login via oauth.io / twitter)
+- Submit Project
+- Voting / Unvoting
