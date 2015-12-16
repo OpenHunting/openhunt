@@ -16,8 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
 
-gem "bourbon", "= 3.2.4" # old bourbon, will work with libsass
+gem 'bourbon', '= 3.2.4' # old bourbon, will work with libsass
 
 gem 'react-rails', '~> 1.5.0'
 
@@ -29,6 +30,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-lodash'
   gem 'rails-assets-es5-shim'
+  gem 'rails-assets-oauthio-web'
 end
 
 # Build JSON APIs

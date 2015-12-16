@@ -1,0 +1,21 @@
+<%
+  # TODO:
+  # SPLASH BOX ("Processing login...")
+%>
+
+<script type="text/javascript">
+  OAuth.callback('twitter')
+  .done(function(result) {
+    console.log("Twitter login", result)
+    //use result.access_token in your API request
+    //or use result.get|post|put|del|patch|me methods (see below)
+
+    // TODO: change splash box to "Login successful, redirecting..."
+  })
+  .fail(function (err) {
+    console.error("Unable to login via twitter", err)
+    //handle error with err
+
+    // TODO: change splash box to "Login failed: error"
+  });
+</script>

@@ -167,6 +167,7 @@ GEM
     rails-assets-es5-shim (4.3.1)
     rails-assets-jquery (2.1.4)
     rails-assets-lodash (3.10.1)
+    rails-assets-oauthio-web (0.5.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -229,6 +230,10 @@ GEM
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
+    sprockets-es6 (0.8.2)
+      babel-source (>= 5.8.11)
+      babel-transpiler
+      sprockets (>= 3.0.0)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -281,11 +286,13 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-es5-shim!
   rails-assets-lodash!
+  rails-assets-oauthio-web!
   react-rails (~> 1.5.0)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sprockets (>= 3.0.0)
+  sprockets-es6
   sqlite3
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

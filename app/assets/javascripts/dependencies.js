@@ -15,3 +15,5 @@
 //= require jquery_ujs
 //= require lodash
 //= require vendor/lodash-inflection
+
+//= require oauthio-web
