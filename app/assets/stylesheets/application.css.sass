@@ -1,14 +1,33 @@
 //= require components
 //= require_self
 
+
+// $navbar-default-color:             #fff !default
+// $navbar-default-bg:                #4e555d !default
+// $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default
+
+
 @import "bootstrap"
 
+body
+  background: #eee
 
-.navbar-about
-  margin-top: 12px
-  display: inline-block
-  text-transform: uppercase
-  font-size: 10px
+
+
+.navbar-default
+  background: #4e555d
+  color: #fff
+  .navbar-brand
+    color: #fff
+  .navbar-nav
+    li > a
+      color: #fff
+//
+// .navbar-about
+//   margin-top: 12px
+//   display: inline-block
+//   text-transform: uppercase
+//   font-size: 10px
 
 .row-valign
   display: flex
@@ -19,6 +38,9 @@
   //border: 1px solid #ccc
 
   .head
+    background: rgba(255,255,255,0.6)
+    border-radius: 3px
+    padding: 15px 15px
     @extend .row
     @extend .col-md-12
     margin-bottom: 20px
@@ -32,10 +54,24 @@
       font-size: 1.2rem
       color: #ccc
 
+  .item:first-child
+    border-radius: 3px 3px 0px 0px
+
+
   .item
     @extend .row
     @extend .row-valign
     height: 60px
+    border-radius: 0px
+    margin-bottom: 0px
+    border-bottom: 1px solid #eee
+    position: relative
+    width: 100%
+    background: white
+    -webkit-box-align: center
+    -webkit-align-items: center
+    -ms-flex-align: center
+    align-items: center
     .item-vote
       cursor: pointer
       display: block
