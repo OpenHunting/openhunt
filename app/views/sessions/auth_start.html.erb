@@ -4,5 +4,5 @@
 %>
 
 <script type="text/javascript">
-  OAuth.redirect("twitter", <%= raw auth_complete_url.to_json %>)
+  OAuth.redirect("twitter", <%= raw auth_callback_url.to_json %>)
 </script>
