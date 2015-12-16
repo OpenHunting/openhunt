@@ -22,12 +22,12 @@
         .description
           = project.description
       .item-comments.col-md-5.col-sm-5.col-xs-5
-        - user = project.user
-        - if user
-          %span.posted-by Posted by
-          .user-image
-            %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
+        .item-comments-inner
+          - user = project.user
+          - if user
+            %span.posted-by Posted by
+            .user-image
+              %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
 
-        -# .comments-gif
-        -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
-      
+          -# .comments-gif
+          -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}

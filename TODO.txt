@@ -4,14 +4,14 @@ X Submit Project
 X Setup basic Index Page
 X Voting / Unvoting
 X ajax voting / unvoting
-
-- seed data
-- add user login panel (with icon)
-- add intro / about
+X seed data
+X add intro / about
 
 - bucket projects by date (weekends are a single bucket)
 - infinite scrolling
 - load more projects for a single date
+
+- add user login panel (with icon)
 
 - Email List subscription
 
