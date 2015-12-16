@@ -1,14 +1,16 @@
 //= require components
 //= require_self
 
-@import "bootstrap"
+@import "_bootstrap-override-variables.scss"
+@import "bootstrap/assets/stylesheets/_bootstrap.scss"
 
-
-.navbar-about
-  margin-top: 12px
-  display: inline-block
-  text-transform: uppercase
-  font-size: 10px
+body
+  padding-top: 70px
+// .navbar-about
+//   margin-top: 12px
+//   display: inline-block
+//   text-transform: uppercase
+//   font-size: 10px
 
 .row-valign
   display: flex
@@ -19,6 +21,7 @@
   //border: 1px solid #ccc
 
   .head
+    border-bottom: 1px solid #eee
     @extend .row
     @extend .col-md-12
     margin-bottom: 20px
@@ -26,16 +29,33 @@
       display: inline-block
       font-size: 2rem
       padding-right: 10px
+      text-transform: uppercase
 
     .date
       display: inline-block
       font-size: 1.2rem
       color: #ccc
 
+  .item:first-child
+    border-radius: 3px 3px 0px 0px
+
   .item
-    @extend .row
     @extend .row-valign
     height: 60px
+    border-radius: 0px
+    margin-bottom: 0px
+    border-bottom: 1px solid #eee
+    position: relative
+    width: 100%
+    transition: background-color 0.5s ease
+    background-color: white
+    -webkit-box-align: center
+    -webkit-align-items: center
+    -ms-flex-align: center
+    align-items: center
+    &:hover
+      background-color: rgba(#eee, 0.5)
+
     .item-vote
       cursor: pointer
       display: block
@@ -61,15 +81,15 @@
 
 
     .item-details
-      @extend .col-md-9
-
       .title
-        font-size: 1.5rem
+        font-size: 1.8rem
+        color: #000
       .description
-        font-size: 1rem
+        color: #ccc
+        font-size: 1.2rem
 
     .item-comments
-      @extend .col-md-2
+      text-align: right
       .user-image
         display: inline-block
         padding: 0 5px

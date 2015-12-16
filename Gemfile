@@ -66,6 +66,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
 
   gem "quiet_assets"
@@ -75,6 +76,7 @@ group :development, :test do
   gem 'launchy'
   gem 'sqlite3'
 
+  gem 'faker'
 end
 
 group :development do
