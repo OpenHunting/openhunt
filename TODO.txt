@@ -8,8 +8,11 @@ X Voting / Unvoting
 
 - add user login panel (with icon)
 
-- index page grouping by day
+- bucket projects by date (weekends are a single bucket)
+
 - infinite scrolling
+
+- load more projects for a single date
 
 - Email List subscription
 
