@@ -49,6 +49,8 @@ gem 'config'
 gem 'interactor-rails'
 gem 'active_attr'
 
+gem "twitter", "5.11.0"
+
 # Use puma as the app server
 gem 'puma'
 
