@@ -29,6 +29,7 @@ body
       display: inline-block
       font-size: 2rem
       padding-right: 10px
+      text-transform: uppercase
 
     .date
       display: inline-block
@@ -37,7 +38,6 @@ body
 
   .item:first-child
     border-radius: 3px 3px 0px 0px
-
 
   .item
     @extend .row
@@ -48,12 +48,16 @@ body
     border-bottom: 1px solid #eee
     position: relative
     width: 100%
-    background: white
+    transition: background-color 0.5s ease
+    background-color: white
     -webkit-box-align: center
     -webkit-align-items: center
     -ms-flex-align: center
     align-items: center
+    &:hover
+      background-color: rgba(#eee, 0.5)
     .item-vote
+      @extend .col-md-1
       cursor: pointer
       display: block
       text-decoration: none
@@ -81,12 +85,15 @@ body
       @extend .col-md-9
 
       .title
-        font-size: 1.5rem
+        font-size: 1.8rem
+        color: #000
       .description
-        font-size: 1rem
+        color: #ccc
+        font-size: 1.2rem
 
     .item-comments
       @extend .col-md-2
+      text-align: right
       .user-image
         display: inline-block
         padding: 0 5px
