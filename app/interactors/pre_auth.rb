@@ -8,6 +8,6 @@ class PreAuth < BaseInteractor
     context.session[:vote_project_id] = context.params[:vote]
 
     # save redirect_to
-    context.session[:redirect_to] = context.params[:redirect_ffto]
+    context.session[:redirect_to] = context.params[:redirect_to]
   end
 end
