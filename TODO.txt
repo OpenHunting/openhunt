@@ -1,5 +1,13 @@
 X Data Model
-- Setup basic Index Page
-- Authentication (login via oauth.io / twitter)
+X Authentication (login via oauth.io / twitter)
 - Submit Project
+- Setup basic Index Page
 - Voting / Unvoting
+- Email List subscription
+- Styling / cleanup
+- add intro
+
+
+
+minor tweaks:
+- replicate the validation messages of ProductHunt (ask ash)

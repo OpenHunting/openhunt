@@ -17,4 +17,28 @@ module ApplicationHelper
   def skip_header?
     !!@skip_header
   end
+
+  def error_class(key)
+    return unless @errors.present?
+
+    if @errors.with_indifferent_access[key].present?
+      "has-error"
+    end
+  end
+
+  def error_messages(key)
+    return unless @errors.present?
+
+    Array.wrap(@errors.with_indifferent_access[key])
+  end
+
+  def field_errors(key)
+    messages = error_messages(key)
+    return unless messages.present?
+
+    %{
+      <p class="help-block">#{h messages.join(", ")}</p>
+    }.html_safe
+
+  end
 end
