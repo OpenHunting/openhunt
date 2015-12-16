@@ -12,11 +12,10 @@
 end
 
 
-
 User.take(25).each do |user|
   project = Project.new(
     name: Faker::Name.name,
-    description: Faker::Hipster.sentences(1 + rand(2)),
+    description: Faker::Hipster.sentences(1).first.truncate(80),
     url: Faker::Internet.url
   )
   project.user = user

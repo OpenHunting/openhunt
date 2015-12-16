@@ -1,7 +1,6 @@
 is_precompile = ARGV.any?{|i| i.to_s.include?("assets:precompile")}
 
 unless is_precompile
-  puts "HELLO"
   # Warn user if theres no twitter_key or twitter_secret configured
   if Settings.twitter_key.blank? or Settings.twitter_secret.blank?
     puts "MISSING: `Settings.twitter_key` and/or `Settings.twitter_secret`"
