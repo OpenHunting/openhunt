@@ -24,6 +24,8 @@ body
     text-decoration: none
     margin-left: -3px
     text-transform: lowercase
+    +xs
+      float: left
     &:hover
       background: #508FE6
       color: #fff
@@ -53,6 +55,10 @@ body
         width: 35px
         height: 35px
         border: 1px solid #ddd
+      +xs
+        padding-top: 0
+        .user-avatar
+          vertical-align: middle
   +xs
     +clearfix
     .nav > li
@@ -168,9 +174,15 @@ body
       .title
         font-size: 1.8rem
         color: #000
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
       .description
         color: #ccc
         font-size: 1.2rem
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
 
     .item-comments
       text-align: right
@@ -322,6 +334,9 @@ body
   font-size: 12px
   display: none
 
+  +xs
+    left: 0
+    width: auto
   a
     color: #fff
   strong
@@ -385,4 +400,3 @@ body
     em
       font-style: normal
       color: #999
-      
