@@ -11,7 +11,7 @@
   )
 end
 
-(0..10).each do |i|
+(0..2).each do |i|
   puts
   puts
   puts
@@ -39,5 +39,6 @@ end
       other_user.vote(project)
     end
   end
-
 end
+
+puts "DONE"

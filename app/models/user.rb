@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   has_one :list_subscriber
 
+  has_many :feedbacks
+
   def vote(project)
     return unless project.present?
 
