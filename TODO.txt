@@ -17,7 +17,7 @@ X user profile page (with list of favorited projects, and logout btn)
 
 - 1 submission per day per user
 - moderator flag on user (hide post, ban user)
-- audit trail
+- audit trail (posts hidden, users banned, items flagged)
 
 - Email List subscription (form shown after the first bucket)
 
@@ -27,6 +27,7 @@ X user profile page (with list of favorited projects, and logout btn)
 - setup rollbar
 - setup intercom
 
+- fix site on iphone (it's a mess)
 
 minor tweaks:
 X responsive pass, fix navbar

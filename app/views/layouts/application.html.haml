@@ -1,12 +1,18 @@
 !!!
-%html
+%html(lang="en")
   %head
     %title Open Hunt - discover new products, give feedback, help each other
+    :erb
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="utf-8">
+
     = stylesheet_link_tag "dependencies", "application", media: 'all'
     = javascript_include_tag "dependencies", "application"
     = csrf_meta_tags
     :javascript
       OAuth.initialize( #{raw Settings.oauth_public_key.to_json} );
+
 
 
 %body
