@@ -47,7 +47,7 @@ minor tweaks:
 X responsive pass, fix navbar
 X minify assets
 - add loading animation to .splash-box
-- add a close btn to the top right of the detail panel
+X add a close btn to the top right of the detail panel
 
 - replicate the validations of ProductHunt (ask ash)
 - remove glyphicon fonts
