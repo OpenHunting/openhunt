@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151216052011) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "projects", ["bucket"], name: "index_projects_on_bucket"
+
   create_table "users", force: :cascade do |t|
     t.string   "screen_name",       null: false
     t.string   "name"

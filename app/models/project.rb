@@ -13,6 +13,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_projects_on_bucket  (bucket)
+#
 
 class Project < ActiveRecord::Base
   belongs_to :user
@@ -25,8 +29,8 @@ class Project < ActiveRecord::Base
   end
 
   before_save :set_bucket
-  def set_bucket    
-    self.bucket = self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
+  def set_bucket
+    self.bucket ||= self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
   end
 
   def self.normalize_url(url)
@@ -63,17 +67,36 @@ class Project < ActiveRecord::Base
   end
 
   def self.bucket(time)
-    case time.wday
-    when 0 # sunday
-      saturday = (time - 1.day).strftime("%Y%_m%d")
-      sunday = time.strftime("%Y%_m%d")
-      return "#{saturday}-#{sunday}"
-    when 6 # saturday
-      saturday = time.strftime("%Y%_m%d")
-      sunday = (time + 1.day).strftime("%Y%_m%d")
-      return "#{saturday}-#{sunday}"
+    time = parse_bucket(time) if time.is_a?(String)
+
+    if time.wday == 6 # saturday
+      bucket(time + 1.day)
     else
-      return time.strftime("%Y%_m%d")
+      return time.strftime("%Y%m%d")
     end
+  end
+
+  def self.parse_bucket(bucket_key)
+    year, month, date = bucket_key[0...4], bucket_key[4...6], bucket_key[6...8]
+    return nil unless year.present? and month.present? and date.present?
+
+    Time.find_zone!(Settings.base_timezone).parse("#{year}-#{month}-#{date}").at_midnight
+  end
+
+  def self.next_bucket(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    current_now = Time.find_zone!(Settings.base_timezone).now.at_midnight
+    if (time+1.day).at_midnight > current_now
+      nil
+    else
+      bucket(time+1.day)
+    end
+  end
+
+  def self.prev_bucket(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    bucket(time-1.day)
   end
 end

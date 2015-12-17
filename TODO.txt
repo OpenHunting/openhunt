@@ -8,18 +8,23 @@ X seed data
 X add intro / about
 X Styling / cleanup
 
-- bucket projects by date (weekends are a single bucket)
-- infinite scrolling
-- load more projects for a single date
+X bucket projects by date (weekends are a single bucket)
 
 - add user login panel (with icon)
 - user profile page (with list of favorited projects, and logout btn)
 
-- Email List subscription (form shown after the first bucket)
-
 - leave feedback for project owner
 - view feedback as project owner
 - verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
+
+- 1 submission per day per user
+- moderator flag on user (hide post, ban user)
+- audit trail
+
+- Email List subscription (form shown after the first bucket)
+
+- infinite scrolling
+- load more projects for a single date
 
 
 minor tweaks:
@@ -28,3 +33,7 @@ X responsive pass, fix navbar
 - minify assets, remove glyphicon fonts
 
 - better login (via popup instead of redirect)
+
+
+later on:
+- queuing system?

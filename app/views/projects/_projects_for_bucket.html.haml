@@ -1,8 +1,18 @@
-.feed.row
+- next_bucket = Project.next_bucket(time)
+- prev_bucket = Project.prev_bucket(time)
+.project-bucket.row{"data-next-bucket" => next_bucket, "data-prev-bucket" => prev_bucket}
   .head.col-md-12.col-sm-12.col-xs-12
+    -# - if local_assigns[:add_nav]
+    -#   .project-nav.pull-right
+    -#     - if next_bucket
+    -#       %a.btn.btn-xs.btn-default(href="/date/#{next_bucket}" title="View next day") <
+    -#     - if prev_bucket
+    -#       %a.btn.btn-xs.btn-default(href="/date/#{prev_bucket}" title="View previous day") >
+
     .today
       = date_display(time)
-    %a.date(href="/date/#{Project.bucket(time)}")
+
+    %a.date(href="/date/#{Project.bucket(time)}" title="Permalink for date: #{time.strftime('%B %d, %Y')}")
       = time.strftime('%B %d')
   .clearfix
 
@@ -31,3 +41,6 @@
 
           -# .comments-gif
           -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+  - if projects.blank?
+    .empty-projects
+      %p No products were submitted on #{time.strftime("%A, %B %d")}

@@ -13,6 +13,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_projects_on_bucket  (bucket)
+#
 
 class ProjectSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :url, :votes_count, :created_at
