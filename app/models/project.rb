@@ -65,15 +65,15 @@ class Project < ActiveRecord::Base
   def self.bucket(time)
     case time.wday
     when 0 # sunday
-      saturday = (time - 1.day).strftime("%Y%_m%d")
-      sunday = time.strftime("%Y%_m%d")
+      saturday = (time - 1.day).strftime("%Y%m%d")
+      sunday = time.strftime("%Y%m%d")
       return "#{sunday}"
     when 6 # saturday
-      saturday = time.strftime("%Y%_m%d")
-      sunday = (time + 1.day).strftime("%Y%_m%d")
+      saturday = time.strftime("%Y%m%d")
+      sunday = (time + 1.day).strftime("%Y%m%d")
       return "#{sunday}"
     else
-      return time.strftime("%Y%_m%d")
+      return time.strftime("%Y%m%d")
     end
   end
 end
