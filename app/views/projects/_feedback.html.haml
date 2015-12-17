@@ -20,8 +20,9 @@
     = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you hate about it."
 
     .actions
-      %label.pull-left
-        = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
-        Post as Anonymous
+      - if current_user.present?
+        %label.pull-left
+          = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
+          Post as Anonymous
       .pull-right
         .btn.btn-primary.close-feedback Done

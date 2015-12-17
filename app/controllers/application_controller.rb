@@ -28,6 +28,15 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
   end
 
+  helper_method :current_session
+  def current_session
+    session[:session_id] ||= begin
+      new_session_id = SecureRandom.base64(15).tr('+/=lIO0-', 'pqrsxyzb')
+      session[:session_id] = new_session_id
+      new_session_id
+    end
+  end
+
   def require_user
     if current_user.present?
       return true

@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 20151217054927) do
   create_table "feedbacks", force: :cascade do |t|
     t.text     "body",                       null: false
     t.boolean  "anonymous",  default: false
-    t.integer  "user_id",                    null: false
     t.integer  "project_id",                 null: false
+    t.integer  "user_id"
+    t.string   "session_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

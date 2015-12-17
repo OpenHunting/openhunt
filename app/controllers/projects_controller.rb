@@ -88,23 +88,45 @@ class ProjectsController < ApplicationController
     if params[:partial]
       render partial: "projects/feedback", project: @project, feedback: @feedback
     else
+      flash.keep
       redirect_to "/#open=#{@project.slug}"
     end
   end
 
   def set_feedback
-    if current_user.blank?
-      # save posted data in session
-      session[:feedback] = {project_id: @project.id, anonymous: params[:anonymous], body: params[:body]}.to_json
-      session[:redirect_to] = "/feedback/#{@project.slug}"
-      redirect_to "/login"
-      return
-    end
-
     load_project
     load_feedback
 
-    # TODO
+    @feedback ||= Feedback.new
+    @feedback.user_id = current_user.try(:id)
+    @feedback.project_id = @project.id
+    @feedback.body = params[:body].presence || ""
+    @feedback.anonymous = !!params[:anonymous]
+    @feedback.session_id = current_session
+
+    if @feedback.save
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Feedback was saved. Thanks!"
+          redirect_to "/feedback/#{@project.id}"
+        end
+        format.json do
+          render json: @feedback, root: "feedback"
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          flash[:alert] = "Unable to save feedback."
+          redirect_to "/feedback/#{@project.id}"
+        end
+        format.json do
+          render json: {
+            errors: @feedback.errors
+          }
+        end
+      end
+    end
   end
 
   def validate_project
@@ -121,6 +143,11 @@ class ProjectsController < ApplicationController
     if current_user.present?
       @feedback = Feedback.where({
         user_id: current_user.id,
+        project_id: @project.id
+      }).first
+    else
+      @feedback = Feedback.where({
+        session_id: current_session,
         project_id: @project.id
       }).first
     end

@@ -15,23 +15,26 @@ X switch user ids to guids
 X use slugs for projects
 X project detail panel
 
-- leave feedback for project owner
+X leave feedback for project owner
 
 - 1 submission per day per user
 - moderator flag on user (hide post, ban user)
 - audit trail (posts hidden, users banned, items flagged)
 
-- add loading animation to .splash-box
-
-- Email List subscription (form shown after the first bucket)
-
 - show about page on first visit (hide if its in session, or if current user)
+
+- add checkmark to the project's you've given feedback to
 
 - fix site on iphone (it's a mess)
 
+- switch to better postgres db
+- add google analytics
 - setup rollbar
 - setup intercom
 - create 404, 500, maintenance pages
+
+
+- Email List subscription (form shown after the first bucket)
 
 - infinite scrolling
 - load more projects for a single date
@@ -39,6 +42,9 @@ X project detail panel
 minor tweaks:
 X responsive pass, fix navbar
 X minify assets
+- add loading animation to .splash-box
+- add a close btn to the top right of the detail panel
+
 - replicate the validations of ProductHunt (ask ash)
 - remove glyphicon fonts
 

@@ -5,8 +5,9 @@
 #  id         :integer          not null, primary key
 #  body       :text             not null
 #  anonymous  :boolean          default(FALSE)
-#  user_id    :integer          not null
 #  project_id :integer          not null
+#  user_id    :integer
+#  session_id :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

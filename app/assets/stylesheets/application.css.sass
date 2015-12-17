@@ -194,11 +194,11 @@ body
 
 #about-screen
   position: fixed
-  top: 52px
+  top: 51px
   bottom: 0
   left: 0
   right: 0
-  z-index: 100
+  z-index: 10000
   width: 100%
   height: 100%
   padding: 50px
@@ -327,15 +327,6 @@ body
     font-size: 14px
     text-shadow: 0 0 3px rgba(#000, 0.7)
 
-  .project-loading
-    font-size: 30px
-    padding: 30px 50px
-    text-align: center
-    color: rgba(#fff, 0.5)
-    display: none
-
-  &.loading .project-loading
-    display: block
   .project-feedback
     padding: 10px 30px
     h3
@@ -362,3 +353,17 @@ body
       &:hover
         background: #E6E6E6
         color: #000
+
+
+  .project-loading
+    font-size: 30px
+    padding: 30px 50px
+    text-align: center
+    color: rgba(#fff, 0.5)
+    display: none
+
+  &.loading
+    .project-loading
+      display: block
+    .project-feedback
+      display: none

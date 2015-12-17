@@ -39,7 +39,8 @@
     };
 
     var closeFeedback = () => {
-      window.location.hash = "";
+      history.replaceState("", document.title, "/");
+
       $("#feedback-panel").fadeOut();
       $(".project-listing").removeClass("selected");
     };
@@ -70,6 +71,28 @@
 
     $(document).on("click", ".close-feedback", (e) => {
       e.preventDefault();
+      var feedbackPanel = $("#feedback-panel");
+      var slug = feedbackPanel.data("current-project-slug");
+
+      $.ajax({
+        type: "POST",
+        url: `/feedback/${slug}`,
+        dataType: "json",
+        data: {
+          body: feedbackPanel.find("textarea[name=body]").val(),
+          anonymous: feedbackPanel.find("input[name=anonymous]").is(":checked")
+        },
+        success: (json) => {
+
+        },
+        error: (xhr) => {
+          var json = xhr.responseJSON;
+          if(json){
+            console.error(json);
+          }
+        },
+        complete: (json) => {}
+      });
 
       closeFeedback();
     });
