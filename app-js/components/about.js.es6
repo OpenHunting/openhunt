@@ -27,6 +27,13 @@
       closeAbout();
     });
 
+    $(document).on("click", "#about-screen", (e) => {
+      if($(e.target).closest(".about-inner").length > 0) {
+        return;
+      }      
+      closeAbout();
+    });
+
     $(document).on("click", ".open-about", (e) => {
       e.preventDefault();
       openAbout();
