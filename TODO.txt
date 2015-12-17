@@ -14,7 +14,6 @@ X switch project ids to guids
 X switch user ids to guids
 X use slugs for projects
 X project detail panel
-
 X leave feedback for project owner
 
 - 1 submission per day per user

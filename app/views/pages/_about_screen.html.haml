@@ -39,11 +39,11 @@
       anim id est laborum.
 
     %p
-      %a.btn.btn-primary(href="/new") Submit a Product
+      %a.btn.btn-primary.btn-super(href="/new") Submit a Product
       - if request.path == "/about"
-        %a.btn.btn-primary(href="/") Start Browsing
+        %a.btn.btn-primary.btn-super(href="/") Start Browsing
       - else
-        %button.btn.btn-primary.close-about Start Browsing
+        %button.btn.btn-primary.btn-super.close-about Start Browsing
 
       %a(href="#source") Github Repo
       %span /

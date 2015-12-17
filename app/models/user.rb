@@ -72,4 +72,14 @@ class User < ActiveRecord::Base
 
     Project.where(id: project_ids)
   end
+
+  def submitted_project_today?
+    bucket = Project.bucket(Time.find_zone!(Settings.base_timezone).now)
+    Project.where(user_id: self.id, bucket: bucket).count > 0
+  end
+
+  # TODO
+  def moderator?
+    false
+  end
 end

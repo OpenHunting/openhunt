@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote]
+  before_filter :check_existing_project, only: [:new, :create]
 
   def index
     @bucket = Project.bucket(current_now)
@@ -157,6 +158,15 @@ class ProjectsController < ApplicationController
     @projects = Project.for_bucket(bucket).includes(:user).to_a
     if current_user.present?
       @vote_ids = current_user.match_votes(@projects.map(&:id))
+    end
+  end
+
+  def check_existing_project
+    if !current_user.moderator? and current_user.submitted_project_today?
+      render :already_submitted
+      return false
+    else
+      return true
     end
   end
 end
