@@ -6,25 +6,25 @@ X Voting / Unvoting
 X ajax voting / unvoting
 X seed data
 X add intro / about
+X Styling / cleanup
 
 - bucket projects by date (weekends are a single bucket)
 - infinite scrolling
 - load more projects for a single date
 
 - add user login panel (with icon)
+- user profile page (with list of favorited projects, and logout btn)
 
-- Email List subscription
-
-- Styling / cleanup
-
-- better login (via popup instead of redirect)
+- Email List subscription (form shown after the first bucket)
 
 - leave feedback for project owner
 - view feedback as project owner
-- verify project owner
+- verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
 
 
 minor tweaks:
-- replicate the validation messages of ProductHunt (ask ash)
+X responsive pass, fix navbar
+- replicate the validations of ProductHunt (ask ash)
 - minify assets, remove glyphicon fonts
-- responsive pass, fix navbar
+
+- better login (via popup instead of redirect)
