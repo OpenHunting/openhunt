@@ -228,6 +228,8 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    rollbar (2.4.0)
+      multi_json
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -345,6 +347,7 @@ DEPENDENCIES
   rails-assets-oauthio-web!
   rails_12factor
   react-rails (~> 1.5.0)
+  rollbar (~> 2.4.0)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
