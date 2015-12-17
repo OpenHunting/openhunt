@@ -16,8 +16,6 @@ X use slugs for projects
 X project detail panel
 
 - leave feedback for project owner
-- view feedback as project owner
-- verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
 
 - 1 submission per day per user
 - moderator flag on user (hide post, ban user)
@@ -38,7 +36,6 @@ X project detail panel
 - infinite scrolling
 - load more projects for a single date
 
-
 minor tweaks:
 X responsive pass, fix navbar
 X minify assets
@@ -46,7 +43,8 @@ X minify assets
 - remove glyphicon fonts
 
 
-
 later on:
+- view feedback as project owner
+- verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
 - post queuing system?
 - better login (via popup instead of redirect)

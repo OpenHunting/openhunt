@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151217054927) do
   end
 
   add_index "users", ["id"], name: "sqlite_autoindex_users_1", unique: true
+  add_index "users", ["screen_name"], name: "index_users_on_screen_name"
 
   create_table "votes", force: :cascade do |t|
     t.uuid     "user_id",    limit: 16, null: false

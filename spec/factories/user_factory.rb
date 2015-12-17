@@ -13,7 +13,8 @@
 #
 # Indexes
 #
-#  sqlite_autoindex_users_1  (id) UNIQUE
+#  index_users_on_screen_name  (screen_name)
+#  sqlite_autoindex_users_1    (id) UNIQUE
 #
 
 FactoryGirl.define do
