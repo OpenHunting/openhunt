@@ -65,5 +65,14 @@
       openFeedback(projectListing.data("project-slug"));
     });
 
+    // TODO: wire up saving feedback (on focus out)
+    // TODO: wire up focus out feedback textarea if they press cmd+enter
+
+    $(document).on("click", ".close-feedback", (e) => {
+      e.preventDefault();
+
+      closeFeedback();
+    });
+
   });
 })();
