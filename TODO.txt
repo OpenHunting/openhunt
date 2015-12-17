@@ -10,6 +10,9 @@ X Styling / cleanup
 X bucket projects by date (weekends are a single bucket)
 X add user login panel (with icon)
 X user profile page (with list of favorited projects, and logout btn)
+X switch project ids to guids
+X switch user ids to guids
+X use slugs for projects
 
 - leave feedback for project owner
 - view feedback as project owner
@@ -20,9 +23,6 @@ X user profile page (with list of favorited projects, and logout btn)
 - audit trail (posts hidden, users banned, items flagged)
 
 - add loading animation to .splash-box
-
-- switch project ids to guids
-- switch user ids to guids
 
 - Email List subscription (form shown after the first bucket)
 

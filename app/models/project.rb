@@ -8,15 +8,17 @@
 #  url             :string           not null
 #  normalized_url  :string           not null
 #  bucket          :string           not null
+#  slug            :string           not null
 #  user_id         :uuid(16)         not null
 #  votes_count     :integer          default(0)
+#  feedbacks_count :integer          default(0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  feedbacks_count :integer          default(0)
 #
 # Indexes
 #
 #  index_projects_on_bucket     (bucket)
+#  index_projects_on_slug       (slug)
 #  sqlite_autoindex_projects_1  (id) UNIQUE
 #
 
@@ -31,6 +33,13 @@ class Project < ActiveRecord::Base
   before_save :normalize_url
   def normalize_url
     self.normalized_url = self.class.normalize_url(self.url)
+  end
+
+  before_save :set_slug
+  def set_slug
+    if self.name.present?
+      self.slug = name.parameterize
+    end
   end
 
   before_save :set_bucket

@@ -56,14 +56,14 @@ module ApplicationHelper
 
 
     if current_user.present?
-      result[:href] = "/vote/#{project.id}"
+      result[:href] = "/vote/#{project.slug}"
       if upvoted?(project.id)
         result[:class] = "on ajax"
       else
         result[:class] = "ajax"
       end
     else
-      result[:href] = "/login?vote=#{project.id}"
+      result[:href] = "/login?vote=#{project.slug}"
     end
 
 

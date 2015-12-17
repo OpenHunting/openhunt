@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217064112) do
+ActiveRecord::Schema.define(version: 20151217054927) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "body",                                  null: false
@@ -36,15 +36,17 @@ ActiveRecord::Schema.define(version: 20151217064112) do
     t.string   "url",                                    null: false
     t.string   "normalized_url",                         null: false
     t.string   "bucket",                                 null: false
+    t.string   "slug",                                   null: false
     t.uuid     "user_id",         limit: 16,             null: false
     t.integer  "votes_count",                default: 0
+    t.integer  "feedbacks_count",            default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.integer  "feedbacks_count",            default: 0
   end
 
   add_index "projects", ["bucket"], name: "index_projects_on_bucket"
   add_index "projects", ["id"], name: "sqlite_autoindex_projects_1", unique: true
+  add_index "projects", ["slug"], name: "index_projects_on_slug"
 
   create_table "users", force: :cascade do |t|
     t.string   "screen_name",       null: false

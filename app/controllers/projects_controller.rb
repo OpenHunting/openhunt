@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
     if params[:partial]
       render partial: "projects/feedback", project: @project, feedback: @feedback
     else
-      redirect_to "/#open=#{@project.id}"
+      redirect_to "/#open=#{@project.slug}"
     end
   end
 
@@ -96,7 +96,7 @@ class ProjectsController < ApplicationController
     if current_user.blank?
       # save posted data in session
       session[:feedback] = {project_id: @project.id, anonymous: params[:anonymous], body: params[:body]}.to_json
-      session[:redirect_to] = "/feedback/#{@project.id}"
+      session[:redirect_to] = "/feedback/#{@project.slug}"
       redirect_to "/login"
       return
     end
@@ -113,7 +113,7 @@ class ProjectsController < ApplicationController
   protected
 
   def load_project
-    @project = Project.where(id: params[:id]).first
+    @project = Project.where(slug: params[:slug]).first
   end
 
   def load_feedback

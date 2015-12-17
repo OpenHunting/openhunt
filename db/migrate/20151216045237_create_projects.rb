@@ -9,14 +9,17 @@ class CreateProjects < ActiveRecord::Migration
       t.string :normalized_url, null: false
 
       t.string :bucket, null: false
+      t.string :slug, null: false
 
       t.uuid :user_id, null: false
 
       t.integer :votes_count, default: 0
+      t.integer :feedbacks_count, default: 0
 
       t.timestamps null: false
     end
 
     add_index :projects, :bucket
+    add_index :projects, :slug
   end
 end
