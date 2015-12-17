@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete "/vote/:id" => "projects#unvote"
 
   get "/about" => "pages#about"
-  get "/@:username" => "users#show"
+  get "/@:screen_name" => "users#show"
 
   get "/logout" => "sessions#logout"
   post "/logout" => "sessions#logout_complete"

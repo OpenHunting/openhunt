@@ -14,7 +14,7 @@
         %li.profile-nav(title="View Your Profile")
           -# %a{"data-method" => "POST", :href => "/logout"} Logout
           %a(href="/@#{current_user.screen_name}")
-            .profile-image(style="background-image:url('#{current_user.profile_image_url}');")
+            .user-avatar(style="background-image:url('#{current_user.profile_image_url}');")
       - else
         %li
           %a{:href => "/login"} Login

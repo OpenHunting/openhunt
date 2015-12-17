@@ -1,6 +1,6 @@
 - next_bucket = Project.next_bucket(time)
 - prev_bucket = Project.prev_bucket(time)
-.project-bucket.row{"data-next-bucket" => next_bucket, "data-prev-bucket" => prev_bucket}
+.project-list.row{"data-next-bucket" => next_bucket, "data-prev-bucket" => prev_bucket}
   .head.col-md-12.col-sm-12.col-xs-12
     -# - if local_assigns[:add_nav]
     -#   .project-nav.pull-right
@@ -16,31 +16,4 @@
       = time.strftime('%B %d')
   .clearfix
 
-  - projects.each do |project|
-    .item.row
-      %a.item-vote{project_vote_attributes(project)}
-        .box
-          .arrow
-            %span.triangle{"aria-hidden" => "true"}
-              ▲
-          .counter
-            = project.votes_count
-
-      .item-details.col-md-6.col-sm-6.col-xs-6
-        %a.title{href: project.url, target: "_blank"}
-          = project.name
-        .description
-          = project.description
-      .item-comments.col-md-5.col-sm-5.col-xs-5
-        .item-comments-inner
-          - user = project.user
-          - if user
-            %span.posted-by Posted by
-            .user-image
-              %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
-
-          -# .comments-gif
-          -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
-  - if projects.blank?
-    .empty-projects
-      %p No products were submitted on #{time.strftime("%A, %B %d")}
+  = render "projects/project_listings", projects: projects, empty_msg: "No products were submitted on #{time.strftime("%A, %B %d")}"

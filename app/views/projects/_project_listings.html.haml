@@ -1,0 +1,29 @@
+- projects.each do |project|
+  .project-listing.item.row
+    .item-details.col-md-6.col-sm-6.col-xs-6
+      %a.item-vote{project_vote_attributes(project)}
+        .box
+          .arrow
+            %span.triangle{"aria-hidden" => "true"}
+              ▲
+          .counter
+            = project.votes_count
+
+      %a.title{href: project.url, target: "_blank"}
+        = project.name
+      .description
+        = project.description
+    .item-comments.col-md-6.col-sm-6.col-xs-6
+      .item-comments-inner
+        - user = project.user
+        - if user
+          %span.posted-by Posted by
+          %a.user-avatar(href="/@#{user.screen_name}")
+            %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
+
+        -# .comments-gif
+        -#   %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+
+- if projects.blank?
+  .empty-projects
+    %p= local_assigns[:empty_msg] || "No products found."

@@ -13,10 +13,12 @@ class UsersController < ApplicationController
   end
 
   def load_voted_projects
+    @voted_projects = []
     # TODO
   end
 
   def load_submitted_projects
+    @submitted_projects = []
     # TODO
   end
 end

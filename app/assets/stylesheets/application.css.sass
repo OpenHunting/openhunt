@@ -35,13 +35,13 @@ body
       padding-left: 10px
       padding-right: 10px
   .navbar-right
-    margin-right: -10px
+    margin-right: -2px
 
   .navbar-nav.navbar-right
     > li.profile-nav > a
       padding: 0
       padding-top: 7px
-      .profile-image
+      .user-avatar
         border-radius: 40px
         background-repeat: no-repeat
         background-size: cover
@@ -49,6 +49,7 @@ body
         display: inline-block
         width: 35px
         height: 35px
+        border: 1px solid #ddd
   +xs
     +clearfix
     .nav > li
@@ -60,11 +61,12 @@ body
       margin-right: -13px
     .navbar-header
       float: left
+
 .row-valign
   display: flex
   align-items: center
 
-.project-bucket
+.project-list
   @extend .container
   //border: 1px solid #ccc
   padding-bottom: 20px
@@ -87,7 +89,8 @@ body
 
   .item:first-child
     border-radius: 3px 3px 0px 0px
-
+  .empty-projects
+    color: #aaa
   .item
     @extend .row-valign
     height: 60px
@@ -102,21 +105,23 @@ body
     -ms-flex-align: center
     align-items: center
     &:hover
-      border-radius: 5px
+      border-radius: 8px
       // background-color: rgba(#eee, 0.5)
       background-color: rgba(#508FE6, 0.05)
       .item-details .description
         color: #aaa
+      .item-comments .posted-by
+        opacity: 1.0
+        +transition(opacity, 0.5s)
 
     .item-vote
       cursor: pointer
       display: block
       text-decoration: none
-      margin-left: 10px
-      margin-top: -5px
-
+      position: absolute
       color: #333
-
+      left: 3px
+      top: -7px
       .box
         // background-color: #ccc
         height: 50px
@@ -127,7 +132,7 @@ body
           font-size: 2rem
           .triangle
             font-size: 1.2rem
-            +transition(all, 0.5)
+            +transition(all, 0.5s)
         .counter
           text-align: center
           height: 20px
@@ -141,6 +146,8 @@ body
 
 
     .item-details
+      position: relative
+      padding-left: 45px
       .title
         font-size: 1.8rem
         color: #000
@@ -151,19 +158,19 @@ body
     .item-comments
       text-align: right
       white-space: nowrap
-      .item-comments-inner
-        +sm-and-up
-          margin-right: -48px
       .posted-by
-        color: #999
-        font-size: 12px
+        color: #aaa
+        font-size: 11px
         margin-right: 3px
-      .user-image
+        opacity: 0
+
+      .user-avatar
         display: inline-block
         padding: 0 0
         img
           width: 30px
           height: 30px
+          border: 1px solid #ddd
       .comments-gif
         display: inline-block
 
@@ -219,3 +226,35 @@ body
     margin-bottom: 10px
   a
     white-space: nowrap
+
+
+.user-page
+  padding-top: 20px
+
+.user-profile
+  margin-bottom: 30px
+  margin-top: 15px
+  padding-left: 80px
+  position: relative
+  font-size: 18px
+
+  .user-avatar
+    position: absolute
+    left: 0
+    top: 0
+    width: 60px
+    height: 60px
+    border-radius: 60px
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center center
+    border: 1px solid #ddd
+  .user-name
+    font-size: 24px
+    margin-bottom: 0px
+
+  .user-location
+    color: #999
+
+  .user-actions
+    margin-top: 5px
