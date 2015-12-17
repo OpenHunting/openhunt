@@ -11,5 +11,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :users, :screen_name
   end
 end

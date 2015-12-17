@@ -7,5 +7,7 @@ class CreateVotes < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    # TODO: need some indexes here
   end
 end
