@@ -101,6 +101,7 @@ class ProjectsController < ApplicationController
       return
     end
 
+    load_project
     load_feedback
 
     # TODO

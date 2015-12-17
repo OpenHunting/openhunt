@@ -13,6 +13,7 @@ X user profile page (with list of favorited projects, and logout btn)
 X switch project ids to guids
 X switch user ids to guids
 X use slugs for projects
+X project detail panel
 
 - leave feedback for project owner
 - view feedback as project owner
@@ -26,24 +27,26 @@ X use slugs for projects
 
 - Email List subscription (form shown after the first bucket)
 
-- infinite scrolling
-- load more projects for a single date
-
 - show about page on first visit (hide if its in session, or if current user)
+
+- fix site on iphone (it's a mess)
 
 - setup rollbar
 - setup intercom
 - create 404, 500, maintenance pages
 
-- fix site on iphone (it's a mess)
+- infinite scrolling
+- load more projects for a single date
+
 
 minor tweaks:
 X responsive pass, fix navbar
+X minify assets
 - replicate the validations of ProductHunt (ask ash)
-- minify assets, remove glyphicon fonts
+- remove glyphicon fonts
 
-- better login (via popup instead of redirect)
 
 
 later on:
-- queuing system?
+- post queuing system?
+- better login (via popup instead of redirect)
