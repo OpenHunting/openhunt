@@ -4,8 +4,8 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.text :body, null: false
 
       t.boolean :anonymous, default: false
-      t.uuid :user_id, null: false
-      t.uuid :project_id, null: false
+      t.integer :user_id, null: false
+      t.integer :project_id, null: false
 
       t.timestamps null: false
     end

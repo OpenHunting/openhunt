@@ -42,9 +42,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    activeuuid (0.6.1)
-      activerecord (>= 3.1)
-      uuidtools
     addressable (2.3.8)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
@@ -300,7 +297,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    uuidtools (2.1.5)
     validate_url (1.0.2)
       activemodel (>= 3.0.0)
       addressable
@@ -321,7 +317,6 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   active_model_serializers (~> 0.9.3)
-  activeuuid
   annotate
   bcrypt (~> 3.1.7)
   bourbon (= 3.2.4)

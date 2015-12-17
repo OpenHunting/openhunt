@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                :uuid(16)         primary key
+#  id                :integer          not null, primary key
 #  screen_name       :string           not null
 #  name              :string
 #  profile_image_url :string
@@ -14,12 +14,9 @@
 # Indexes
 #
 #  index_users_on_screen_name  (screen_name)
-#  sqlite_autoindex_users_1    (id) UNIQUE
 #
 
 class User < ActiveRecord::Base
-  include ActiveUUID::UUID
-
   has_many :votes
   has_many :projects
 

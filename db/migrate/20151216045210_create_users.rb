@@ -1,8 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :users, id: false do |t|
-      t.uuid :id, primary_key: true
-
+    create_table :users do |t|
       t.string :screen_name, null: false
       t.string :name
       t.string :profile_image_url

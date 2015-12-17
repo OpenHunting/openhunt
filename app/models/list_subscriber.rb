@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  email      :string           not null
 #  subscribed :boolean          default(TRUE)
-#  user_id    :uuid(16)
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

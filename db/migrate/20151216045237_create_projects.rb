@@ -1,8 +1,6 @@
 class CreateProjects < ActiveRecord::Migration
   def change
-    create_table :projects, id: false do |t|
-      t.uuid :id, primary_key: true
-
+    create_table :projects do |t|
       t.string :name, null: false
       t.string :description, null: false
       t.string :url, null: false
@@ -11,7 +9,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :bucket, null: false
       t.string :slug, null: false
 
-      t.uuid :user_id, null: false
+      t.integer :user_id, null: false
 
       t.integer :votes_count, default: 0
       t.integer :feedbacks_count, default: 0
