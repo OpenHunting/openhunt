@@ -63,6 +63,8 @@ class Project < ActiveRecord::Base
   end
 
   def self.bucket(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
     if time.wday == 6 # saturday
       bucket(time + 1.day)
     else
@@ -75,5 +77,22 @@ class Project < ActiveRecord::Base
     return nil unless year.present? and month.present? and date.present?
 
     Time.find_zone!(Settings.base_timezone).parse("#{year}-#{month}-#{date}").at_midnight
+  end
+
+  def self.next_bucket(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    current_now = Time.find_zone!(Settings.base_timezone).now.at_midnight
+    if (time+1.day).at_midnight > current_now
+      nil
+    else
+      bucket(time+1.day)
+    end
+  end
+
+  def self.prev_bucket(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    bucket(time-1.day)
   end
 end

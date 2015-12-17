@@ -81,7 +81,7 @@ module ApplicationHelper
     elsif (time - 1.day).at_midnight == (now - 1.day).at_midnight
       "Yesterday"
     else
-      now.strftime("%A")
+      time.strftime("%A")
     end
   end
 end
