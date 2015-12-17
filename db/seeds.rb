@@ -11,19 +11,35 @@
   )
 end
 
+(1..10).each do |i|
+  puts
+  puts
+  puts
+  puts "creating projects for day #{i}"
+  puts
+  puts
+  puts
 
-User.take(25).each do |user|
-  project = Project.new(
-    name: Faker::Name.name,
-    description: Faker::Hipster.sentences(1).first.truncate(80),
-    url: Faker::Internet.url
-  )
-  project.user = user
-  project.created_at = DateTime.now - rand(24).hours
-  project.save!
-  user.vote(project)
-  # TODO: random number of users vote on project
-  User.offset(rand(160)).take(rand(40)).each do |other_user|
-    other_user.vote(project)
+  day = DateTime.now.beginning_of_day - i.days
+
+  User.take(50).each do |user|
+    created_time = day + rand(23).hours + rand(59).minutes + rand(59).seconds
+    Timecop.freeze(created_time) do
+      print "."
+      $stdout.flush
+      project = Project.new(
+        name: Faker::Name.name,
+        description: Faker::Hipster.sentences(1).first.truncate(80),
+        url: Faker::Internet.url
+      )
+      project.user = user
+      project.save!
+      project.update_attributes(bucket: Project.bucket(created_time))
+      user.vote(project)
+      User.offset(rand(160)).take(rand(40)).each do |other_user|
+        other_user.vote(project)
+      end
+    end
   end
+
 end
