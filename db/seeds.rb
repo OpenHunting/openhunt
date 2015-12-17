@@ -11,7 +11,7 @@
   )
 end
 
-(1..10).each do |i|
+(0..10).each do |i|
   puts
   puts
   puts
@@ -20,7 +20,7 @@ end
   puts
   puts
 
-  day = DateTime.now.beginning_of_day - i.days
+  day = Time.find_zone!(Settings.base_timezone).now.beginning_of_day - i.days
 
   User.take(50).each do |user|
     created_time = day + rand(23).hours + rand(59).minutes + rand(59).seconds
