@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
+  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote]
 
   def index
     @bucket = Project.bucket(current_now)
@@ -21,11 +21,11 @@ class ProjectsController < ApplicationController
   end
 
   def vote_confirm
-    get_project
+    load_project
   end
 
   def vote
-    get_project
+    load_project
 
     current_user.vote(@project)
 
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def unvote
-    get_project
+    load_project
 
     current_user.unvote(@project)
 
@@ -80,14 +80,32 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def feedback
+    load_project
+    load_feedback
+  end
+
+  def set_feedback
+    load_feedback
+
+    # TODO
+  end
+
   def validate_project
-    # TODO: validate project fields (name, url, description)
+    # TODO: validate project fields (name, url, description), via ajax
   end
 
   protected
 
-  def get_project
+  def load_project
     @project = Project.where(id: params[:id]).first
+  end
+
+  def load_feedback
+    @feedback = Feedback.where({
+      user_id: current_user.id,
+      project_id: @project.id
+    }).first
   end
 
   def load_bucket(bucket)

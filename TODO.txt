@@ -24,8 +24,11 @@ X user profile page (with list of favorited projects, and logout btn)
 - infinite scrolling
 - load more projects for a single date
 
+- show about page on first visit (hide if its in session, or if current user)
+
 - setup rollbar
 - setup intercom
+- create 404, 500, maintenance pages
 
 - fix site on iphone (it's a mess)
 

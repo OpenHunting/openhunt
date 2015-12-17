@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "/validate" => "projects#validate_project"
   get "/date/:bucket" => "projects#bucket"
 
+  get "/feedback/:id" => "projects#feedback"
+  post "/feedback/:id" => "projects#set_feedback"
+
   get "/vote/:id" => "projects#vote_confirm"
   post "/vote/:id" => "projects#vote"
   delete "/vote/:id" => "projects#unvote"
