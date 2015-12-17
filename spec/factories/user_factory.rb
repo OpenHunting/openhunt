@@ -8,6 +8,7 @@
 #  profile_image_url :string
 #  twitter_id        :string
 #  location          :string
+#  moderator         :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

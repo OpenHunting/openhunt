@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :twitter_id
       t.string :location
 
+      t.boolean :moderator, default: false
       t.timestamps null: false
     end
 

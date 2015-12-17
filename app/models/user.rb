@@ -8,6 +8,7 @@
 #  profile_image_url :string
 #  twitter_id        :string
 #  location          :string
+#  moderator         :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -78,8 +79,4 @@ class User < ActiveRecord::Base
     Project.where(user_id: self.id, bucket: bucket).count > 0
   end
 
-  # TODO
-  def moderator?
-    false
-  end
 end

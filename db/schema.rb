@@ -49,13 +49,14 @@ ActiveRecord::Schema.define(version: 20151217054927) do
   add_index "projects", ["slug"], name: "index_projects_on_slug"
 
   create_table "users", force: :cascade do |t|
-    t.string   "screen_name",       null: false
+    t.string   "screen_name",                       null: false
     t.string   "name"
     t.string   "profile_image_url"
     t.string   "twitter_id"
     t.string   "location"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.boolean  "moderator",         default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "users", ["screen_name"], name: "index_users_on_screen_name"
