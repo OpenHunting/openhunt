@@ -11,22 +11,10 @@
       %li{class: ("active" if current_page?(action: "new", controller: "projects"))}
         %a{:href => "/new"} + Post
       - if current_user.present?
-        %li
-          %a{"data-method" => "POST", :href => "/logout"} Logout
+        %li.profile-nav(title="View Your Profile")
+          -# %a{"data-method" => "POST", :href => "/logout"} Logout
+          %a(href="/@#{current_user.screen_name}")
+            .profile-image(style="background-image:url('#{current_user.profile_image_url}');")
       - else
         %li
           %a{:href => "/login"} Login
-      -# %li.dropdown
-      -#   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-      -#     More
-      -#     %span.caret
-      -#   %ul.dropdown-menu
-      -#     %li
-      -#       %a{:href => "#"} Action
-      -#     %li
-      -#       %a{:href => "#"} Another action
-      -#     %li
-      -#       %a{:href => "#"} Something else here
-      -#     %li.divider{:role => "separator"}
-      -#     %li
-      -#       %a{:href => "#"} Separated link
