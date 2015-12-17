@@ -69,4 +69,15 @@ module ApplicationHelper
 
     result
   end
+
+  def date_display(time)
+    now = Time.now.in_time_zone(Settings.base_timezone)
+    if time.at_midnight == now.at_midnight
+      "Today"
+    elsif (time - 1.day).at_midnight == (now - 1.day).at_midnight
+      "Yesterday"
+    else
+      now.strftime("%A")
+    end
+  end
 end
