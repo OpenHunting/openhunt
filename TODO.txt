@@ -7,11 +7,9 @@ X ajax voting / unvoting
 X seed data
 X add intro / about
 X Styling / cleanup
-
 X bucket projects by date (weekends are a single bucket)
-
-- add user login panel (with icon)
-- user profile page (with list of favorited projects, and logout btn)
+X add user login panel (with icon)
+X user profile page (with list of favorited projects, and logout btn)
 
 - leave feedback for project owner
 - view feedback as project owner
@@ -25,6 +23,9 @@ X bucket projects by date (weekends are a single bucket)
 
 - infinite scrolling
 - load more projects for a single date
+
+- setup rollbar
+- setup intercom
 
 
 minor tweaks:
