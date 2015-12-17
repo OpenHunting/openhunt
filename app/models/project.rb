@@ -69,4 +69,11 @@ class Project < ActiveRecord::Base
       return time.strftime("%Y%m%d")
     end
   end
+
+  def self.parse_bucket(bucket_key)
+    year, month, date = bucket_key[0...4], bucket_key[4...6], bucket_key[6...8]
+    return nil unless year.present? and month.present? and date.present?
+
+    Time.find_zone!(Settings.base_timezone).parse("#{year}-#{month}-#{date}").at_midnight
+  end
 end

@@ -71,6 +71,10 @@ module ApplicationHelper
   end
 
   def date_display(time)
+    if time.is_a?(String)
+      time = Project.parse_bucket(time)
+    end
+
     now = Time.now.in_time_zone(Settings.base_timezone)
     if time.at_midnight == now.at_midnight
       "Today"

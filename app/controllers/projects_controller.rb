@@ -2,12 +2,22 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
 
   def index
-    bucket = Project.bucket(current_now)
-    load_bucket(bucket)
+    @bucket = Project.bucket(current_now)
+    load_bucket(@bucket)
   end
 
   def bucket
-    load_bucket(params[:bucket])
+    @bucket = params[:bucket]
+    load_bucket(@bucket)
+
+    if params[:partial]
+      render partial: "projects/bucket", locals: {
+        bucket: @bucket,
+        projects: @projects
+      }
+    else
+      render
+    end
   end
 
   def vote_confirm
