@@ -218,6 +218,34 @@ body
     +xs
       font-size: 16px
 
+#new-product
+  h2
+    text-align: center
+  form
+    margin-top: 40px
+  .form-group
+    margin-bottom: 30px
+    label
+      font-size: 2rem
+      line-height: 2rem
+      text-transform: uppercase
+    .form-control
+      height: 50px
+    &.has-error
+      color: #a94442
+    p.help-block
+      text-transform: uppercase
+      font-size: 1.2rem
+  textarea, input, input[type]
+    border: none
+    border-bottom: 1px solid #eee
+    box-shadow: none
+    font-size: 1.6rem
+    padding: 10px
+    transition: border-bottom 0.5s ease
+  textarea:focus, input:focus, input[type]:focus
+    border-bottom: 1px solid rgb(80, 143, 230)
+
   .btn-primary
     border: 1px solid #337AB7
     color: #337AB7
