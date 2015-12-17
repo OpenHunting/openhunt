@@ -6,11 +6,11 @@ class PostAuth < BaseInteractor
     require_context(:user)
 
     # find project the user was voting on, and vote it up automatically
-    vote_project_id = session[:vote_project_id]
-    session[:vote_project_id] = nil
+    vote_project_slug = session[:vote_project_slug]
+    session[:vote_project_slug] = nil
 
-    if vote_project_id.present?
-      project = Project.where(id: vote_project_id).first
+    if vote_project_slug.present?
+      project = Project.where(slug: vote_project_slug).first
       context.user.vote(project)
     end
 
