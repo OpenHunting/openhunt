@@ -11,7 +11,8 @@
 
     .today
       = date_display(time)
-    %a.date(href="/date/#{Project.bucket(time)}")
+
+    %a.date(href="/date/#{Project.bucket(time)}" title="Permalink for date: #{time.strftime('%B %d, %Y')}")
       = time.strftime('%B %d')
   .clearfix
 
