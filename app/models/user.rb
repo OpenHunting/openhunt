@@ -50,4 +50,20 @@ class User < ActiveRecord::Base
       project_id: project_ids
     }).map(&:project_id)
   end
+
+  def voted_projects
+    project_ids = Vote.select(:project_id).where({
+      user_id: self.id,
+    }).map(&:project_id)
+
+    Project.where(id: project_ids)
+  end
+
+  def submitted_projects
+    project_ids = Project.select(:id).where({
+      user_id: self.id,
+    }).map(&:id)
+
+    Project.where(id: project_ids)
+  end
 end

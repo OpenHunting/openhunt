@@ -13,12 +13,10 @@ class UsersController < ApplicationController
   end
 
   def load_voted_projects
-    @voted_projects = []
-    # TODO
+    @voted_projects = @user.voted_projects.order(:votes_count => :desc)
   end
 
   def load_submitted_projects
-    @submitted_projects = []
-    # TODO
+    @submitted_projects = @user.submitted_projects.order(:votes_count => :desc)
   end
 end
