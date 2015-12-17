@@ -13,6 +13,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_projects_on_bucket  (bucket)
+#
 
 class Project < ActiveRecord::Base
   belongs_to :user
