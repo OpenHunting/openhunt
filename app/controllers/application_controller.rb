@@ -37,4 +37,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :current_now
+  def current_now
+    Time.find_zone!(Settings.base_timezone).now
+  end
+
 end

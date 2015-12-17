@@ -7,6 +7,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :url, null: false
       t.string :normalized_url, null: false
 
+      t.string :bucket, null: false
+
       t.references(:user, null: false)
 
       t.integer :votes_count, default: 0

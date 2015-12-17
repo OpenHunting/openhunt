@@ -2,15 +2,16 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote, :unvote]
 
   def index
-    # @projects = Project.featured(params[:page]).includes(:user).to_a
-    @projects = Project.featured(params[:page]) # if Project featured returns an array instead of an ActiveRecord Relation
-    if current_user.present?
-      @vote_ids = current_user.match_votes(@projects.map(&:id))
-    end
+    bucket = Project.bucket(current_now)
+    load_bucket(bucket)
+  end
+
+  def bucket
+    load_bucket(params[:bucket])
   end
 
   def vote_confirm
-    get_project  
+    get_project
   end
 
   def vote
@@ -77,5 +78,12 @@ class ProjectsController < ApplicationController
 
   def get_project
     @project = Project.where(id: params[:id]).first
+  end
+
+  def load_bucket(bucket)
+    @projects = Project.for_bucket(bucket).includes(:user).to_a
+    if current_user.present?
+      @vote_ids = current_user.match_votes(@projects.map(&:id))
+    end
   end
 end

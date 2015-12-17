@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151216052011) do
     t.string   "description",                null: false
     t.string   "url",                        null: false
     t.string   "normalized_url",             null: false
+    t.string   "bucket",                     null: false
     t.integer  "user_id",                    null: false
     t.integer  "votes_count",    default: 0
     t.datetime "created_at",                 null: false

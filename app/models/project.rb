@@ -7,6 +7,7 @@
 #  description    :string           not null
 #  url            :string           not null
 #  normalized_url :string           not null
+#  bucket         :string           not null
 #  user_id        :integer          not null
 #  votes_count    :integer          default(0)
 #  created_at     :datetime         not null
@@ -23,6 +24,11 @@ class Project < ActiveRecord::Base
     self.normalized_url = self.class.normalize_url(self.url)
   end
 
+  before_save :set_bucket
+  def set_bucket    
+    self.bucket = self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
+  end
+
   def self.normalize_url(url)
     url = url.to_s
     url = url.gsub(/\\/,'')
@@ -37,21 +43,8 @@ class Project < ActiveRecord::Base
   end
 
 
-  def self.featured(page = nil, per_page = nil)
-    page ||= 1
-    per_page ||= Settings.featured_per_page
-
-    # calculate offset
-    offset = (page - 1)*per_page
-    offset = 0 if offset <= 0
-
-    # TODO: improve performance:
-    #         - use pure SQL to run calculation & sorting on the database
-    #         - http://sorentwo.com/2013/12/30/let-postgres-do-the-work.html
-
-    # Project.all.sort_by(&:score).limit(per_page).offset(offset)
-    # 'sort_by' returns an array. Do we need an ActiveRecord Relation instead?
-    Project.all.order(:votes_count => :desc).limit(per_page).offset(offset)
+  def self.for_bucket(bucket)
+    Project.all.where(bucket: bucket).order(:votes_count => :desc)
   end
 
   # Discussing HackerNews algorithm:

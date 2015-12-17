@@ -1,4 +1,4 @@
-is_precompile = ARGV.any?{|i| i.to_s.include?("assets:precompile")}
+is_precompile = ARGV.any?{|i| i.to_s.include?("assets:")}
 
 unless is_precompile
   # Warn user if theres no twitter_key or twitter_secret configured
