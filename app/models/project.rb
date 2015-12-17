@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
 
   before_save :set_bucket
   def set_bucket
-    self.bucket = self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
+    self.bucket ||= self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
   end
 
   def self.normalize_url(url)
