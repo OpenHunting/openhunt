@@ -26,12 +26,12 @@ X moderators
 X prevent banned users from posting
 X prevent banned users from voting
 X fix site on iphone (it's a mess)
+X add a favicon
 
 - show about page on first visit (hide if its in session, or if current user)
 
 - switch to better postgres db
 - add google analytics
-- add a favicon
 - setup rollbar
 - setup intercom
 - create 404, 500, maintenance pages
