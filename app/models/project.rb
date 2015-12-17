@@ -64,7 +64,7 @@ class Project < ActiveRecord::Base
 
   def self.bucket(time)
     if time.wday == 6 # saturday
-      bucket(time.end_of_week)
+      bucket(time + 1.day)
     else
       return time.strftime("%Y%m%d")
     end
