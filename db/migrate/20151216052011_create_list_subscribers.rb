@@ -5,7 +5,8 @@ class CreateListSubscribers < ActiveRecord::Migration
       t.string :email, null: false
       t.boolean :subscribed, default: true
 
-      t.references(:user)
+      t.uuid :user_id, null: true
+
 
       t.timestamps null: false
     end

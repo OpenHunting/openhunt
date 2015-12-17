@@ -3,8 +3,8 @@
 # Table name: votes
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
-#  project_id :integer
+#  user_id    :uuid(16)         not null
+#  project_id :uuid(16)         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

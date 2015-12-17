@@ -1,20 +1,27 @@
--# COMP
 .project-feedback
   .project-info
     %h3
-      %a(href="#") Open Hunt
-    %p discover the best new products
+      %a(href="#{@project.url}" target="_blank")= @project.name
+    %p= @project.description
     %p
       -# TODO: make this a fonticon (open in new window)
-      %a.btn.btn-xs.btn-default(href="#") Open Product
+      %a.btn.btn-xs.btn-default(href="#{@project.url}" target="_blank") Open Product
     %hr
 
   .feedback-form
     %p
-      <strong>37 amazing people</strong> have given feedback on this product. Join them by also posting your thoughts.
+      - if @project.feedbacks_count > 0
+        <strong>#{@project.feedbacks_count} amazing #{'person'.pluralize(@project.feedbacks_count)}</strong> have given feedback on this product. Join them by posting your thoughts.
+      - else
+        Be an amazing person and <strong>post some feedback</strong> on this product.
     %p
-      All <strong>comments go directly to the owner</strong>, and aren't posted publically. You can choose whether or not to provide your name along with the feedback.
+      All <strong>comments go directly to the product owner</strong>, and aren't posted publically.
+
+    = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you hate about it."
 
     .actions
-      %textarea.form-control(placeholder="List 3 things you like about this product. ... List 1 thing you hate about it.")
-      .btn.btn-primary Done
+      %label.pull-left
+        = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
+        Post as Anonymous
+      .pull-right
+        .btn.btn-primary Done

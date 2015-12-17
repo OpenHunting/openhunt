@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                :integer          not null, primary key
+#  id                :uuid(16)         primary key
 #  screen_name       :string           not null
 #  name              :string
 #  profile_image_url :string
@@ -11,6 +11,11 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+# Indexes
+#
+#  sqlite_autoindex_users_1  (id) UNIQUE
+#
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do

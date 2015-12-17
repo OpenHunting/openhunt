@@ -3,8 +3,9 @@ class CreateFeedbacks < ActiveRecord::Migration
     create_table :feedbacks do |t|
       t.text :body, null: false
 
-      t.references(:user, null: false)
-      t.references(:project, null: false)
+      t.boolean :anonymous, default: false
+      t.uuid :user_id, null: false
+      t.uuid :project_id, null: false
 
       t.timestamps null: false
     end

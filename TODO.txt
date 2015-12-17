@@ -21,6 +21,9 @@ X user profile page (with list of favorited projects, and logout btn)
 
 - add loading animation to .splash-box
 
+- switch project ids to guids
+- switch user ids to guids
+
 - Email List subscription (form shown after the first bucket)
 
 - infinite scrolling

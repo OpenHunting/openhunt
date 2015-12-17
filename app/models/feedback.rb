@@ -4,8 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  body       :text             not null
-#  user_id    :integer          not null
-#  project_id :integer          not null
+#  anonymous  :boolean          default(FALSE)
+#  user_id    :uuid(16)         not null
+#  project_id :uuid(16)         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

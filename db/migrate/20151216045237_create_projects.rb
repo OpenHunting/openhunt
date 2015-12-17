@@ -1,6 +1,7 @@
 class CreateProjects < ActiveRecord::Migration
   def change
-    create_table :projects do |t|
+    create_table :projects, id: false do |t|
+      t.uuid :id, primary_key: true
 
       t.string :name, null: false
       t.string :description, null: false
@@ -9,7 +10,7 @@ class CreateProjects < ActiveRecord::Migration
 
       t.string :bucket, null: false
 
-      t.references(:user, null: false)
+      t.uuid :user_id, null: false
 
       t.integer :votes_count, default: 0
 

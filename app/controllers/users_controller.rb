@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     load_voted_projects
     load_submitted_projects
 
-    @vote_ids = current_user.match_votes((@voted_projects+@submitted_projects).map(&:id))
+    if current_user.present?
+      @vote_ids = current_user.match_votes((@voted_projects+@submitted_projects).map(&:id))
+    end
   end
 
   protected

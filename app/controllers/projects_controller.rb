@@ -2,7 +2,9 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote]
 
   def index
-    load_index
+    @bucket = Project.bucket(current_now)
+    load_bucket(@bucket)
+
   end
 
   def bucket
@@ -86,13 +88,19 @@ class ProjectsController < ApplicationController
     if params[:partial]
       render partial: "projects/feedback", project: @project, feedback: @feedback
     else
-      @show_feedback_panel = true
-      load_index
-      render :index
+      redirect_to "/#open=#{@project.id}"
     end
   end
 
   def set_feedback
+    if current_user.blank?
+      # save posted data in session
+      session[:feedback] = {project_id: @project.id, anonymous: params[:anonymous], body: params[:body]}.to_json
+      session[:redirect_to] = "/feedback/#{@project.id}"
+      redirect_to "/login"
+      return
+    end
+
     load_feedback
 
     # TODO
@@ -103,20 +111,18 @@ class ProjectsController < ApplicationController
   end
 
   protected
-  def load_index
-    @bucket = Project.bucket(current_now)
-    load_bucket(@bucket)
-  end
 
   def load_project
     @project = Project.where(id: params[:id]).first
   end
 
   def load_feedback
-    @feedback = Feedback.where({
-      user_id: current_user.id,
-      project_id: @project.id
-    }).first
+    if current_user.present?
+      @feedback = Feedback.where({
+        user_id: current_user.id,
+        project_id: @project.id
+      }).first
+    end
   end
 
   def load_bucket(bucket)

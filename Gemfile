@@ -12,6 +12,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+gem 'activeuuid'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes (very slow install)
 # gem 'therubyracer', platforms: :ruby
 
@@ -77,7 +79,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'launchy'
   gem 'sqlite3'
-  
+
   gem 'timecop'
 end
 
