@@ -16,8 +16,11 @@ X use slugs for projects
 X project detail panel
 X leave feedback for project owner
 
-- 1 submission per day per user
-- moderator flag on user (hide post, ban user)
+X 1 submission per day per user
+X moderator flag on user
+- moderators
+  - hide post
+  - ban user
 - audit trail (posts hidden, users banned, items flagged)
 
 - show about page on first visit (hide if its in session, or if current user)
