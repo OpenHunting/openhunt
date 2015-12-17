@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20151217093858) do
     t.string   "item_type"
     t.integer  "target_id"
     t.string   "target_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "target_display"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|

@@ -5,6 +5,7 @@ class CreateAuditLogs < ActiveRecord::Migration
       t.string :item_type
       t.integer :target_id
       t.string :target_type
+      t.string :target_display
 
       t.timestamps null: false
     end

@@ -1,0 +1,10 @@
+%h2 Audit Trail
+%p
+  List of all actions that Open Hunt moderators have taken on the site.
+
+%ul.list-unstyled
+  - @audit_logs.each do |log|
+    - moderator = log.moderator
+    %li
+      = link_to moderator.name, "/@#{moderator.screen_name}"
+      = audit_description(log)

@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
 
   has_many :feedbacks
 
+  def self.moderators
+    where(moderator: true)
+  end
+
   def vote(project)
     return unless project.present?
 
@@ -90,6 +94,7 @@ class User < ActiveRecord::Base
       moderator_id: self.id,
       target_id: project.id,
       target_type: "Project",
+      target_display: project.name,
     })
   end
 
@@ -105,6 +110,7 @@ class User < ActiveRecord::Base
       moderator_id: self.id,
       target_id: user_id,
       target_type: "User",
+      target_display: user.screen_name,
     })
   end
 
