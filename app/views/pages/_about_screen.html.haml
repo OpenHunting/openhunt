@@ -39,7 +39,12 @@
       anim id est laborum.
 
     %p
+      %a.btn.btn-primary(href="/new") Submit a Product
       - if request.path == "/about"
-        %a.btn.btn-primary(href="/") Join Us
+        %a.btn.btn-primary(href="/") Start Browsing
       - else
-        %button.btn.btn-primary.close-about Join Us
+        %button.btn.btn-primary.close-about Start Browsing
+
+      %a(href="#source") Github Repo
+      %span /
+      %a(href="#issue") Create an Issue
