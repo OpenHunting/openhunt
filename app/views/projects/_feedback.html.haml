@@ -5,7 +5,10 @@
     %p= @project.description
     %p
       -# TODO: make this a fonticon (open in new window)
-      %a.btn.btn-xs.btn-default(href="#{@project.url}" target="_blank") Open Product
+      %a.btn.btn-xs.btn-default(href="#{@project.url}" target="_blank") Open Site
+      - if current_user.moderator?
+        %a.btn.btn-xs.btn-default(href="/hide/#{@project.slug}" data-method="post" data-confirm="Remove this site as spam?") Remove Spam
+
     %hr
 
   .feedback-form

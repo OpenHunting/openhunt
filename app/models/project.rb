@@ -10,6 +10,7 @@
 #  bucket          :string           not null
 #  slug            :string           not null
 #  user_id         :integer          not null
+#  hidden          :boolean          default(FALSE)
 #  votes_count     :integer          default(0)
 #  feedbacks_count :integer          default(0)
 #  created_at      :datetime         not null
@@ -30,6 +31,10 @@ class Project < ActiveRecord::Base
   before_save :normalize_url
   def normalize_url
     self.normalized_url = self.class.normalize_url(self.url)
+  end
+
+  def self.visible
+    where(hidden: false)
   end
 
   before_save :set_slug
@@ -59,7 +64,7 @@ class Project < ActiveRecord::Base
 
 
   def self.for_bucket(bucket)
-    Project.all.where(bucket: bucket).order(:votes_count => :desc)
+    Project.visible.where(bucket: bucket).order(:votes_count => :desc)
   end
 
   # Discussing HackerNews algorithm:

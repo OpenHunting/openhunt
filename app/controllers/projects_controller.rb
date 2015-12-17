@@ -82,6 +82,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def hide
+    load_project
+    current_user.hide_project(@project)
+    redirect_to "/"
+  end
+
   def feedback
     load_project
     load_feedback

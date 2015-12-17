@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/feedback/:slug" => "projects#feedback"
   post "/feedback/:slug" => "projects#set_feedback"
 
+  post "/hide/:slug" => "projects#hide"
+
   get "/vote/:slug" => "projects#vote_confirm"
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"

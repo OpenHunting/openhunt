@@ -108,6 +108,7 @@ body
     -ms-flex-align: center
     align-items: center
     cursor: pointer
+
     &.selected
       background-color: #eee !important
       cursor: default
@@ -122,6 +123,13 @@ body
       .item-comments .posted-by
         opacity: 1.0
         +transition(opacity, 0.5s)
+
+    &.marked-as-spam
+      .item-details
+        .title
+          color: red
+        .description
+          color: red
 
     .item-vote
       cursor: pointer

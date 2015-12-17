@@ -79,4 +79,17 @@ class User < ActiveRecord::Base
     Project.where(user_id: self.id, bucket: bucket).count > 0
   end
 
+  def hide_project(project)
+    return unless moderator?
+
+    project.hidden = true
+    project.save!
+
+    AuditLog.create!({
+      type: "hide_project",
+      user_id: self.id,
+      project_id: project.id
+    })
+  end
+
 end
