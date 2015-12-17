@@ -10,7 +10,6 @@
 #  bucket          :string           not null
 #  slug            :string           not null
 #  user_id         :integer          not null
-#  hidden          :boolean          default(FALSE)
 #  votes_count     :integer          default(0)
 #  feedbacks_count :integer          default(0)
 #  created_at      :datetime         not null
