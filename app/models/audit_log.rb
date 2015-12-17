@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  project_id :integer
-#  type       :string
+#  item_type  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

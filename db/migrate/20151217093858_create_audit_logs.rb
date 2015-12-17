@@ -3,7 +3,7 @@ class CreateAuditLogs < ActiveRecord::Migration
     create_table :audit_logs do |t|
       t.integer :user_id
       t.integer :project_id
-      t.string :type
+      t.string :item_type
 
       t.timestamps null: false
     end

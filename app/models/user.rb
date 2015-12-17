@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     project.save!
 
     AuditLog.create!({
-      type: "hide_project",
+      item_type: "hide_project",
       user_id: self.id,
       project_id: project.id
     })
