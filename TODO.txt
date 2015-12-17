@@ -29,12 +29,11 @@ X fix site on iphone (it's a mess)
 X add a favicon
 X add google analytics
 X setup rollbar
+X switch to better postgres db
 
 - show about page on first visit (hide if its in session, or if current user)
 
 - create 404, 500, maintenance pages
-
-- switch to better postgres db
 
 - content
   - intro
@@ -48,7 +47,7 @@ minor tweaks:
 X responsive pass, fix navbar
 X minify assets
 - add loading animation to .splash-box
-- add a close btn to the top right of the detail panel
+X add a close btn to the top right of the detail panel
 
 - replicate the validations of ProductHunt (ask ash)
 - remove glyphicon fonts

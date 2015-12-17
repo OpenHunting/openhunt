@@ -97,5 +97,15 @@
       closeFeedback();
     });
 
+    $(document).on("keyup", (e) => {
+      if (e.which == 27) {
+        closeFeedback();
+      }
+    });
+
+    $(document).on("click", ".close-feedback-button", (e) => {
+      closeFeedback();
+    });
+
   });
 })();
