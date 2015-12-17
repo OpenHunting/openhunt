@@ -24,3 +24,5 @@
 
   = render "layouts/feedback_panel"
   = render "pages/about_screen"
+  - if Settings.include_analytics
+    = render "layouts/analytics"

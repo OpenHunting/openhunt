@@ -27,14 +27,14 @@ X prevent banned users from posting
 X prevent banned users from voting
 X fix site on iphone (it's a mess)
 X add a favicon
+X add google analytics
 
 - show about page on first visit (hide if its in session, or if current user)
 
-- switch to better postgres db
-- add google analytics
 - setup rollbar
-- setup intercom
 - create 404, 500, maintenance pages
+
+- switch to better postgres db
 
 - content
   - intro
@@ -62,3 +62,4 @@ later on:
 - post queuing system?
 - better login (via popup instead of redirect)
 - paginate audit log
+- setup intercom
