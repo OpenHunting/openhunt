@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151217093858) do
     t.integer  "target_id"
     t.string   "target_type"
     t.string   "target_display"
+    t.string   "target_url"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20151217093858) do
     t.string   "twitter_id"
     t.string   "location"
     t.boolean  "moderator",         default: false
+    t.boolean  "banned",            default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end

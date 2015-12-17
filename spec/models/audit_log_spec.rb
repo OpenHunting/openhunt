@@ -8,6 +8,7 @@
 #  target_id      :integer
 #  target_type    :string
 #  target_display :string
+#  target_url     :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

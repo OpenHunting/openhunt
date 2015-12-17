@@ -86,13 +86,19 @@ module ApplicationHelper
   end
 
   def audit_description(log)
-    case log.item_type
+    result = case log.item_type
     when "ban_user"
-      "marked the user (<strong>@#{log.target_display}</strong>) as <strong>banned</strong>."
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
+    when "unban_user"
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>unbanned</strong>."
     when "hide_project"
-      "marked the project (<strong>#{log.target_display}</strong>) as <strong>spam</strong>."
+      "marked the project (<a href='#{log.target_url}'>#{h log.target_display}</a>) as <strong>spam</strong>."
+    when "unhide_project"
+      "restored the project (<a href='#{log.target_url}'>#{h log.target_display}</a>) as <strong>not spam</strong>."
     else
-      "[UNKNOWN TYPE: #{log.item_type}]"
+      "[UNKNOWN TYPE: #{h log.item_type}]"
     end
+
+    result.html_safe
   end
 end

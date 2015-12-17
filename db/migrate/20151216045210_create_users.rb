@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :location
 
       t.boolean :moderator, default: false
+      t.boolean :banned, default: false
       t.timestamps null: false
     end
 

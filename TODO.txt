@@ -15,14 +15,16 @@ X switch user ids to guids
 X use slugs for projects
 X project detail panel
 X leave feedback for project owner
-
 X 1 submission per day per user
 X moderator flag on user
-
-- moderators
-  - hide post
-  - ban user
-- audit trail (posts hidden, users banned, items flagged)
+X audit trail (posts hidden, users banned, items flagged)
+X moderators
+  X hide post
+  X unhide post
+  X ban user
+  X unban user
+X prevent banned users from posting
+X prevent banned users from voting
 
 - show about page on first visit (hide if its in session, or if current user)
 
