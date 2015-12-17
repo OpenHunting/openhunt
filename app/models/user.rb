@@ -87,8 +87,24 @@ class User < ActiveRecord::Base
 
     AuditLog.create!({
       item_type: "hide_project",
-      user_id: self.id,
-      project_id: project.id
+      moderator_id: self.id,
+      target_id: project.id,
+      target_type: "Project",
+    })
+  end
+
+  def ban_user(user)
+    return unless moderator
+
+    user.banned = true
+    user.save!
+
+
+    AuditLog.create!({
+      item_type: "ban_user",
+      moderator_id: self.id,
+      target_id: user_id,
+      target_type: "User",
     })
   end
 

@@ -2,12 +2,13 @@
 #
 # Table name: audit_logs
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  project_id :integer
-#  item_type  :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  moderator_id :integer
+#  item_type    :string
+#  target_id    :integer
+#  target_type  :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 require 'rails_helper'
