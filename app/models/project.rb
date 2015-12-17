@@ -25,7 +25,7 @@ class Project < ActiveRecord::Base
   end
 
   before_save :set_bucket
-  def set_bucket    
+  def set_bucket
     self.bucket = self.class.bucket(Time.find_zone!(Settings.base_timezone).now)
   end
 
@@ -63,17 +63,10 @@ class Project < ActiveRecord::Base
   end
 
   def self.bucket(time)
-    case time.wday
-    when 0 # sunday
-      saturday = (time - 1.day).strftime("%Y%_m%d")
-      sunday = time.strftime("%Y%_m%d")
-      return "#{saturday}-#{sunday}"
-    when 6 # saturday
-      saturday = time.strftime("%Y%_m%d")
-      sunday = (time + 1.day).strftime("%Y%_m%d")
-      return "#{saturday}-#{sunday}"
+    if time.wday == 6 # saturday
+      bucket(time + 1.day)
     else
-      return time.strftime("%Y%_m%d")
+      return time.strftime("%Y%m%d")
     end
   end
 end
