@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217054927) do
+ActiveRecord::Schema.define(version: 20151217064112) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "body",       null: false
@@ -30,15 +30,16 @@ ActiveRecord::Schema.define(version: 20151217054927) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.string   "description",                null: false
-    t.string   "url",                        null: false
-    t.string   "normalized_url",             null: false
-    t.string   "bucket",                     null: false
-    t.integer  "user_id",                    null: false
-    t.integer  "votes_count",    default: 0
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",                        null: false
+    t.string   "description",                 null: false
+    t.string   "url",                         null: false
+    t.string   "normalized_url",              null: false
+    t.string   "bucket",                      null: false
+    t.integer  "user_id",                     null: false
+    t.integer  "votes_count",     default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "feedbacks_count", default: 0
   end
 
   add_index "projects", ["bucket"], name: "index_projects_on_bucket"

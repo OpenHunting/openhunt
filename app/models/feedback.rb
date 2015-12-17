@@ -11,7 +11,7 @@
 #
 
 class Feedback < ActiveRecord::Base
-  belongs_to :project
+  belongs_to :project, counter_cache: true
   belongs_to :user
 
   validates_presence_of :body, :message => "can't be blank"

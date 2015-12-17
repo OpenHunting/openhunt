@@ -94,7 +94,7 @@ body
     border-radius: 3px 3px 0px 0px
   .empty-projects
     color: #aaa
-  .item
+  .project-listing
     @extend .row-valign
     height: 60px
     border-radius: 0px
@@ -107,8 +107,14 @@ body
     -webkit-align-items: center
     -ms-flex-align: center
     align-items: center
+    cursor: pointer
+    &.selected
+      background-color: #eee !important
+      cursor: default
+      .item-details .description
+        color: #aaa
     &:hover
-      border-radius: 8px
+      // border-radius: 8px
       // background-color: rgba(#eee, 0.5)
       background-color: rgba(#508FE6, 0.05)
       .item-details .description
@@ -188,7 +194,7 @@ body
 
 #about-screen
   position: fixed
-  top: 0
+  top: 52px
   bottom: 0
   left: 0
   right: 0
@@ -198,7 +204,6 @@ body
   padding: 50px
   background: rgba(255,255,255,0.93)
   overflow: auto
-  margin-top: 52px
   padding-top: 20px
   +xs
     padding: 11px
@@ -293,3 +298,63 @@ body
 
   .user-actions
     margin-top: 5px
+
+#feedback-panel
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  background: rgba(#508FE6, 0.96)
+  z-index: 1000
+  padding-top: 52px
+  width: 400px
+  box-shadow: 0 0 5px rgba(#000, 0.8)
+  color: #fff
+  font-size: 12px
+  display: none
+
+  a
+    color: #fff
+  strong
+    color: yellow
+    font-weight: normal
+  .btn-default
+    color: #333
+    text-shadow: none
+    padding: 3px 8px
+
+  .project-info
+    font-size: 14px
+    text-shadow: 0 0 3px rgba(#000, 0.7)
+
+  .project-loading
+    font-size: 30px
+    padding: 30px 50px
+    text-align: center
+    color: rgba(#fff, 0.5)
+    display: none
+
+  &.loading .project-loading
+    display: block
+  .project-feedback
+    padding: 10px 30px
+    h3
+      margin-bottom: 5px
+    hr
+      border-top: 1px solid rgba(#fff, 0.5)
+
+  .feedback-form
+    textarea
+      min-height: 100px
+      margin-bottom: 10px
+    .actions
+      text-align: right
+    .btn-primary
+      border: 1px solid #337AB7
+      color: #337AB7
+      background: #fff
+      text-transform: uppercase
+      text-shadow: none
+      &:hover
+        background: #E6E6E6
+        color: #000

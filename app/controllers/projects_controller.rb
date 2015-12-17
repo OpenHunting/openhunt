@@ -2,8 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote]
 
   def index
-    @bucket = Project.bucket(current_now)
-    load_bucket(@bucket)
+    load_index
   end
 
   def bucket
@@ -83,6 +82,14 @@ class ProjectsController < ApplicationController
   def feedback
     load_project
     load_feedback
+
+    if params[:partial]
+      render partial: "projects/feedback", project: @project, feedback: @feedback
+    else
+      @show_feedback_panel = true
+      load_index
+      render :index
+    end
   end
 
   def set_feedback
@@ -96,6 +103,10 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def load_index
+    @bucket = Project.bucket(current_now)
+    load_bucket(@bucket)
+  end
 
   def load_project
     @project = Project.where(id: params[:id]).first

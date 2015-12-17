@@ -19,6 +19,8 @@ X user profile page (with list of favorited projects, and logout btn)
 - moderator flag on user (hide post, ban user)
 - audit trail (posts hidden, users banned, items flagged)
 
+- add loading animation to .splash-box
+
 - Email List subscription (form shown after the first bucket)
 
 - infinite scrolling
