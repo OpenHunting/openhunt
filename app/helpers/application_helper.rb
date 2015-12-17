@@ -84,4 +84,21 @@ module ApplicationHelper
       time.strftime("%A")
     end
   end
+
+  def audit_description(log)
+    result = case log.item_type
+    when "ban_user"
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
+    when "unban_user"
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>unbanned</strong>."
+    when "hide_project"
+      "marked the project (<a href='#{log.target_url}'>#{h log.target_display}</a>) as <strong>spam</strong>."
+    when "unhide_project"
+      "restored the project (<a href='#{log.target_url}'>#{h log.target_display}</a>) as <strong>not spam</strong>."
+    else
+      "[UNKNOWN TYPE: #{h log.item_type}]"
+    end
+
+    result.html_safe
+  end
 end

@@ -15,28 +15,31 @@ X switch user ids to guids
 X use slugs for projects
 X project detail panel
 X leave feedback for project owner
-
 X 1 submission per day per user
 X moderator flag on user
-- moderators
-  - hide post
-  - ban user
-- audit trail (posts hidden, users banned, items flagged)
+X audit trail (posts hidden, users banned, items flagged)
+X moderators
+  X hide post
+  X unhide post
+  X ban user
+  X unban user
+X prevent banned users from posting
+X prevent banned users from voting
+X fix site on iphone (it's a mess)
+X add a favicon
+X add google analytics
+X setup rollbar
 
 - show about page on first visit (hide if its in session, or if current user)
 
-- add checkmark to the project's you've given feedback to
-
-- fix site on iphone (it's a mess)
-
-- switch to better postgres db
-- add google analytics
-- setup rollbar
-- setup intercom
 - create 404, 500, maintenance pages
 
+- switch to better postgres db
 
-- Email List subscription (form shown after the first bucket)
+- content
+  - intro
+  - faq
+  - differences
 
 - infinite scrolling
 - load more projects for a single date
@@ -52,7 +55,11 @@ X minify assets
 
 
 later on:
+- add checkmark to the project's you've given feedback to
+- Email List subscription (form shown after the first bucket)
 - view feedback as project owner
 - verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
 - post queuing system?
 - better login (via popup instead of redirect)
+- paginate audit log
+- setup intercom

@@ -51,4 +51,8 @@ class ApplicationController < ActionController::Base
     Time.find_zone!(Settings.base_timezone).now
   end
 
+  helper_method :moderator?
+  def moderator?
+    current_user.try(:moderator?)
+  end
 end

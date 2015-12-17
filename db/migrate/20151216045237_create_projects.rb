@@ -11,6 +11,7 @@ class CreateProjects < ActiveRecord::Migration
 
       t.integer :user_id, null: false
 
+      t.boolean :hidden, default: false
       t.integer :votes_count, default: 0
       t.integer :feedbacks_count, default: 0
 

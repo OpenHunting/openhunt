@@ -1,5 +1,5 @@
 - projects.each do |project|
-  .project-listing.item.row{"data-project-slug" => project.slug}
+  .project-listing.item.row{"data-project-slug" => project.slug, class: ("marked-as-spam" if project.hidden?)}
     .item-details.col-md-6.col-sm-6.col-xs-6
       %a.item-vote{project_vote_attributes(project)}
         .box

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_user, only: [:ban, :unban]
+
   def show
     load_user
 
@@ -8,6 +10,20 @@ class UsersController < ApplicationController
     if current_user.present?
       @vote_ids = current_user.match_votes((@voted_projects+@submitted_projects).map(&:id))
     end
+  end
+
+  def ban
+    load_user
+
+    current_user.ban_user(@user)
+    redirect_to "/@#{@user.screen_name}"
+  end
+
+  def unban
+    load_user
+
+    current_user.unban_user(@user)
+    redirect_to "/@#{@user.screen_name}"
   end
 
   protected

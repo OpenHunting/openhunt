@@ -7,12 +7,19 @@ Rails.application.routes.draw do
   get "/feedback/:slug" => "projects#feedback"
   post "/feedback/:slug" => "projects#set_feedback"
 
+  post "/hide/:slug" => "projects#hide"
+  post "/unhide/:slug" => "projects#unhide"
+
   get "/vote/:slug" => "projects#vote_confirm"
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"
 
+  get "/audit" => "pages#audit_log"
+
   get "/about" => "pages#about"
   get "/@:screen_name" => "users#show"
+  post "/ban/@:screen_name" => "users#ban"
+  post "/unban/@:screen_name" => "users#unban"
 
   get "/logout" => "sessions#logout"
   post "/logout" => "sessions#logout_complete"

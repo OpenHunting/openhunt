@@ -8,6 +8,7 @@
       <meta charset="utf-8">
 
     = stylesheet_link_tag "dependencies", "application", media: 'all'
+    = render "layouts/rollbar"
     = javascript_include_tag "dependencies", "application"
     = csrf_meta_tags
     :javascript
@@ -24,3 +25,5 @@
 
   = render "layouts/feedback_panel"
   = render "pages/about_screen"
+  - if Settings.include_analytics
+    = render "layouts/analytics"

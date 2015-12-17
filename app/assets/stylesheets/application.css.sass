@@ -24,6 +24,8 @@ body
     text-decoration: none
     margin-left: -3px
     text-transform: lowercase
+    +xs
+      float: left
     &:hover
       background: #508FE6
       color: #fff
@@ -53,6 +55,10 @@ body
         width: 35px
         height: 35px
         border: 1px solid #ddd
+      +xs
+        padding-top: 0
+        .user-avatar
+          vertical-align: middle
   +xs
     +clearfix
     .nav > li
@@ -108,6 +114,7 @@ body
     -ms-flex-align: center
     align-items: center
     cursor: pointer
+
     &.selected
       background-color: #eee !important
       cursor: default
@@ -122,6 +129,13 @@ body
       .item-comments .posted-by
         opacity: 1.0
         +transition(opacity, 0.5s)
+
+    &.marked-as-spam
+      .item-details
+        .title
+          color: red
+        .description
+          color: red
 
     .item-vote
       cursor: pointer
@@ -160,9 +174,15 @@ body
       .title
         font-size: 1.8rem
         color: #000
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
       .description
         color: #ccc
         font-size: 1.2rem
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
 
     .item-comments
       text-align: right
@@ -314,6 +334,9 @@ body
   font-size: 12px
   display: none
 
+  +xs
+    left: 0
+    width: auto
   a
     color: #fff
   strong
@@ -368,3 +391,12 @@ body
       display: block
     .project-feedback
       display: none
+
+
+.audit-trail
+  li
+    margin-bottom: 15px
+    font-size: 14px
+    em
+      font-style: normal
+      color: #999

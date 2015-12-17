@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote]
+  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote, :hide, :unhide]
   before_filter :check_existing_project, only: [:new, :create]
 
   def index
@@ -82,6 +82,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def hide
+    load_project
+    current_user.hide_project(@project)
+    redirect_to "/feedback/#{@project.slug}"
+  end
+
+  def unhide
+    load_project
+    current_user.unhide_project(@project)
+    redirect_to "/feedback/#{@project.slug}"
+  end
+
   def feedback
     load_project
     load_feedback
@@ -162,7 +174,7 @@ class ProjectsController < ApplicationController
   end
 
   def check_existing_project
-    if !current_user.moderator? and current_user.submitted_project_today?
+    if !moderator? and current_user.submitted_project_today?
       render :already_submitted
       return false
     else

@@ -31,6 +31,7 @@ gem "validate_url"
 
 gem 'rails_12factor', group: :production
 
+gem 'rollbar', '~> 2.4.0'
 
 # use rails assets to pull assets from bower
 source 'https://rails-assets.org' do
