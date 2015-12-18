@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   def logout_complete
     logout_user
 
-    flash[:message] = "You've been logged out."
+    flash[:message] = "You are now logged out."
     redirect_to "/"
   end
 

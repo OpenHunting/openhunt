@@ -9,6 +9,6 @@ base_timezone: "Pacific Time (US & Canada)"
 
 include_analytics: false
 
-site_launch: "Dec 14, 2015"
+site_launch: "Dec 18, 2015"
 
 products_to_show: 20
