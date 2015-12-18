@@ -151,4 +151,36 @@ class User < ActiveRecord::Base
       target_url: "/@#{user.screen_name}"
     })
   end
+
+  def add_moderator(user)
+    return unless moderator?
+
+    user.moderator = true
+    user.save!
+
+    AuditLog.create!({
+      item_type: "add_moderator",
+      moderator_id: self.id,
+      target_id: user.id,
+      target_type: "User",
+      target_display: user.screen_name,
+      target_url: "/@#{user.screen_name}"
+    })
+  end
+
+  def remove_moderator(user)
+    return unless moderator?
+
+    user.moderator = false
+    user.save!
+
+    AuditLog.create!({
+      item_type: "remove_moderator",
+      moderator_id: self.id,
+      target_id: user.id,
+      target_type: "User",
+      target_display: user.screen_name,
+      target_url: "/@#{user.screen_name}"
+    })
+  end
 end
