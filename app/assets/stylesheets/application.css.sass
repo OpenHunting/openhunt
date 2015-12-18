@@ -205,6 +205,27 @@ body
       .comments-gif
         display: inline-block
 
+
+  .expanded-projects
+    display: none
+
+  .more-projects-btn
+    padding: 10px
+    text-align: center
+    font-size: 15px
+    color: #508FE6
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+      background: #F7FAFE
+      border-radius: 8px
+
+  &.expanded
+    .expanded-projects
+      display: block
+    .more-projects-btn
+      display: none
+
   &.end-of-buckets
     font-size: 20px
     color: #ccc
@@ -400,7 +421,6 @@ body
       &:hover
         background: #E6E6E6
         color: #000
-
 
   .project-loading
     font-size: 30px

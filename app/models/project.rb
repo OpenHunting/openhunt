@@ -116,6 +116,11 @@ class Project < ActiveRecord::Base
     bucket(time-1.day)
   end
 
+  def self.is_bucket_today?(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    time.at_midnight == Time.find_zone!(Settings.base_timezone).now.at_midnight
+  end
   # check if the time is before the site launched
   def self.end_of_buckets?(time)
     time = parse_bucket(time) if time.is_a?(String)

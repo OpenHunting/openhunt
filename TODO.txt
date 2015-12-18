@@ -31,8 +31,7 @@ X add google analytics
 X setup rollbar
 X switch to better postgres db
 X infinite scrolling
-
-- load more projects for a single date (after the top 10)
+X load more projects for a single date ("▿ show 17 more...")
 
 - show about page on first visit (hide if its in session, or if current user)
 

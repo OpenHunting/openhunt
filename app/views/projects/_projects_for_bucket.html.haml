@@ -1,7 +1,7 @@
 - next_bucket = Project.next_bucket(time)
 - prev_bucket = Project.prev_bucket(time)
 
-.project-list.row{"data-next-bucket" => next_bucket, "data-prev-bucket" => prev_bucket}
+.project-list.row{"data-next-bucket" => next_bucket, "data-prev-bucket" => prev_bucket, class: ("expanded" if Project.is_bucket_today?(time))}
   .head.col-md-12.col-sm-12.col-xs-12
     -# - if local_assigns[:add_nav]
     -#   .project-nav.pull-right
@@ -17,4 +17,14 @@
       = time.strftime('%B %d')
   .clearfix
 
-  = render "projects/project_listings", projects: projects, empty_msg: "No products were submitted on #{time.strftime("%A, %B %d")}"
+  - top_items = projects[0...Settings.products_to_show]
+  - more_items = projects[Settings.products_to_show..-1]
+
+  = render "projects/project_listings", projects: top_items, empty_msg: "No products were submitted on #{time.strftime("%A, %B %d")}"
+
+  - if more_items.present?
+    .more-projects-btn
+      ▿ show #{more_items.count} more...
+
+    .expanded-projects
+      = render "projects/project_listings", projects: more_items
