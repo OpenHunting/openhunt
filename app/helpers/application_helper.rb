@@ -88,9 +88,9 @@ module ApplicationHelper
   def audit_description(log)
     result = case log.item_type
     when "make_moderator"
-      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>moderator</strong>."
     when "remove_moderator"
-      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
+      "remove the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>moderator</strong>."
     when "ban_user"
       "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
     when "unban_user"
@@ -116,7 +116,7 @@ module ApplicationHelper
   end
 
   def content_nav_link(title, action)
-    if current_page?(controller: "pages", action: action)      
+    if current_page?(controller: "pages", action: action)
       content_tag :strong, title
     else
       link_to title, url_for(controller: "pages", action: action)
