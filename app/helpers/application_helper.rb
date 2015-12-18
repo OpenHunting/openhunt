@@ -110,4 +110,12 @@ module ApplicationHelper
 
     @body_css.join(" ")
   end
+
+  def content_nav_link(title, action)
+    if current_page?(controller: "pages", action: action)      
+      content_tag :strong, title
+    else
+      link_to title, url_for(controller: "pages", action: action)
+    end
+  end
 end

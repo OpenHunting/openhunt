@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/people" => "pages#people"
   get "/faq" => "pages#faq"
   get "/differences" => "pages#differences"
-  get "/governance" => "pages#governane"
+  get "/governance" => "pages#governance"
   get "/@:screen_name" => "users#show"
   post "/ban/@:screen_name" => "users#ban"
   post "/unban/@:screen_name" => "users#unban"
