@@ -31,6 +31,10 @@ X add google analytics
 X setup rollbar
 X switch to better postgres db
 
+- infinite scrolling
+
+- load more projects for a single date
+
 - show about page on first visit (hide if its in session, or if current user)
 
 - create 404, 500, maintenance pages
@@ -40,25 +44,27 @@ X switch to better postgres db
   - faq
   - differences
 
-- infinite scrolling
-- load more projects for a single date
+- remove glyphicon fonts
+- add fonticons.com
+
+- post queuing system
+- add loading animation to .splash-box
+
+- add checkmark to the project's you've given feedback to
+
+- karma system
+
+- email List subscription (show form after the first bucket)
 
 minor tweaks:
 X responsive pass, fix navbar
 X minify assets
-- add loading animation to .splash-box
 X add a close btn to the top right of the detail panel
-
-- replicate the validations of ProductHunt (ask ash)
-- remove glyphicon fonts
 
 
 later on:
-- add checkmark to the project's you've given feedback to
-- Email List subscription (form shown after the first bucket)
-- view feedback as project owner
 - verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
-- post queuing system?
+- view feedback as project owner
 - better login (via popup instead of redirect)
 - paginate audit log
 - setup intercom

@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get "/audit" => "pages#audit_log"
 
   get "/about" => "pages#about"
+  get "/people" => "pages#people"
+  get "/faq" => "pages#faq"
+  get "/differences" => "pages#differences"
+  get "/governance" => "pages#governane"
   get "/@:screen_name" => "users#show"
   post "/ban/@:screen_name" => "users#ban"
   post "/unban/@:screen_name" => "users#unban"

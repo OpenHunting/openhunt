@@ -8,4 +8,16 @@ class PagesController < ApplicationController
     # TODO: paginate
   end
 
+
+  def people
+  end
+
+  def faq
+  end
+
+  def differences
+  end
+
+  def governance
+  end
 end

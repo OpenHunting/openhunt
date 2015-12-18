@@ -46,17 +46,18 @@ ActiveRecord::Schema.define(version: 20151217110511) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",                        null: false
-    t.string   "description",                 null: false
-    t.string   "url",                         null: false
-    t.string   "normalized_url",              null: false
-    t.string   "bucket",                      null: false
-    t.string   "slug",                        null: false
-    t.integer  "user_id",                     null: false
+    t.string   "name",                            null: false
+    t.string   "description",                     null: false
+    t.string   "url",                             null: false
+    t.string   "normalized_url",                  null: false
+    t.string   "bucket",                          null: false
+    t.string   "slug",                            null: false
+    t.integer  "user_id",                         null: false
+    t.boolean  "hidden",          default: false
     t.integer  "votes_count",     default: 0
     t.integer  "feedbacks_count", default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "projects", ["bucket"], name: "index_projects_on_bucket", using: :btree
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20151217110511) do
     t.string   "twitter_id"
     t.string   "location"
     t.boolean  "moderator",         default: false
+    t.boolean  "banned",            default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
