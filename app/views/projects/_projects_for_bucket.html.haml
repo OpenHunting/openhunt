@@ -20,7 +20,12 @@
   - top_items = projects[0...Settings.products_to_show]
   - more_items = projects[Settings.products_to_show..-1]
 
-  = render "projects/project_listings", projects: top_items, empty_msg: "No products were submitted on #{time.strftime("%A, %B %d")}"
+  - if Project.is_bucket_today?(time)
+    - empty_msg = "Good morning! Interested in <a href='/new'>posting a product</a> today?".html_safe    
+  - else
+    - empty_msg = "No products were submitted on #{time.strftime("%A, %B %d")}"
+
+  = render "projects/project_listings", projects: top_items, empty_msg: empty_msg
 
   - if more_items.present?
     .more-projects-btn

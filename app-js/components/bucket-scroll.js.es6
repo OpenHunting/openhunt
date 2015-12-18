@@ -36,13 +36,8 @@
       });
     };
 
-    // setup infinite scroll
-    $(window).scroll((e) => {
+    var triggerScroll = () => {
       if(loading) { return; }
-
-      if(!((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
-        return;
-      }
 
       var prevBucket = $(".project-list").last().data("prev-bucket")
       if(!prevBucket) {
@@ -51,8 +46,19 @@
       }
 
       loadBucket(prevBucket);
-    })
+    };
 
+    // setup infinite scroll
+    $(window).scroll((e) => {
+
+      if(!((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
+        return;
+      }
+
+      triggerScroll();
+    });
+
+    triggerScroll();
 
   });
 })();
