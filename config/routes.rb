@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get "/@:screen_name" => "users#show"
   post "/ban/@:screen_name" => "users#ban"
   post "/unban/@:screen_name" => "users#unban"
+  post "/make_moderator/@:screen_name" => "users#make_moderator"
+  post "/remove_moderator/@:screen_name" => "users#remove_moderator"
 
   get "/logout" => "sessions#logout"
   post "/logout" => "sessions#logout_complete"

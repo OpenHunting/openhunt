@@ -41,10 +41,10 @@ RSpec.describe User, type: :model do
   end
 
   context "moderator" do
-    it "add_moderator" do
+    it "make_moderator" do
       user.update_attributes!(moderator: true)
       user2 = FactoryGirl.create(:user)
-      user.add_moderator(user2)
+      user.make_moderator(user2)
       expect(user2.moderator).to eql true
     end
     it "remove_moderator" do

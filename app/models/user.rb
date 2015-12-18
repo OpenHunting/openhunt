@@ -152,14 +152,14 @@ class User < ActiveRecord::Base
     })
   end
 
-  def add_moderator(user)
+  def make_moderator(user)
     return unless moderator?
 
     user.moderator = true
     user.save!
 
     AuditLog.create!({
-      item_type: "add_moderator",
+      item_type: "make_moderator",
       moderator_id: self.id,
       target_id: user.id,
       target_type: "User",
