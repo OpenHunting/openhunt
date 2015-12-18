@@ -60,6 +60,7 @@ X add icon to github, twitter app
 X responsive pass, fix navbar
 X minify assets
 X add a close btn to the top right of the detail panel
+- add a scroll indicator while infinite scrolling
 
 later on:
 - karma system
