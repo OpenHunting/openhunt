@@ -1,6 +1,6 @@
 - projects.each do |project|
   .project-listing.item.row{"data-project-slug" => project.slug, class: ("marked-as-spam" if project.hidden?)}
-    .item-details.col-md-6.col-sm-6.col-xs-6
+    .item-details.col-md-9.col-sm-9.col-xs-8
       %a.item-vote{project_vote_attributes(project)}
         .box
           .arrow
@@ -13,11 +13,11 @@
         = project.name
       .description
         = project.description
-    .item-comments.col-md-6.col-sm-6.col-xs-6
+    .item-comments.col-md-3.col-sm-3.col-xs-4
       .item-comments-inner
         - user = project.user
         - if user
-          %span.posted-by Posted by
+          %span.posted-by.hidden-xs Posted by
           %a.user-avatar(href="/@#{user.screen_name}")
             %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
 
