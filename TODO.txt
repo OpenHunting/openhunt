@@ -33,16 +33,18 @@ X switch to better postgres db
 
 - infinite scrolling
 
-- load more projects for a single date
+- load more projects for a single date (after the top 10)
 
 - show about page on first visit (hide if its in session, or if current user)
 
-- create 404, 500, maintenance pages
-
 - content
-  - intro
+  X intro
+  - people
   - faq
   - differences
+  - governance
+
+- create 404, 500, maintenance pages
 
 - remove glyphicon fonts
 - add fonticons.com
@@ -52,17 +54,16 @@ X switch to better postgres db
 
 - add checkmark to the project's you've given feedback to
 
-- karma system
-
 - email List subscription (show form after the first bucket)
 
 minor tweaks:
-- add icon to github, twitter app
+X add icon to github, twitter app
 X responsive pass, fix navbar
 X minify assets
 X add a close btn to the top right of the detail panel
 
 later on:
+- karma system
 - verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)
 - view feedback as project owner
 - better login (via popup instead of redirect)
