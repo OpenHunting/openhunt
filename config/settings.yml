@@ -8,3 +8,5 @@ featured_per_page: 10
 base_timezone: "Pacific Time (US & Canada)"
 
 include_analytics: false
+
+site_launch: "Dec 14, 2015"

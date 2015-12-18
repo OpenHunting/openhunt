@@ -11,7 +11,7 @@
   )
 end
 
-(0..2).each do |i|
+(0..10).each do |i|
   puts
   puts
   puts

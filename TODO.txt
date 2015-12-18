@@ -30,8 +30,7 @@ X add a favicon
 X add google analytics
 X setup rollbar
 X switch to better postgres db
-
-- infinite scrolling
+X infinite scrolling
 
 - load more projects for a single date (after the top 10)
 

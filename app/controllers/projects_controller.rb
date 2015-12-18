@@ -13,10 +13,16 @@ class ProjectsController < ApplicationController
     load_bucket(@bucket)
 
     if params[:partial]
-      render partial: "projects/bucket", locals: {
-        bucket: @bucket,
-        projects: @projects
-      }
+      if Project.end_of_buckets?(@bucket)
+        render partial: "projects/end_of_buckets", locals: {
+          time: Project.parse_bucket(@bucket)
+        }
+      else
+        render partial: "projects/projects_for_bucket", locals: {
+          time: Project.parse_bucket(@bucket),
+          projects: @projects
+        }
+      end
     else
       render
     end

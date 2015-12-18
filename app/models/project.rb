@@ -115,4 +115,16 @@ class Project < ActiveRecord::Base
 
     bucket(time-1.day)
   end
+
+  # check if the time is before the site launched
+  def self.end_of_buckets?(time)
+    time = parse_bucket(time) if time.is_a?(String)
+
+    if Settings.site_launch
+      launch_time = Time.find_zone!(Settings.base_timezone).parse(Settings.site_launch).at_midnight
+      time < launch_time
+    else
+      false
+    end
+  end
 end
