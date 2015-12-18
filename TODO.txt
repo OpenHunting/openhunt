@@ -33,6 +33,7 @@ X switch to better postgres db
 X infinite scrolling
 X load more projects for a single date ("▿ show 17 more...")
 X show about page on first visit (hide if its in session, or if current user)
+X add fonticons.com
 
 - content
   X intro
@@ -41,11 +42,12 @@ X show about page on first visit (hide if its in session, or if current user)
   - differences
   - governance
 
+- user: make_moderator / remove_moderator
+
 - create 404, 500, maintenance pages
 
 - remove glyphicon fonts
-- add fonticons.com
-- add checkmark to the project's you've given feedback to
+- add checkmark icon to the project's you've given feedback to
 
 - post queuing system
 - add loading animation to .splash-box
