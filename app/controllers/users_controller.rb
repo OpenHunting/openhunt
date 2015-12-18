@@ -26,6 +26,20 @@ class UsersController < ApplicationController
     redirect_to "/@#{@user.screen_name}"
   end
 
+  def make_moderator
+    load_user
+    
+    current_user.make_moderator(@user)
+    redirect_to "/@#{@user.screen_name}"
+  end
+
+  def remove_moderator
+    load_user
+
+    current_user.remove_moderator(@user)
+    redirect_to "/@#{@user.screen_name}"
+  end
+
   protected
   def load_user
     @user = User.where(screen_name: params[:screen_name]).first

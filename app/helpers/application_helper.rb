@@ -87,6 +87,10 @@ module ApplicationHelper
 
   def audit_description(log)
     result = case log.item_type
+    when "make_moderator"
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
+    when "remove_moderator"
+      "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
     when "ban_user"
       "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>banned</strong>."
     when "unban_user"
