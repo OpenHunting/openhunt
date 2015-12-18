@@ -57,10 +57,10 @@ X switch to better postgres db
 - email List subscription (show form after the first bucket)
 
 minor tweaks:
+- add icon to github, twitter app
 X responsive pass, fix navbar
 X minify assets
 X add a close btn to the top right of the detail panel
-
 
 later on:
 - verify as project owner to see feedback (each project has a private key, and we email it to something @domain.com)

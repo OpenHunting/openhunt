@@ -8,8 +8,8 @@
 
     %p
       Our initial design may look similar to another site you know of. This is
-      intentional for the first launch, but it's not final. There are some <a href="/differences">key differences</a> already,
-      with many more to come. You can get involved: <a href="http://github.com/openhunting/openhunt/issues">file an issue</a>
+      intentional for the first launch, but not at all final. There are already some <a href="/differences">key differences</a>,
+      and we'll evolve even more as we grow. You can get involved: <a href="http://github.com/openhunting/openhunt/issues">file an issue</a>
       or submit a <a href="http://github.com/openhunting/openhunt">pull request</a>. We would love your help!
 
     %p
@@ -20,15 +20,19 @@
 
     %p Thank you for your support!
 
-    %p -- The Open Hunt <strong><a href="/people">team</a></strong>
+    %p -- The Open Hunt team
 
+    %hr
     %p
-      %a.btn.btn-primary.btn-super(href="/new") Submit a Product
-      - if request.path == "/about"
-        %a.btn.btn-primary.btn-super(href="/") Start Browsing
-      - else
-        %button.btn.btn-primary.btn-super.close-about Start Browsing
+      %a(href="/people") Who We Are
+      %span /
+
+      %a(href="/new") Submit Product
+      %span /
 
       %a(href="https://github.com/openhunting/openhunt") Github Repo
       %span /
-      %a(href="https://github.com/openhunting/openhunt/issues/new") Create an Issue
+      - if request.path == "/about"
+        %a(href="/") Start Browsing
+      - else
+        %a.close-about(href="#") Start Browsing
