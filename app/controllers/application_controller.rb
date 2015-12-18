@@ -55,4 +55,14 @@ class ApplicationController < ActionController::Base
   def moderator?
     current_user.try(:moderator?)
   end
+
+  helper_method :show_intro?
+  def show_intro?
+    current_user.blank? and !session[:intro_shown]    
+  end
+
+  after_filter :mark_intro_shown
+  def mark_intro_shown
+    session[:intro_shown] = true
+  end
 end

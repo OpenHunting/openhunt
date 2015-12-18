@@ -30,7 +30,7 @@
     $(document).on("click", "#about-screen", (e) => {
       if($(e.target).closest(".about-inner").length > 0) {
         return;
-      }      
+      }
       closeAbout();
     });
 
@@ -49,6 +49,11 @@
         openAbout();
       }
     });
+
+    // show about page on first visit
+    if($("body").is(".show-intro")) {
+      openAbout();
+    }
 
   });
 })();

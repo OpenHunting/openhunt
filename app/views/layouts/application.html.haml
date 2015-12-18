@@ -16,7 +16,7 @@
 
 
 
-%body(class="#{body_css}")
+%body(class="#{body_css} #{'show-intro' if show_intro?}")
   - unless @skip_header
     = render "layouts/navbar"
 

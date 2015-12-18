@@ -32,8 +32,7 @@ X setup rollbar
 X switch to better postgres db
 X infinite scrolling
 X load more projects for a single date ("▿ show 17 more...")
-
-- show about page on first visit (hide if its in session, or if current user)
+X show about page on first visit (hide if its in session, or if current user)
 
 - content
   X intro
@@ -46,11 +45,13 @@ X load more projects for a single date ("▿ show 17 more...")
 
 - remove glyphicon fonts
 - add fonticons.com
+- add checkmark to the project's you've given feedback to
 
 - post queuing system
 - add loading animation to .splash-box
+- add a loading animation when loading a new bucket on bucket-scroll
 
-- add checkmark to the project's you've given feedback to
+- add a link back to homepage on auth failure
 
 - email List subscription (show form after the first bucket)
 
@@ -59,7 +60,6 @@ X add icon to github, twitter app
 X responsive pass, fix navbar
 X minify assets
 X add a close btn to the top right of the detail panel
-- add a scroll indicator while infinite scrolling
 
 later on:
 - karma system

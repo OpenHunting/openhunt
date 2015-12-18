@@ -45,10 +45,6 @@
       $(".project-listing").removeClass("selected");
     };
 
-    // for debugging purposes
-    window.openFeedback = openFeedback;
-    window.closeFeedback = closeFeedback;
-
     var initialHash = (window.location.hash || "");
     if(initialHash.indexOf("open=") >= 0) {
       var val = _.last(initialHash.split("="));
