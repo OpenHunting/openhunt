@@ -27,12 +27,17 @@
       = render "pages/content_nav"
 
     %p
-      %a(href="/new") Submit Product
-      %span /
-
-      %a(href="https://github.com/openhunting/openhunt") Github Repo
-      %span /
       - if request.path == "/about"
         %a(href="/") Start Browsing
       - else
         %a.close-about(href="#") Start Browsing
+      %span /
+
+      %a(href="/new") Submit Product
+      %span /
+
+      %a(href="/audit") Audit Trail
+      %span /
+
+      %a(href="https://github.com/openhunting/openhunt") Github Repo
+      %span /

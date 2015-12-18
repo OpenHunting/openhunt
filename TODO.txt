@@ -34,6 +34,8 @@ X infinite scrolling
 X load more projects for a single date ("▿ show 17 more...")
 X show about page on first visit (hide if its in session, or if current user)
 
+- add audit log for adding moderator / removing moderator
+
 - content
   X intro
   - people
