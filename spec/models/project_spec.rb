@@ -29,6 +29,8 @@ RSpec.describe Project, type: :model do
   context "single project" do
     let(:submitter) { FactoryGirl.create(:user) }
     let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
+    let(:submitter2) { FactoryGirl.create(:user) }
+    let(:project_without_www) { submitter.projects.create(FactoryGirl.attributes_for(:project, url: "https://asdf.com")) }
     before :each do
       DatabaseCleaner.clean
       new_time = Time.local(2015, 12, 15, 12, 0, 0)
@@ -37,6 +39,26 @@ RSpec.describe Project, type: :model do
     after do
       Timecop.return
     end
+    it "detects duplicate new url only lacks www" do
+      project # create the project first, has url 'www.asdf.com'
+      result = Project.get_duplicate_by_url("http://asdf.com")
+      expect(result.id).to eql project.id
+    end
+    it "detects duplicate new url only has extra www" do
+      project_without_www
+      result = Project.get_duplicate_by_url("http://www.asdf.com")
+      expect(result.id).to eql project_without_www.id
+    end
+
+    it "duplicate_exists?" do
+      project
+      result = Project.duplicate_exists?("http://asdf.com")
+      expect(result).to eql true
+      project_without_www
+      result = Project.duplicate_exists?("http://www.asdf.com")
+      expect(result).to eql true
+    end
+
     it "calculates a score" do
       project.stub(:votes_count).and_return(5)
       project.stub(:created_at).and_return(4.hours.ago.to_datetime)
