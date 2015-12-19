@@ -24,18 +24,13 @@ RSpec.describe User, type: :model do
 
   let(:submitter) { FactoryGirl.create(:user) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
 
   context "voting" do
-    before :each do
-      proj = FactoryGirl.build(:project)
-      submitter.projects << proj
-    end
-
     it "cannot vote twice for same project" do
       user = FactoryGirl.create(:user)
-      proj = submitter.projects.first
-      user.vote(proj)
-      user.vote(proj)
+      user.vote(project)
+      user.vote(project)
       expect(user.votes.count).to eql 1
     end
   end
@@ -53,5 +48,10 @@ RSpec.describe User, type: :model do
       user.remove_moderator(user2)
       expect(user2.moderator).to eql false
     end
+  end
+
+  it "checks is user is submitter" do
+    expect(submitter.is_submitter?(project)).to eql true
+    expect(user.is_submitter?(project)).to eql false
   end
 end

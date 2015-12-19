@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
     Project.where(id: project_ids).includes(:user)
   end
 
+  def is_submitter?(project)
+    project_ids.include?(project.id)
+  end
+
   def submitted_project_today?
     return true if banned?
 
