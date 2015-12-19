@@ -15,8 +15,8 @@ class ProjectForm
     normalized_url = Project.normalize_url(url)
 
     # TODO: also add a date range, so projects can be resubmitted after X weeks
-    if Project.where(normalized_url: normalized_url).count > 0
-      errors.add(:url, "has already been submitted")
+    if ( Project.where(normalized_url: normalized_url).count > 0 || Project.duplicate_exists?(url) )
+        errors.add(:url, "has already been submitted")
     end
   end
 

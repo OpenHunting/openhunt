@@ -62,6 +62,20 @@ class Project < ActiveRecord::Base
     url
   end
 
+  # www.example.com
+  # example.com <= duplicate! do not allow!
+  def self.get_duplicate_by_url(url)
+    normalized_url = Project.normalize_url(url)
+    if normalized_url[0..3] == "www."
+      normalized_url = normalized_url.slice(4, normalized_url.length)
+    end
+    Project.where("normalized_url ~* ?", normalized_url).first
+  end
+
+  def self.duplicate_exists?(url)
+    get_duplicate_by_url(url).present?
+  end
+
 
   def self.for_bucket(bucket)
     Project.visible.where(bucket: bucket).order(:votes_count => :desc)
