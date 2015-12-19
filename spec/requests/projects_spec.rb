@@ -14,7 +14,7 @@ RSpec.describe "Projects", :type => :request do
     end
   end
 
-  context "create project" do
+  context "create" do
     let(:user) { FactoryGirl.create(:user) }
     let(:params) { {
       name: 'asdf',
@@ -39,6 +39,19 @@ RSpec.describe "Projects", :type => :request do
       params["url"] = 'http://asdf.com'
       post("/new", params)
       expect(Project.count).to eql 1
+    end
+  end
+
+  context "update" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { user.projects.create(FactoryGirl.attributes_for(:project))}
+    before :each do
+      DatabaseCleaner.clean
+      ApplicationController.any_instance.stub(:current_user).and_return(user)
+    end
+    it "updates the project name" do
+      patch "/update/#{project.slug}", data: { name: "banana" }
+      expect(project.reload.name).to eql "banana"
     end
   end
 end

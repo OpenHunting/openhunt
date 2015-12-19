@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post "/new" => "projects#create"
   get "/validate" => "projects#validate_project"
   get "/date/:bucket" => "projects#bucket"
+  patch "/update/:slug" => "projects#update"
 
   get "/feedback/:slug" => "projects#feedback"
   post "/feedback/:slug" => "projects#set_feedback"

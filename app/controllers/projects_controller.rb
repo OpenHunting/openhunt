@@ -88,6 +88,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # PATCH /update/:slug, data: { ... }
+  def update
+    load_project
+    current_user.update_project(@project, project_params)
+    redirect_to "/feedback/#{@project.slug}"
+  end
+
   def hide
     load_project
     current_user.hide_project(@project)
@@ -186,5 +193,9 @@ class ProjectsController < ApplicationController
     else
       return true
     end
+  end
+
+  def project_params
+    params.require(:data).permit(:name, :url, :description)
   end
 end
