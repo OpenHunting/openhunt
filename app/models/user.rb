@@ -92,6 +92,10 @@ class User < ActiveRecord::Base
     Project.where(user_id: self.id, bucket: bucket).count > 0
   end
 
+  def update_project(project, data)
+    UpdateProject.call(project: project, params: data, user: self)
+  end
+
   def hide_project(project)
     return unless moderator?
 

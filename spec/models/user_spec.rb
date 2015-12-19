@@ -23,7 +23,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   let(:submitter) { FactoryGirl.create(:user) }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
   let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
 
   context "voting" do
@@ -37,21 +37,26 @@ RSpec.describe User, type: :model do
 
   context "moderator" do
     it "make_moderator" do
-      user.update_attributes!(moderator: true)
-      user2 = FactoryGirl.create(:user)
-      user.make_moderator(user2)
-      expect(user2.moderator).to eql true
+      submitter.update_attributes!(moderator: true)
+      submitter.make_moderator(other_user)
+      expect(other_user.moderator).to eql true
     end
     it "remove_moderator" do
-      user.update_attributes!(moderator: true)
-      user2 = FactoryGirl.create(:user, moderator: true)
-      user.remove_moderator(user2)
-      expect(user2.moderator).to eql false
+      submitter.update_attributes!(moderator: true)
+      other_user.update_attributes!(moderator: false)
+      submitter.remove_moderator(other_user)
+      expect(other_user.moderator).to eql false
     end
   end
 
   it "checks is user is submitter" do
     expect(submitter.is_submitter?(project)).to eql true
-    expect(user.is_submitter?(project)).to eql false
+    expect(other_user.is_submitter?(project)).to eql false
+  end
+
+  it "can update a project" do
+    params = { name: "banana"}
+    submitter.update_project(project, params)
+    expect(project.reload.name).to eql "banana"
   end
 end
