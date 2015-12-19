@@ -88,7 +88,7 @@ module ApplicationHelper
   def audit_description(log)
     result = case log.item_type
     when "update_project"
-      "updated the project (<a href='#{log.target_url}'>"
+      "updated the project (<a href='#{log.target_url}'>#{h log.target_display}</a>)"
     when "make_moderator"
       "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>moderator</strong>."
     when "remove_moderator"
