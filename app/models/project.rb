@@ -81,6 +81,10 @@ class Project < ActiveRecord::Base
     Project.visible.where(bucket: bucket).order(:votes_count => :desc)
   end
 
+  def self.recent
+    Project.visible.order(created_at: :desc).limit(25)
+  end
+
   # Discussing HackerNews algorithm:
   # https://medium.com/hacking-and-gonzo/how-hacker-news-ranking-algorithm-works-1d9b0cf2c08d#.bkaj2mpm1
   # Here is the older, simpler algorithm

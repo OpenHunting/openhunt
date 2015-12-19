@@ -34,5 +34,8 @@ Rails.application.routes.draw do
   get "/login/callback" => "sessions#auth_callback", as: :auth_callback
   post "/login/success" => "sessions#auth_success", as: :auth_success
 
+  get "/recent" => "projects#recent", format: [:atom, :rss]
+  get "/popular" => "projects#index", format: [:atom, :rss]
+
   root "projects#index"
 end

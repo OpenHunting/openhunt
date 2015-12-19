@@ -5,7 +5,12 @@ class ProjectsController < ApplicationController
   def index
     @bucket = Project.bucket(current_now)
     load_bucket(@bucket)
+    @feed_updated_at = @projects.sort { |x, y| x.updated_at.to_i <=> y.updated_at.to_i }
+                                .reverse.first.updated_at rescue DateTime.now
+  end
 
+  def recent
+    @projects = Project.recent
   end
 
   def bucket
