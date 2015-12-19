@@ -50,7 +50,7 @@ RSpec.describe "Projects", :type => :request do
       ApplicationController.any_instance.stub(:current_user).and_return(user)
     end
     it "updates the project name" do
-      patch "/update/#{project.slug}", data: { name: "banana" }
+      patch "/update/#{project.slug}", name: "banana"
       expect(project.reload.name).to eql "banana"
     end
   end

@@ -13,6 +13,8 @@
           %a.btn.btn-xs.btn-default(href="/unhide/#{@project.slug}" data-method="post" data-confirm="Restore this project?") Not Spam
         - else
           %a.btn.btn-xs.btn-default(href="/hide/#{@project.slug}" data-method="post" data-confirm="Remove this site as spam?") Remove Spam
+      - if current_user.try(:can_update?, @project)
+        %a.btn.btn-xs.btn-default(href="/edit/#{@project.slug}" data-method="get") Edit
 
     %hr
 

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote, :hide, :unhide]
+  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote, :hide, :unhide, :edit, :update]
   before_filter :check_existing_project, only: [:new, :create]
 
   def index
@@ -76,6 +76,7 @@ class ProjectsController < ApplicationController
 
   def create
     form = ProjectForm.new(params)
+
     if form.valid?
       project = Project.new(form.attributes)
       project.user = current_user
@@ -88,11 +89,27 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    load_project
+  end
+
   # PATCH /update/:slug, data: { ... }
   def update
     load_project
-    current_user.update_project(@project, project_params)
-    redirect_to "/feedback/#{@project.slug}"
+
+    result = current_user.update_project(@project, project_params)
+
+    if result.success?
+      url = "/feedback/#{@project.slug}"
+      if result.audit_log.present?
+        redirect_to "/audit/#{result.audit_log}/edit?redirect=#{url}"
+      else
+        redirect_to url
+      end
+    else
+      @errors = result.errors
+      render :edit
+    end
   end
 
   def hide
@@ -196,6 +213,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:data).permit(:name, :url, :description)
+    params.permit(:name, :url, :description)
   end
 end
