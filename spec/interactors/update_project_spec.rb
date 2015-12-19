@@ -22,8 +22,11 @@ RSpec.describe UpdateProject do
     UpdateProject.call(params: params, project: project, user: submitter)
     expect(project.reload.description).to eql "banana"
   end
-
-  it "leaves an audit log"
+  it "leaves an audit log", :focus do
+    params = { description: "banana" }
+    UpdateProject.call(params: params, project: project, user: submitter)
+    expect(AuditLog.first.item_type).to eql "update_project"
+  end
 
   context "protections" do
     it "only allows owner or moderator" do

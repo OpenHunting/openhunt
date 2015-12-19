@@ -9,6 +9,7 @@ class UpdateProject < BaseInteractor
     context.fail!(errors: "You are not allowed to do this") unless user_is_allowed?
 
     if form.valid?
+      audit_action if context.user.moderator?
       context.project.update_attributes!(params)
     else
       context.fail! errors: form.errors
@@ -20,5 +21,16 @@ class UpdateProject < BaseInteractor
     return true if context.user.is_submitter?(context.project)
     # TODO: check that submitter is within the allowed time period
     return false
+  end
+
+  def audit_action
+    context.audit_log = AuditLog.create!({
+      item_type: "update_project",
+      moderator_id: context.user.id,
+      target_id: context.project.id,
+      target_type: "Project",
+      target_display: context.project.name,
+      target_url: "/feedback/#{context.project.slug}"
+    })
   end
 end
