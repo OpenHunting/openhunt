@@ -82,7 +82,14 @@ class User < ActiveRecord::Base
   end
 
   def is_submitter?(project)
-    project_ids.include?(project.id)
+    projects.where(id: project.id).count > 0
+  end
+
+  def can_update?(project)
+    return true if moderator?
+    # TODO: limit submitter's update permissions to within a time window
+    return true if is_submitter?(project)
+    return false
   end
 
   def submitted_project_today?

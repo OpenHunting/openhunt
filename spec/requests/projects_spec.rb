@@ -35,8 +35,8 @@ RSpec.describe "Projects", :type => :request do
       post("/new", params)
       user2 = FactoryGirl.create(:user)
       ApplicationController.any_instance.stub(:current_user).and_return(user2)
-      params["name"] = 'asdf banana'
-      params["url"] = 'http://asdf.com'
+      params[:name] = 'asdf banana'
+      params[:url] = 'http://asdf.com'
       post("/new", params)
       expect(Project.count).to eql 1
     end

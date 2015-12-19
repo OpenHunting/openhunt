@@ -26,6 +26,10 @@ RSpec.describe User, type: :model do
   let(:other_user) { FactoryGirl.create(:user) }
   let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project)) }
 
+  before :each do
+    DatabaseCleaner.clean
+  end
+
   context "voting" do
     it "cannot vote twice for same project" do
       user = FactoryGirl.create(:user)
@@ -58,5 +62,15 @@ RSpec.describe User, type: :model do
     params = { name: "banana"}
     submitter.update_project(project, params)
     expect(project.reload.name).to eql "banana"
+  end
+
+  it "knows that submitter can update a project" do
+    expect(submitter.can_update?(project)).to eql true
+    expect(other_user.can_update?(project)).to eql false
+  end
+
+  it "knows that moderator can update a project" do
+    other_user.update_attributes(moderator: true)
+    expect(other_user.can_update?(project)).to eql true
   end
 end

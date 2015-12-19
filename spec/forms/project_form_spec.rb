@@ -21,7 +21,7 @@ RSpec.describe ProjectForm do
       expect(form.valid?).to eql true
       expect(form.description).to eql "banana"
     end
-    it "for_update skips validating url if trivial change" do
+    it "allows trivial change to url" do
       params = { url: "http://asdf.com" }
       form = ProjectForm.for_update(params, project)
       expect(form.valid?).to eql true
