@@ -22,7 +22,8 @@ RSpec.describe UpdateProject do
     UpdateProject.call(params: params, project: project, user: submitter)
     expect(project.reload.description).to eql "banana"
   end
-  it "leaves an audit log", :focus do
+  it "leaves an audit log" do
+    submitter.update_attributes(moderator: true)
     params = { description: "banana" }
     UpdateProject.call(params: params, project: project, user: submitter)
     expect(AuditLog.first.item_type).to eql "update_project"
