@@ -6,7 +6,7 @@
     %meta{"content" => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{"charset" => "utf-8"}/
 
-    - unless !@rss  # <= TODO: this is too toooooo hacky
+    - unless !@rss  # <= 'audit_logs_controller' breaks if it tries to include rss link generators
       = auto_discovery_link_tag(:rss, format: :rss)
       = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
       = auto_discovery_link_tag(:atom, format: :atom)
