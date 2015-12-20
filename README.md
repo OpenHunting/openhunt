@@ -9,9 +9,9 @@
 
   * set description / website to anything
 
-  * set the callback url to http://127.0.0.1:3000/auth/twitter/callback
+  * set the callback url to http://goo.gl/QVYCy (a shortlink that points to http://localhost:3000/auth/twitter/callback)
 
-  * example: ![](http://cl.ly/1O002o2X3v0L/content)
+  * example: ![](http://cl.ly/3W3P0u0j3q1A/content)
 
 
 2) Change the permissions to "Read Only"

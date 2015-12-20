@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   get "/login" => "sessions#auth_start", as: :auth_start
   get "/auth/:service/callback" => "sessions#auth_callback", as: :auth_callback
-
+  get "/auth/failure" => "sessions#auth_failure"
 
 
   get "/recent" => "projects#recent", format: [:atom, :rss]

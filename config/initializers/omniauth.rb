@@ -4,4 +4,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     secure_image_url: true,
     image_size: 'bigger',
   }
+
+end
+
+OmniAuth.config.on_failure = Proc.new do |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
 end

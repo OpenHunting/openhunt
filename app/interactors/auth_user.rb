@@ -3,6 +3,8 @@ class AuthUser < BaseInteractor
   def call
     require_context(:auth)
 
+    auth = context.auth
+
     # TODO: make this support other providers
 
     user = User.find_or_initialize_by({
