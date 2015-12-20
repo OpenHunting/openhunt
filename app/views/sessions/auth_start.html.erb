@@ -1,9 +1,0 @@
-<% skip_header %>
-
-<div class="splash-box">
-  <h2>Logging in with Twitter</h2>
-</div>
-
-<script type="text/javascript">
-  OAuth.redirect("twitter", <%= raw auth_callback_url.to_json %>)
-</script>
