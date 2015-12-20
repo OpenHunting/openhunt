@@ -31,15 +31,17 @@ class UsersController < ApplicationController
   def make_moderator
     load_user
 
-    current_user.make_moderator(@user)
-    redirect_to "/@#{@user.screen_name}"
+    result = current_user.make_moderator(@user)
+    redirect_url = "/@#{@user.screen_name}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   def remove_moderator
     load_user
 
-    current_user.remove_moderator(@user)
-    redirect_to "/@#{@user.screen_name}"
+    result = current_user.remove_moderator(@user)
+    redirect_url = "/@#{@user.screen_name}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   protected
