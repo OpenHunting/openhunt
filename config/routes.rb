@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get "/audit" => "pages#audit_log"
   get "/audit/:id/edit" => "audit_logs#edit"
+  patch "/audit/:id" => "audit_logs#update"
 
   get "/about" => "pages#about"
   get "/people" => "pages#people"

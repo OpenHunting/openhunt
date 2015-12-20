@@ -107,7 +107,7 @@ class ProjectsController < ApplicationController
     if result.success?
       url = "/feedback/#{@project.slug}"
       if result.audit_log.present?
-        redirect_to "/audit/#{result.audit_log.id}/edit?redirect=#{url}"
+        redirect_to "/audit/#{result.audit_log.id}/edit?redirect_url=#{url}"
       else
         redirect_to url
       end

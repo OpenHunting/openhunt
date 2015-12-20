@@ -7,6 +7,20 @@ class AuditLogsController < ApplicationController
     load_log
   end
 
+  def update
+
+    load_log
+
+    @log.note = params[:note]
+
+    if @log.save!
+      redirect_to(params[:redirect_url] || '/audit')
+    else
+      @errors = @log.errors
+      render :edit
+    end
+  end
+
   protected
   def load_log
     @log = AuditLog.where(id: params[:id]).first
