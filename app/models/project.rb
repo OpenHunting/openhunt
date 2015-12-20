@@ -121,17 +121,20 @@ class Project < ActiveRecord::Base
     time = parse_bucket(time) if time.is_a?(String)
 
     current_now = Time.find_zone!(Settings.base_timezone).now.at_midnight
-    if (time+1.day).at_midnight > current_now
+    next_day = time + 1.day
+    next_day += 1.day if time.wday == 6
+    if (next_day).at_midnight > current_now
       nil
     else
-      bucket(time+1.day)
+      bucket(next_day)
     end
   end
 
   def self.prev_bucket(time)
     time = parse_bucket(time) if time.is_a?(String)
 
-    bucket(time-1.day)
+    return bucket(time-2.days) if time.wday == 0
+    return bucket(time-1.days)
   end
 
   def self.is_bucket_today?(time)

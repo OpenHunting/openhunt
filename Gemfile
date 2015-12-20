@@ -1,95 +1,77 @@
 source 'https://rubygems.org'
-ruby "2.1.4"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Core
 gem 'rails', '4.2.5'
-
 gem 'pg'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# See https://github.com/rails/execjs#readme for more supported runtimes (very slow install)
-# gem 'therubyracer', platforms: :ruby
-
-gem 'sprockets', '>= 3.0.0'
-gem 'sprockets-es6'
-
-gem 'bourbon', '= 3.2.4' # old bourbon, will work with libsass
-
-gem 'react-rails', '~> 1.5.0'
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-gem 'haml-rails'
-
-gem "validate_url"
+gem 'puma'
 
 gem 'rails_12factor', group: :production
 
-gem 'rollbar', '~> 2.4.0'
+# Assets
+gem 'sass-rails', '~> 5.0'
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+gem 'bourbon', '= 3.2.4' # old bourbon, will work with libsass
+gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+# gem 'therubyracer', platforms: :ruby
 
-# use rails assets to pull assets from bower
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-lodash'
   gem 'rails-assets-es5-shim'
-  gem 'rails-assets-oauthio-web'
 end
 
-# Build JSON APIs
-gem 'jbuilder', '~> 2.0'
-gem 'active_model_serializers', "~> 0.9.3"
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter', '5.11.0'
 
-# bundle exec rake doc:rails generates the API under doc/api.
+# Views
+gem 'haml-rails'
+gem 'jbuilder', '~> 2.0'
+gem 'active_model_serializers', '~> 0.9.3'
+
+# React
+gem 'react-rails', '~> 1.5.0'
+
+# Validation
+gem 'validate_url'
+
+# Configuration
+gem 'config'
+
+# Error reporting
+gem 'rollbar', '~> 2.4.0'
+
+# Docs
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
-gem 'annotate'
-gem 'config'
 gem 'interactor-rails'
 gem 'active_attr'
 
-gem "twitter", "5.11.0"
-
-# Use puma as the app server
-gem 'puma'
-
-gem 'faker'
-
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-rails'
+
+  gem 'capybara'
+  gem 'poltergeist'
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-
-  gem "quiet_assets"
-
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'launchy'
-  gem 'sqlite3'
-
   gem 'timecop'
+  gem 'faker'
+
+  gem 'annotate'
+
+  gem 'quiet_assets'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
-  gem 'pry-rails'
-
   gem 'guard-rspec', require: false
-  gem "guard-livereload", ">= 0.4.0"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'guard-livereload', '>= 0.4.0'
   # gem 'spring'
 end

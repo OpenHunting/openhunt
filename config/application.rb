@@ -10,6 +10,7 @@ module Openhunt
   class Application < Rails::Application
 
     require "ext/serialize_ext"
+    require "ext/date_ext"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
