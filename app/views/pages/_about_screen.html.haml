@@ -1,5 +1,8 @@
 #about-screen{style: local_assigns[:static] ? "" : "display:none;", class: local_assigns[:static] ? "about-static" : "about-dynamic"}
   .about-inner
+    .about-heading
+      %a{:id => 'close-button', :href => '#', :class => 'close-about'}x
+      .clearfix
     %p
       Open Hunt is a brand new community for fans and builders of
       early stage technology products. We aim to be <strong>completely open
