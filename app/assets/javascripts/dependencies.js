@@ -16,5 +16,3 @@
 //= require lodash
 //= require vendor/lodash-inflection
 //= require bootstrap
-
-//= require oauthio-web

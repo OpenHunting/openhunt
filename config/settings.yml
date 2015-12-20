@@ -1,8 +1,5 @@
 some_config: "Hello"
 
-oauth_public_key: "Mmu8yzNpaSwZ9pZn-1p69wMOXl8"
-
-
 featured_per_page: 10
 
 base_timezone: "Pacific Time (US & Canada)"
