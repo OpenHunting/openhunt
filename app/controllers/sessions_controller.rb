@@ -1,9 +1,28 @@
 class SessionsController < ApplicationController
   def auth_start
     PreAuth.call(params: params, session: session)
+    redirect_to "/auth/twitter"
   end
 
   def auth_callback
+    result = AuthUser.call(auth: auth_hash)
+
+    login_user(result.user)
+
+    post_auth = PostAuth.call(user: current_user, session: session)
+
+    redirect_to "/"
+  end
+
+  def auth_failure
+    @login_type = params[:strategy].to_s.capitalize.presence
+
+    case params[:message]
+    when "invalid_credentials"
+      @login_error = "Invalid credentials. Please try logging in again."
+    else
+      @login_error = "Our app is broken."
+    end
 
   end
 
@@ -40,6 +59,10 @@ class SessionsController < ApplicationController
   end
 
   protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
   def get_twitter_auth(oauth_token, oauth_secret)
     client = Twitter::REST::Client.new do |config|

@@ -8,9 +8,9 @@
       <meta charset="utf-8">
 
     = auto_discovery_link_tag(:rss, format: :rss)
-    = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
+    = auto_discovery_link_tag(:rss, format: :rss, controller: "projects", action: :recent)
     = auto_discovery_link_tag(:atom, format: :atom)
-    = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
+    = auto_discovery_link_tag(:atom, format: :atom, controller: "projects", action: :recent)
 
     = stylesheet_link_tag "dependencies", "application", media: 'all'
     = render "layouts/rollbar"
@@ -19,8 +19,6 @@
     :javascript
       OAuth.initialize( #{raw Settings.oauth_public_key.to_json} );
     %script(src="https://use.fonticons.com/cbcf708f.js")
-
-
 
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
   - unless @skip_header

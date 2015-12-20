@@ -22,6 +22,9 @@ gem 'bourbon', '= 3.2.4' # old bourbon, will work with libsass
 
 gem 'react-rails', '~> 1.5.0'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
