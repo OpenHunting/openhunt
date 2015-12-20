@@ -30,9 +30,11 @@ Rails.application.routes.draw do
   get "/logout" => "sessions#logout"
   post "/logout" => "sessions#logout_complete"
   delete "/logout" => "sessions#logout_complete"
+
   get "/login" => "sessions#auth_start", as: :auth_start
-  get "/login/callback" => "sessions#auth_callback", as: :auth_callback
-  post "/login/success" => "sessions#auth_success", as: :auth_success
+  get "/auth/:service/callback" => "sessions#auth_callback", as: :auth_callback
+
+
 
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]

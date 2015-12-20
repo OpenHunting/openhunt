@@ -1,9 +1,19 @@
 class SessionsController < ApplicationController
   def auth_start
     PreAuth.call(params: params, session: session)
+    redirect_to "/auth/twitter"
   end
 
   def auth_callback
+    result = AuthUser.call(auth: auth_hash)
+
+    login_user(result.user)
+
+    post_auth = PostAuth.call(user: current_user, session: session)
+
+    render json: {
+      redirect_to: post_auth.redirect_to || "/"
+    }
 
   end
 
@@ -40,6 +50,10 @@ class SessionsController < ApplicationController
   end
 
   protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
   def get_twitter_auth(oauth_token, oauth_secret)
     client = Twitter::REST::Client.new do |config|

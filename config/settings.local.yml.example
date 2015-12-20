@@ -1,3 +1,8 @@
-# MOVE THIS FILE TO config/settings.local.yml and replace the twitter_key and twitter_secret 
-twitter_key: ""
-twitter_secret: ""
+# MOVE THIS FILE TO config/settings.local.yml and replace the twitter_key and twitter_secret
+# https://apps.twitter.com/, click on your app, then click on "Keys and Access Tokens"
+
+# pull the value for "Consumer Key (API Key)"
+twitter_key: "PASTE_REAL_KEY_HERE"
+
+# pull the value for "Consumer Secret (API Secret)"
+twitter_secret: "PASTE_REAL_SECRET_HERE"

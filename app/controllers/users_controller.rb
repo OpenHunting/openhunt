@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def show
     load_user
+    if @user.blank?
+      redirect_to "/"
+      return
+    end
 
     load_voted_projects
     load_submitted_projects
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
 
   def make_moderator
     load_user
-    
+
     current_user.make_moderator(@user)
     redirect_to "/@#{@user.screen_name}"
   end
