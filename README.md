@@ -1,5 +1,27 @@
 # Open Hunt
 
+Open Hunt is a brand new community for fans and builders of early stage technology products. We aim to be completely open and transparent, without insiders or gatekeepers who control who gets listed and who gets left out.
+
+## Development
+
+Firstly, fork the repo on the master branch and clone your repo
+
+`git clone https://github.com/<your username>/openhunt`
+
+Install the required gems with bundler
+
+`bundle install`
+
+Create a new branch for your feature
+
+`git checkout -b feature/your-feature`
+
+Run the application using
+
+`rails server`
+
+When you have finished your feature and added your tests, [submit a pull request](https://github.com/OpenHunting/openhunt/compare) using your feature branch.
+
 
 ## Setting up Twitter App
 
@@ -31,8 +53,6 @@ twitter_key: "PASTE_REAL_KEY_HERE"
 # pull the value for "Consumer Secret (API Secret)"
 twitter_secret: "PASTE_REAL_SECRET_HERE"
 ```
-
-
 
 ## License
 
