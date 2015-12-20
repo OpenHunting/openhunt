@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   protected
   def load_user
-    @user = User.where(screen_name: params[:screen_name]).first
+    @user = User.where("lower(screen_name) =?", params[:screen_name]).first
   end
 
   def load_voted_projects
