@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete "/vote/:slug" => "projects#unvote"
 
   get "/audit" => "pages#audit_log"
+  get "/audit/:id/edit" => "audit_logs#edit"
 
   get "/about" => "pages#about"
   get "/people" => "pages#people"

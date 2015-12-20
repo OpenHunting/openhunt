@@ -7,10 +7,11 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta charset="utf-8">
 
-    = auto_discovery_link_tag(:rss, format: :rss)
-    = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
-    = auto_discovery_link_tag(:atom, format: :atom)
-    = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
+    - unless !@rss  # <= TODO: this is too toooooo hacky
+      = auto_discovery_link_tag(:rss, format: :rss)
+      = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
+      = auto_discovery_link_tag(:atom, format: :atom)
+      = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
 
     = stylesheet_link_tag "dependencies", "application", media: 'all'
     = render "layouts/rollbar"

@@ -53,5 +53,12 @@ RSpec.describe "Projects", :type => :request do
       patch "/update/#{project.slug}", name: "banana"
       expect(project.reload.name).to eql "banana"
     end
+    it "redirects moderator to audit note" do
+      user.update_attributes(moderator: true)
+      patch "/update/#{project.slug}", name: "banana"
+      follow_redirect!
+      log = AuditLog.first
+      expect(path).to eql "/audit/1/edit"
+    end
   end
 end
