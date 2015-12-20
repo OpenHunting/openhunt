@@ -2,6 +2,15 @@
 
 Open Hunt is a brand new community for fans and builders of early stage technology products. We aim to be completely open and transparent, without insiders or gatekeepers who control who gets listed and who gets left out.
 
+
+## Dependencies
+
+* Ruby on Rails (2.1.4) [install](http://railsapps.github.io/installrubyonrails-mac.html)
+
+* PostgreSQL [install on mac](http://postgresapp.com/) | [install on linux](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+
+
+
 ## Development
 
 Firstly, fork the repo on the master branch and clone your repo
@@ -16,6 +25,9 @@ Create a new branch for your feature
 
 `git checkout -b feature/your-feature`
 
+
+Setup the Twitter App [instructions](#Setup-Your-Twitter-App)
+
 Run the application using
 
 `rails server`
@@ -23,7 +35,9 @@ Run the application using
 When you have finished your feature and added your tests, [submit a pull request](https://github.com/OpenHunting/openhunt/compare) using your feature branch.
 
 
-## Setting up Twitter App
+## Setup Your Twitter App
+
+Open Hunt currently uses Twitter authentication. To dev locally, you'll need to create an app on Twitter.com and use the auth keys they provide you.
 
 1) Create a dev app with your twitter account: https://apps.twitter.com/app/new
 
