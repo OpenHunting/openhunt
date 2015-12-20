@@ -51,7 +51,7 @@
       openFeedback(val);
     }
 
-    $(document).on("click", ".project-listing", (e) => {
+    $(document).on("click touchstart", ".project-listing", (e) => {
       var target = $(e.target);
 
       // skip links
@@ -65,7 +65,7 @@
     // TODO: wire up saving feedback (on focus out)
     // TODO: wire up focus out feedback textarea if they press cmd+enter
 
-    $(document).on("click", ".close-feedback", (e) => {
+    $(document).on("click touchstart", ".close-feedback", (e) => {
       e.preventDefault();
       var feedbackPanel = $("#feedback-panel");
       var slug = feedbackPanel.data("current-project-slug");
@@ -99,7 +99,7 @@
       }
     });
 
-    $(document).on("click", ".close-feedback-button", (e) => {
+    $(document).on("click touchstart", ".close-feedback-button", (e) => {
       closeFeedback();
     });
 
