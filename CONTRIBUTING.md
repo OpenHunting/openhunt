@@ -1,16 +1,14 @@
 # Contributing to OpenHunt
 
 OpenHunt was designed from the ground up to be community driven and open to everyone.
-This makes it a great platform to contribute to whether it be submitting bug reports and
-feature requests to contributing code.
+
+This makes it a great platform to contribute to whether it be submitting bug reports and feature requests to contributing code.
 
 We love our community and encourage contributions but being so open felt it was right to establish some guidance and rules to keep everyone happy and on the same page.
 
 ## Submitting issues
 
-If you have found a bug or would like to request a feature, you can do
-so by creating an issue [here](https://github.com/OpenHunting/openhunt/issues).
-This helps us keep everything organised and to discuss the request.
+If you have found a bug or would like to request a feature, you can do so by creating an issue [here](https://github.com/OpenHunting/openhunt/issues). This helps us keep everything organised and to discuss the request.
 
 - Try and be as descriptive as possible.
 - If you are submitting an issue, explain the steps to recreate the issue.
