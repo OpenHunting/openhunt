@@ -1,7 +1,7 @@
 (() => {
   $(document).ready(() => {
 
-    $(document).on("click", ".item-vote.ajax", (e) => {
+    $(document).on("click touchstart", ".item-vote.ajax", (e) => {
       e.preventDefault();
 
       var voteElement = $(e.target).closest(".item-vote");
