@@ -119,14 +119,16 @@ class ProjectsController < ApplicationController
 
   def hide
     load_project
-    current_user.hide_project(@project)
-    redirect_to "/feedback/#{@project.slug}"
+    result = current_user.hide_project(@project)
+    redirect_url = "/feedback/#{@project.slug}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   def unhide
     load_project
-    current_user.unhide_project(@project)
-    redirect_to "/feedback/#{@project.slug}"
+    result = current_user.unhide_project(@project)
+    redirect_url = "/feedback/#{@project.slug}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   def feedback
