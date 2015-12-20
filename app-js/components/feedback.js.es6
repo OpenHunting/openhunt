@@ -51,7 +51,7 @@
       openFeedback(val);
     }
 
-    $(document).on("click touchstart", ".project-listing", (e) => {
+    $(document).on("click", ".project-listing", (e) => {
       var target = $(e.target);
 
       // skip links
