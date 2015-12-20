@@ -76,7 +76,13 @@ module ApplicationHelper
     end
 
     now = Time.now.in_time_zone(Settings.base_timezone)
-    if time.at_midnight == now.at_midnight
+
+    is_today = (time.at_midnight == now.at_midnight)
+
+    # saturday or sunday
+    if time.weekend?
+      "#{'This' if is_today} Weekend"
+    elsif is_today
       "Today"
     elsif (time - 1.day).at_midnight == (now - 1.day).at_midnight
       "Yesterday"

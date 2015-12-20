@@ -27,7 +27,7 @@
     %p
       All <strong>comments go directly to the product owner</strong>, and aren't posted publicly.
 
-    = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you hate about it."
+    = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you feel it could improve on."
 
     .actions
       - if current_user.present?

@@ -2,10 +2,9 @@
 %html(lang="en")
   %head
     %title Open Hunt - discover new products, give feedback, help each other
-    :erb
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta charset="utf-8">
+    %meta{"name" => "viewport", "content" => "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"}/
+    %meta{"content" => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{"charset" => "utf-8"}/
 
     - unless !@rss  # <= TODO: this is too toooooo hacky
       = auto_discovery_link_tag(:rss, format: :rss)
@@ -14,13 +13,7 @@
       = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
 
     = stylesheet_link_tag "dependencies", "application", media: 'all'
-    = render "layouts/rollbar"
-    = javascript_include_tag "dependencies", "application"
     = csrf_meta_tags
-    :javascript
-      OAuth.initialize( #{raw Settings.oauth_public_key.to_json} );
-    %script(src="https://use.fonticons.com/cbcf708f.js")
-
 
 
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
@@ -32,5 +25,9 @@
 
   = render "layouts/feedback_panel"
   = render "pages/about_screen"
+
   - if Settings.include_analytics
     = render "layouts/analytics"
+  = javascript_include_tag "dependencies", "application"
+  = javascript_include_tag "https://use.fonticons.com/cbcf708f.js"
+  = render "layouts/rollbar"

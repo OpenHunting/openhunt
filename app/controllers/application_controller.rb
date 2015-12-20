@@ -58,7 +58,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :show_intro?
   def show_intro?
-    current_user.blank? and !session[:intro_shown]    
+    # current_user.blank? and !session[:intro_shown]
+    return false
   end
 
   after_filter :mark_intro_shown

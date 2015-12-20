@@ -22,24 +22,24 @@
       navbarAbout.removeClass("active");
     };
 
-    $(document).on("click", ".close-about", (e) => {
+    $(document).on("click touchstart", ".close-about", (e) => {
       e.preventDefault();
       closeAbout();
     });
 
-    $(document).on("click", "#about-screen", (e) => {
+    $(document).on("click touchstart", "#about-screen", (e) => {
       if($(e.target).closest(".about-inner").length > 0) {
         return;
       }
       closeAbout();
     });
 
-    $(document).on("click", ".open-about", (e) => {
+    $(document).on("click touchstart", ".open-about", (e) => {
       e.preventDefault();
       openAbout();
     });
 
-    $(document).on("click", ".toggle-about", (e) => {
+    $(document).on("click touchstart", ".toggle-about", (e) => {
       e.preventDefault();
 
       if(aboutScreen.is(":visible")) {

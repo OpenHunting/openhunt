@@ -1,6 +1,6 @@
 (() => {
 
-  $(document).on("click", ".more-projects-btn", (e) => {
+  $(document).on("click touchstart", ".more-projects-btn", (e) => {
     e.preventDefault();
 
     $(e.target).closest(".project-list").addClass("expanded");
