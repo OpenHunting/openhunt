@@ -168,12 +168,12 @@ class ProjectsController < ApplicationController
       @feedback = Feedback.where({
         user_id: current_user.id,
         project_id: @project.id
-      }).first
+      }).limit(10)
     else
       @feedback = Feedback.where({
         session_id: current_session,
         project_id: @project.id
-      }).first
+      }).limit(10)
     end
   end
 

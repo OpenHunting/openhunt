@@ -16,21 +16,38 @@
 
     %hr
 
-  .feedback-form
-    %p
-      - if @project.feedbacks_count > 0
-        <strong>#{@project.feedbacks_count} amazing #{'person'.pluralize(@project.feedbacks_count)}</strong> have given feedback on this product. Join them by posting your thoughts.
-      - else
-        Be an amazing person and <strong>post some feedback</strong> on this product.
-    %p
-      All <strong>comments go directly to the product owner</strong>, and aren't posted publicly.
+  - if @project.user_id != current_user.id
+    .feedback-form
+      %p
+        - if @project.feedbacks_count > 0
+          <strong>#{@project.feedbacks_count} amazing #{'person'.pluralize(@project.feedbacks_count)}</strong> have given feedback on this product. Join them by posting your thoughts.
+        - else
+          Be an amazing person and <strong>post some feedback</strong> on this product.
+      %p
+        All <strong>comments go directly to the product owner</strong>, and aren't posted publicly.
 
-    = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you feel it could improve on."
+      = text_area_tag :body, @feedback.try(:body), class: "form-control", placeholder: "List 3 things you like about this product. ... List 1 thing you feel it could improve on."
 
-    .actions
-      - if current_user.present?
-        %label.pull-left
-          = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
-          Post as Anonymous
-      .pull-right
-        .btn.btn-primary.close-feedback Done
+      .actions
+        - if current_user.present?
+          %label.pull-left
+            = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
+            Post as Anonymous
+        .pull-right
+          .btn.btn-primary.close-feedback Done
+  - else
+    .feedback-listing
+      - @feedback.each do |feedback|
+        - user = feedback.user
+        - created_at_friendly = distance_of_time_in_words(feedback.created_at.to_datetime, DateTime.now) + ' ago.'
+        .feedback-single.row
+          .feedback-header.col-md-12
+            .feedback-body
+              = feedback.body
+          .feedback-footer.col-md-12
+            .row
+              .feedback-created.col-md-8
+                = created_at_friendly
+              .feedback-user.col-md-4
+                %a.user-avatar(href="/@#{user.screen_name}")
+                  %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
