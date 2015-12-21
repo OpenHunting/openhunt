@@ -14,4 +14,13 @@ class PagesController < ApplicationController
 
   def governance
   end
+
+  if Rails.env.development?
+    def test_flash
+      type = (params[:type] || "alert").to_sym
+      msg = params[:message].presence || "Some test flash"
+      flash[type] = msg
+      redirect_to "/"
+    end
+  end
 end

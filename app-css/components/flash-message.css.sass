@@ -1,0 +1,30 @@
+@import "mixins"
+
+.flash-message
+  height: 38px
+  background: white
+  position: fixed
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 10000
+  p
+    padding: 8px
+    font-size: 18px
+    font-weight: bold
+    text-align: center
+    text-shadow: 0px 1px 0 rgba(255, 255, 255, .5)
+    a
+      color: #333
+      font-weight: normal
+      margin-left: 10px
+      text-decoration: underline
+      font-size: 14px
+      text-shadow: none
+  &.flash-alert
+    border-top: 1px solid #999
+    color: #333
+    // +linear-gradient(top, #FFF797, #F2DB56)
+  &.flash-notice
+    color: #333
+    // +linear-gradient(top, #FFF797, #F2DB56)
