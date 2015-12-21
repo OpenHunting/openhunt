@@ -33,7 +33,7 @@ class UpdateProject < BaseInteractor
       target_id: context.project.id,
       target_type: "Project",
       target_display: context.form.name,
-      target_url: "/feedback/#{context.project.reload.slug}"
+      target_url: "/detail/#{context.project.reload.slug}"
     })
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe "Projects", :type => :request do
     target_id: project.id,
     target_type: "Project",
     target_display: project.name,
-    target_url: "/feedback/#{project.slug}"
+    target_url: "/detail/#{project.slug}"
   ) }
 
   before :each do

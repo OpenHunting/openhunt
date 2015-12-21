@@ -87,8 +87,11 @@ class User < ActiveRecord::Base
 
   def can_update?(project)
     return true if moderator?
-    # TODO: limit submitter's update permissions to within a time window
-    return true if is_submitter?(project)
+
+    if is_submitter?(project) and project.created_at >= Settings.project_edit_window.minutes.ago
+      return true
+    end
+
     return false
   end
 
@@ -115,7 +118,7 @@ class User < ActiveRecord::Base
       target_id: project.id,
       target_type: "Project",
       target_display: project.name,
-      target_url: "/feedback/#{project.slug}"
+      target_url: "/detail/#{project.slug}"
     })
   end
 
@@ -131,7 +134,7 @@ class User < ActiveRecord::Base
       target_id: project.id,
       target_type: "Project",
       target_display: project.name,
-      target_url: "/feedback/#{project.slug}"
+      target_url: "/detail/#{project.slug}"
     })
   end
 

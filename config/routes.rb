@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/edit/:slug" => "projects#edit"
   patch "/update/:slug" => "projects#update"
 
-  get "/feedback/:slug" => "projects#feedback"
+  get "/detail/:slug" => "projects#detail"
   post "/feedback/:slug" => "projects#set_feedback"
 
   post "/hide/:slug" => "projects#hide"
@@ -46,6 +46,9 @@ Rails.application.routes.draw do
 
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]
+
+  # legacy routes
+  get "/feedback/:slug" => "projects#feedback"
 
   if Rails.env.development?
     get "/test_flash" => "pages#test_flash"

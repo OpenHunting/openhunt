@@ -34,7 +34,7 @@
     .actions
       - if current_user.present?
         %label.pull-left
-          = check_box_tag :anonymous, "1", @feedback.try(:anonymous)
+          = check_box_tag :anonymous, "true", @feedback.try(:anonymous?)
           Post as Anonymous
       .pull-right
         .btn.btn-primary.close-feedback Done

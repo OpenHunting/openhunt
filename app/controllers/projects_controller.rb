@@ -96,16 +96,18 @@ class ProjectsController < ApplicationController
 
   def edit
     load_project
+    return unless check_permissions
   end
 
   # PATCH /update/:slug, data: { ... }
   def update
     load_project
+    return unless check_permissions
 
     result = current_user.update_project(@project, project_params)
 
     if result.success?
-      url = "/feedback/#{@project.slug}"
+      url = "/detail/#{@project.slug}"
       if result.audit_log.present?
         redirect_to "/audit/#{result.audit_log.id}/edit?redirect_url=#{url}"
       else
@@ -120,23 +122,23 @@ class ProjectsController < ApplicationController
   def hide
     load_project
     result = current_user.hide_project(@project)
-    redirect_url = "/feedback/#{@project.slug}"
+    redirect_url = "/detail/#{@project.slug}"
     redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   def unhide
     load_project
     result = current_user.unhide_project(@project)
-    redirect_url = "/feedback/#{@project.slug}"
+    redirect_url = "/detail/#{@project.slug}"
     redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
-  def feedback
+  def detail
     load_project
     load_feedback
 
     if params[:partial]
-      render partial: "projects/feedback", project: @project, feedback: @feedback
+      render partial: "projects/detail", project: @project, feedback: @feedback
     else
       flash.keep
       redirect_to "/#open=#{@project.slug}"
@@ -151,14 +153,14 @@ class ProjectsController < ApplicationController
     @feedback.user_id = current_user.try(:id)
     @feedback.project_id = @project.id
     @feedback.body = params[:body].presence || ""
-    @feedback.anonymous = !!params[:anonymous]
+    @feedback.anonymous = (params[:anonymous] == "true")
     @feedback.anon_user_hash = anon_user_hash
 
     if @feedback.save
       respond_to do |format|
         format.html do
           flash[:notice] = "Feedback was saved. Thanks!"
-          redirect_to "/feedback/#{@project.id}"
+          redirect_to "/detail/#{@project.id}"
         end
         format.json do
           render json: @feedback, root: "feedback"
@@ -168,7 +170,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         format.html do
           flash[:alert] = "Unable to save feedback."
-          redirect_to "/feedback/#{@project.id}"
+          redirect_to "/detail/#{@project.id}"
         end
         format.json do
           render json: {
@@ -207,6 +209,15 @@ class ProjectsController < ApplicationController
     @projects = Project.for_bucket(bucket).includes(:user).to_a
     if current_user.present?
       @vote_ids = current_user.match_votes(@projects.map(&:id))
+    end
+  end
+
+  def check_permissions
+    if current_user.can_update?(@project)
+      return true
+    else
+      redirect_to "/detail/#{@project.slug}"
+      return false
     end
   end
 

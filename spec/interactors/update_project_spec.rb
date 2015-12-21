@@ -27,7 +27,7 @@ RSpec.describe UpdateProject do
     params = { description: "banana" }
     UpdateProject.call(params: params, project: project, user: submitter)
     expect(AuditLog.first.item_type).to eql "update_project"
-    expect(AuditLog.first.target_url).to eql "/feedback/asdf"
+    expect(AuditLog.first.target_url).to eql "/detail/asdf"
   end
 
   context "protections" do
