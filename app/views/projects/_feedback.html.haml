@@ -46,7 +46,7 @@
           .feedback-footer.col-md-12
             .row
               .feedback-created.col-md-8
-                = date_human(feedback.created_at)
+                = date_human feedback.created_at
               .feedback-user.col-md-4
                 %a.user-avatar(href="/@#{user.screen_name}")
                   %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}
