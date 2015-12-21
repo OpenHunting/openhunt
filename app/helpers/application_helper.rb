@@ -91,8 +91,16 @@ module ApplicationHelper
     end
   end
 
+  def date_human(past)
+    present = DateTime.now
+
+    distance_of_time_in_words(past, present) + ' ago.'
+  end
+
   def audit_description(log)
     result = case log.item_type
+    when "update_project"
+      "updated the project (<a href='#{log.target_url}'>#{h log.target_display}</a>)"
     when "make_moderator"
       "marked the user (<a href='#{log.target_url}'>@#{h log.target_display}</a>) as <strong>moderator</strong>."
     when "remove_moderator"

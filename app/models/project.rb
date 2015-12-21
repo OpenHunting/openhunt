@@ -67,10 +67,15 @@ class Project < ActiveRecord::Base
   # example.com <= duplicate! do not allow!
   def self.get_duplicate_by_url(url)
     normalized_url = Project.normalize_url(url)
+    normalized_url = slice_www(normalized_url)
+    Project.where("normalized_url ~* ?", normalized_url).first
+  end
+
+  def self.slice_www(normalized_url)
     if normalized_url[0..3] == "www."
       normalized_url = normalized_url.slice(4, normalized_url.length)
     end
-    Project.where("normalized_url ~* ?", normalized_url).first
+    normalized_url
   end
 
   def self.duplicate_exists?(url)

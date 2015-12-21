@@ -34,6 +34,7 @@
           Post as Anonymous
       .pull-right
         .btn.btn-primary.close-feedback Done
+
   .comments-wrapper
     %h3 Comments
     = render :partial => 'comments/comments', locals: {commentable: @project, new_comment: @new_comment}

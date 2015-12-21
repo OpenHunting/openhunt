@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220223542) do
+ActiveRecord::Schema.define(version: 20151221081710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "audit_logs", force: :cascade do |t|
     t.integer  "moderator_id"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151220223542) do
     t.string   "target_url"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "note"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -45,21 +47,23 @@ ActiveRecord::Schema.define(version: 20151220223542) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
-    t.text     "body",                       null: false
-    t.boolean  "anonymous",  default: false
-    t.integer  "project_id",                 null: false
+    t.text     "body",                           null: false
+    t.boolean  "anonymous",      default: false
+    t.integer  "project_id",                     null: false
     t.integer  "user_id"
-    t.string   "session_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "anon_user_hash"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "list_subscribers", force: :cascade do |t|
-    t.string   "email",                     null: false
-    t.boolean  "subscribed", default: true
+    t.string   "email",                        null: false
+    t.boolean  "subscribed",   default: true
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "confirmed",    default: false
+    t.string   "confirm_code"
   end
 
   create_table "projects", force: :cascade do |t|

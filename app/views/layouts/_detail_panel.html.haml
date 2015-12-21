@@ -1,0 +1,9 @@
+#detail-panel{class: ("loading" unless @show_detail_panel)}
+
+  .project-loading
+    Loading...
+
+  - if @show_detail_panel
+    = render partial: "projects/detail", project: @project, feedback: @feedback
+  - else
+    .project-feedback

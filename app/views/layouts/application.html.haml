@@ -6,23 +6,28 @@
     %meta{"content" => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{"charset" => "utf-8"}/
 
-    = auto_discovery_link_tag(:rss, format: :rss)
-    = auto_discovery_link_tag(:rss, format: :rss, controller: "projects", action: :recent)
-    = auto_discovery_link_tag(:atom, format: :atom)
-    = auto_discovery_link_tag(:atom, format: :atom, controller: "projects", action: :recent)
+    - unless !@rss  # <= 'audit_logs_controller' breaks if it tries to include rss link generators
+      = auto_discovery_link_tag(:rss, format: :rss)
+      = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
+      = auto_discovery_link_tag(:atom, format: :atom)
+      = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
 
     = stylesheet_link_tag "dependencies", "application", media: 'all'
     = csrf_meta_tags
 
-
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
-  - unless @skip_header
+  - if @skip_header
+    - flash.keep
+  - else
     = render "layouts/navbar"
+    = render "layouts/flash_messages"
+
+  = content_for(:after_header)
 
   .container
     = yield
 
-  = render "layouts/feedback_panel"
+  = render "layouts/detail_panel"
   = render "pages/about_screen"
 
   - if Settings.include_analytics

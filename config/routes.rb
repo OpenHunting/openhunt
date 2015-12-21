@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   post "/new" => "projects#create"
   get "/validate" => "projects#validate_project"
   get "/date/:bucket" => "projects#bucket"
+  get "/edit/:slug" => "projects#edit"
+  patch "/update/:slug" => "projects#update"
 
-  get "/feedback/:slug" => "projects#feedback"
+  get "/detail/:slug" => "projects#detail"
   post "/feedback/:slug" => "projects#set_feedback"
 
   post "/hide/:slug" => "projects#hide"
@@ -16,7 +18,14 @@ Rails.application.routes.draw do
 
   post "/comments" => "comments#create"
 
-  get "/audit" => "pages#audit_log"
+  get "/subscribe" => "list_subscribers#edit"
+  get "/subscribe/success" => "list_subscribers#success"
+  post "/subscribe" => "list_subscribers#update"
+  get "/subscribe/confirm/:code" => "list_subscribers#confirm"
+
+  get "/audit" => "audit_logs#index"
+  get "/audit/:id/edit" => "audit_logs#edit"
+  patch "/audit/:id" => "audit_logs#update"
 
   get "/about" => "pages#about"
   get "/people" => "pages#people"
@@ -37,9 +46,16 @@ Rails.application.routes.draw do
   get "/auth/:service/callback" => "sessions#auth_callback", as: :auth_callback
   get "/auth/failure" => "sessions#auth_failure"
 
-
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]
+
+  # legacy routes
+  get "/feedback/:slug" => "projects#feedback"
+
+  if Rails.env.development?
+    get "/test_flash" => "pages#test_flash"
+    get "/devauth(/:screen_name)" => "pages#devauth"
+  end
 
   root "projects#index"
 end

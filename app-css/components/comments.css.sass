@@ -1,0 +1,52 @@
+@import "mixins"
+
+.comments-wrapper
+  clear: both
+  margin-top: 20px
+  .comments-header
+    border-bottom: 1px dotted gray
+    margin-bottom: 10px
+  .comments-container
+    p
+      margin-bottom: 0px
+
+    .comment-nav
+      margin-bottom: 20px
+      a
+        font-size: 10px
+        font-weight: bold
+        color: #888
+
+  .comment-reply
+    cursor: pointer
+
+  .reply-form
+    display: none
+
+
+  .comments-show
+    margin-left: 40px
+    position: relative
+    .comment
+      position: relative
+      .user-avatar
+        position: absolute
+        left: -40px
+        top: -8px
+        border-radius: 40px
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        display: inline-block
+        width: 35px
+        height: 35px
+        border: 1px solid #ddd
+        float: left
+        margin-right: 15px
+      +xs
+        padding-top: 0
+        .user-avatar
+          vertical-align: middle
+    .comment-detail
+      .comment-author
+        font-size: 1.4rem

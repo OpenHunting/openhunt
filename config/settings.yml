@@ -9,3 +9,7 @@ include_analytics: false
 site_launch: "Dec 18, 2015"
 
 products_to_show: 20
+
+
+# in minutes
+project_edit_window: 20
