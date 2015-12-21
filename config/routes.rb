@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post "/subscribe" => "list_subscribers#update"
   get "/subscribe/confirm/:code" => "list_subscribers#confirm"
 
-  get "/audit" => "pages#audit_log"
+  get "/audit" => "audit_logs#index"
   get "/audit/:id/edit" => "audit_logs#edit"
   patch "/audit/:id" => "audit_logs#update"
 
