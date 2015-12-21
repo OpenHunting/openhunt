@@ -8,6 +8,9 @@
     %ul.nav.navbar-nav.navbar-right
       -# %li{class: ("active" if current_page?(action: "about", controller: "pages"))}
       -#   %a.navbar-about.toggle-about{href: "/about" } About
+      - if current_user.moderator
+        %li{class: ("active" if current_page?(action: "index", controller: "audit_logs"))}
+          %a{:href => "/audit"} Audit
       %li{class: ("active" if current_page?(action: "new", controller: "projects"))}
         %a{:href => "/new"} + Post
       - if current_user.present?
