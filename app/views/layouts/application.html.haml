@@ -14,10 +14,11 @@
     = stylesheet_link_tag "dependencies", "application", media: 'all'
     = csrf_meta_tags
 
-
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
   - unless @skip_header
     = render "layouts/navbar"
+
+  = content_for(:after_header)
 
   .container
     = yield
