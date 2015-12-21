@@ -19,7 +19,12 @@
   .feedback-form
     %p
       - if @project.feedbacks_count > 0
-        <strong>#{@project.feedbacks_count} amazing #{'person'.pluralize(@project.feedbacks_count)}</strong> have given feedback on this product. Join them by posting your thoughts.
+        <strong>#{@project.feedbacks_count} amazing #{'person'.pluralize(@project.feedbacks_count)}</strong> 
+        - if @project.feedbacks_count == 1
+          has 
+        - else
+          have
+        given feedback on this product. Join them by posting your thoughts.
       - else
         Be an amazing person and <strong>post some feedback</strong> on this product.
     %p
