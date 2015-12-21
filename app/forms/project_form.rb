@@ -17,9 +17,8 @@ class ProjectForm
 
     normalized_url = Project.normalize_url(url)
     dupe_project = Project.get_duplicate_by_url(normalized_url)
-    
-    # TODO: also add a date range, so projects can be resubmitted after X weeks
-    if ( dupe_project.present? && dupe_project.id != current_project_id)
+
+    if dupe_project.present? and dupe_project.id != current_project_id
       errors.add(:url, "has already been submitted")
     end
   end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def auth_callback
     result = AuthUser.call(auth: auth_hash)
 
-    login_user(result.user)
+    set_user(result.user)
 
     post_auth = PostAuth.call(user: current_user, session: session)
 
@@ -26,33 +26,16 @@ class SessionsController < ApplicationController
 
   end
 
-  def auth_success
-    if params[:oauth_token].blank? or params[:oauth_secret].blank?
-      render json: {
-        msg: "Pass in oauth_token and oauth_secret for twitter"
-      }, status: :unprocessable_entity
+  def logout
+    if current_user.blank?
+      redirect_to "/"
       return
     end
-
-    twitter_auth = get_twitter_auth(params[:oauth_token], params[:oauth_secret])
-
-    result = SetupUser.call(twitter_auth: twitter_auth)
-
-    login_user(result.user)
-
-    post_auth = PostAuth.call(user: current_user, session: session)
-
-    render json: {
-      redirect_to: post_auth.redirect_to || "/"
-    }
-  end
-
-  def logout
-
   end
 
   def logout_complete
-    logout_user
+    clear_user
+    clear_subscriber
 
     flash[:message] = "You are now logged out."
     redirect_to "/"

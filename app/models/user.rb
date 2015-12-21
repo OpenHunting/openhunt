@@ -167,6 +167,13 @@ class User < ActiveRecord::Base
     })
   end
 
+  def set_subscriber(subscriber)
+    if subscriber.present?
+      subscriber.user = self
+      subscriber.save!
+    end
+  end
+
   def make_moderator(user)
     return unless moderator?
 

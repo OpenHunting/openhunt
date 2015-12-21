@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.4"
 
 # Core
 gem 'rails', '4.2.5'
@@ -36,6 +37,7 @@ gem 'react-rails', '~> 1.5.0'
 
 # Validation
 gem 'validate_url'
+gem 'validate_email'
 
 # Configuration
 gem 'config'

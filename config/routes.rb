@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"
 
+  get "/subscribe" => "list_subscribers#edit"
+  get "/subscribe/success" => "list_subscribers#success"
+  post "/subscribe" => "list_subscribers#update"
+  get "/subscribe/confirm/:code" => "list_subscribers#confirm"
+
   get "/audit" => "pages#audit_log"
   get "/audit/:id/edit" => "audit_logs#edit"
   patch "/audit/:id" => "audit_logs#update"
@@ -38,7 +43,6 @@ Rails.application.routes.draw do
   get "/login" => "sessions#auth_start", as: :auth_start
   get "/auth/:service/callback" => "sessions#auth_callback", as: :auth_callback
   get "/auth/failure" => "sessions#auth_failure"
-
 
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]

@@ -2,14 +2,14 @@
 #
 # Table name: feedbacks
 #
-#  id         :integer          not null, primary key
-#  body       :text             not null
-#  anonymous  :boolean          default(FALSE)
-#  project_id :integer          not null
-#  user_id    :integer
-#  session_id :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  body           :text             not null
+#  anonymous      :boolean          default(FALSE)
+#  project_id     :integer          not null
+#  user_id        :integer
+#  anon_user_hash :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Feedback < ActiveRecord::Base
