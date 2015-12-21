@@ -1,0 +1,28 @@
+@import "mixins"
+
+.email-subscribe
+  padding: 8px 0
+  margin-top: -5px
+  text-align: center
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 10000
+
+  // background: rgba(#5693E7, 0.2)
+  background: #5693E7
+  color: #fff
+  text-shadow: 0 0 3px rgba(#000, 0.5)
+
+  label, .form-control
+    display: inline-block
+    margin-top: 3px
+    margin-bottom: 3px
+  .form-control
+    border-color: #efefef
+    box-shadow: none
+    width: auto
+    margin-left: 10px
+  .subscribe-fields
+    white-space: nowrap

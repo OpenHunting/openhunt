@@ -1,7 +1,8 @@
 - body_css "bucket-scroll"
 
-- content_for :after_header do
-  = render "users/email_subscribe"
+- unless current_subscriber.present?
+  - content_for :after_header do
+    = render "users/email_subscribe"
 
 .buckets
   = render "projects/projects_for_bucket", time: current_now, projects: @projects

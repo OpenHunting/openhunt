@@ -126,7 +126,7 @@ class ProjectsController < ApplicationController
     @feedback.project_id = @project.id
     @feedback.body = params[:body].presence || ""
     @feedback.anonymous = !!params[:anonymous]
-    @feedback.session_id = current_session
+    @feedback.anon_user_hash = anon_user_hash
 
     if @feedback.save
       respond_to do |format|
@@ -171,7 +171,7 @@ class ProjectsController < ApplicationController
       }).first
     else
       @feedback = Feedback.where({
-        session_id: current_session,
+        anon_user_hash: anon_user_hash,
         project_id: @project.id
       }).first
     end

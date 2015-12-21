@@ -152,6 +152,10 @@ class User < ActiveRecord::Base
     })
   end
 
+  def set_subscriber
+    
+  end
+
   def make_moderator(user)
     return unless moderator?
 

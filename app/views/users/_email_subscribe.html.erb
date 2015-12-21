@@ -1,11 +1,17 @@
 <div class="email-subscribe">
   <div class="container">
-    <label for="email">
-      Get the best products, delivered to you every day.
-    </label>
-    <span class="subscribe-fields">
-      <input type="text" class="form-control" name="email" placeholder="your email..." />
-      <button type="submit" class="btn btn-default">Subscribe</button>
-    </span>
+    <form action="/subscribe">
+      <label for="email">
+        Get the best products, delivered to you every day.
+      </label>
+      <span class="subscribe-fields">
+        <input type="text" class="form-control" name="email" placeholder="your email..." />
+        <button type="submit" class="btn btn-default">Subscribe</button>
+      </span>
+    </form>
+
+    <div class="result-msg" style="display:none;">
+      Awesome, you are subscribed! Check your inbox for confirmation.
+    </div>
   </div>
 </div>

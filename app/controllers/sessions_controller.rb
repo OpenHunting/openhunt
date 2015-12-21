@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def auth_callback
     result = AuthUser.call(auth: auth_hash)
 
-    login_user(result.user)
+    set_user(result.user)
 
     post_auth = PostAuth.call(user: current_user, session: session)
 
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 
     result = SetupUser.call(twitter_auth: twitter_auth)
 
-    login_user(result.user)
+    set_user(result.user)
 
     post_auth = PostAuth.call(user: current_user, session: session)
 
@@ -52,7 +52,8 @@ class SessionsController < ApplicationController
   end
 
   def logout_complete
-    logout_user
+    clear_user
+    clear_subscriber
 
     flash[:message] = "You are now logged out."
     redirect_to "/"
