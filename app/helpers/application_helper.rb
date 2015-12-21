@@ -92,7 +92,7 @@ module ApplicationHelper
   end
 
   def date_human(past)
-    present = Datetime.now
+    present = DateTime.now
 
     distance_of_time_in_words(past, present) + ' ago.'
   end
