@@ -15,7 +15,8 @@
             - if @user.banned?
               %a.btn.btn-xs.btn-default(data-method="post" href="/unban/@#{@user.screen_name}") Unban User
             - else
-              %a.btn.btn-xs.btn-default(data-method="post" href="/ban/@#{@user.screen_name}") Ban User
+              - if current_user.id != @user.id
+                %a.btn.btn-xs.btn-default(data-method="post" href="/ban/@#{@user.screen_name}") Ban User
 
             - if @user.moderator?
               -# %a.btn.btn-xs.btn-default(data-method="post" href="/remove_moderator/@#{@user.screen_name}") Remove Moderator

@@ -140,6 +140,7 @@ class User < ActiveRecord::Base
 
   def ban_user(user)
     return unless moderator?
+    return if self.id == user.id
 
     user.banned = true
     user.save!
