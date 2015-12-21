@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"
 
+  get "/subscribe/lookup" => "list_subscribers#lookup"
+  get "/subscribe" => "list_subscribers#edit"
+  post "/subscribe" => "list_subscribers#update"
+  delete "/subscribe" => "list_subscribers#destroy"
+  get "/subscribe/confirm/:code" => "list_subscribers#confirm"
+
   get "/audit" => "pages#audit_log"
 
   get "/about" => "pages#about"
@@ -34,7 +40,6 @@ Rails.application.routes.draw do
   get "/login" => "sessions#auth_start", as: :auth_start
   get "/auth/:service/callback" => "sessions#auth_callback", as: :auth_callback
   get "/auth/failure" => "sessions#auth_failure"
-
 
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]

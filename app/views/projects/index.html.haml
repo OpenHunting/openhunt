@@ -2,7 +2,7 @@
 
 - unless current_subscriber.present?
   - content_for :after_header do
-    = render "users/email_subscribe"
+    = render "list_subscribers/subscribe_form"
 
 .buckets
   = render "projects/projects_for_bucket", time: current_now, projects: @projects

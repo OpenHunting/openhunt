@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_user, only: [:ban, :unban]
+  before_filter :require_user, only: [:ban, :unban, :make_moderator, :remove_moderator]
 
   def show
     load_user
