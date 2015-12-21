@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     get "/test_flash" => "pages#test_flash"
+    get "/devauth(/:screen_name)" => "pages#devauth"
   end
 
   root "projects#index"

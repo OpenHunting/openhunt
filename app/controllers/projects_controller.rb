@@ -135,7 +135,8 @@ class ProjectsController < ApplicationController
 
   def detail
     load_project
-    load_feedback
+    load_feedbacks
+    load_my_feedback
 
     if params[:partial]
       render partial: "projects/detail", project: @project, feedback: @feedback
@@ -147,13 +148,17 @@ class ProjectsController < ApplicationController
 
   def set_feedback
     load_project
-    load_feedback
+    load_my_feedback
 
     @feedback ||= Feedback.new
     @feedback.user_id = current_user.try(:id)
     @feedback.project_id = @project.id
     @feedback.body = params[:body].presence || ""
-    @feedback.anonymous = (params[:anonymous] == "true")
+    if current_user.present?
+      @feedback.anonymous = (params[:anonymous] == "true")
+    else
+      @feedback.anonymous = true
+    end
     @feedback.anon_user_hash = anon_user_hash
 
     if @feedback.save
@@ -191,17 +196,23 @@ class ProjectsController < ApplicationController
     @project = Project.where(slug: params[:slug]).first
   end
 
-  def load_feedback
+  def load_feedbacks
+    if current_user.try(:project_owner?, @project)
+      @feedbacks = @project.feedbacks.includes(:user).order(:created_at => :desc)
+    end
+  end
+
+  def load_my_feedback
     if current_user.present?
-      @feedback = Feedback.where({
+      @my_feedback = Feedback.where({
         user_id: current_user.id,
         project_id: @project.id
-      }).limit(10)
+      }).first
     else
-      @feedback = Feedback.where({
+      @my_feedback = Feedback.where({
         anon_user_hash: anon_user_hash,
         project_id: @project.id
-      }).limit(10)
+      }).first
     end
   end
 

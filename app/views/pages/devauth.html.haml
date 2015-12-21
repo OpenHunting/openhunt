@@ -1,0 +1,11 @@
+- skip_header
+
+.splash-box
+  %h2
+    Pick a user to login as:
+
+  %ul.list-unstyled
+    - @users.each do |user|
+      %li
+        %a(href="/devauth/#{user.screen_name}")
+          == @#{user.screen_name}

@@ -95,6 +95,11 @@ class User < ActiveRecord::Base
     return false
   end
 
+  # whether or not the user is a project owner
+  def project_owner?(project)
+    project.user_id == self.id
+  end
+
   def submitted_project_today?
     return true if banned?
 
