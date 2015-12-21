@@ -22,4 +22,5 @@ config/environments/*.local.yml
 .byebug_history
 config/settings/local.yml
 public/assets
+db/restore_from_heroku.sh
 Termfile

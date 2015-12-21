@@ -1,9 +1,0 @@
-#feedback-panel{class: ("loading" unless @show_feedback_panel)}
-
-  .project-loading
-    Loading...
-
-  - if @show_feedback_panel
-    = render partial: "projects/feedback", project: @project, feedback: @feedback
-  - else
-    .project-feedback

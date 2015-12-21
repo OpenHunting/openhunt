@@ -1,14 +1,11 @@
 //= require components
+//= require pages
 //= require_self
 
-@import "_bootstrap-override-variables.scss"
-@import "bootstrap/assets/stylesheets/_bootstrap.scss"
-
-@import "bourbon"
-@import "responsive"
+@import "mixins"
 
 body
-  padding-top: 55px
+  padding-top: 50px
   padding-bottom: 30px
   &.about-screen-opened
     overflow: hidden
@@ -28,10 +25,10 @@ body
       float: left
     &:hover
       background: #508FE6
-      color: #fff
+      // color: #fff
     &.active
       background: #333
-      color: #fff
+      // color: #fff
   .navbar-header
     min-width: 220px
     white-space: nowrap
@@ -79,6 +76,7 @@ body
 
 .project-list
   @extend .container
+  padding-top: 5px
   //border: 1px solid #ccc
   padding-bottom: 20px
 
@@ -118,16 +116,16 @@ body
     cursor: pointer
 
     &.selected
-      background-color: #eee !important
+      background-color: #fafafa !important
       cursor: default
       .item-details .description
-        color: #aaa
+        color: #999
     &:hover
       // border-radius: 8px
       // background-color: rgba(#eee, 0.5)
       background-color: rgba(#508FE6, 0.05)
       .item-details .description
-        color: #aaa
+        color: #999
       .item-comments .posted-by
         opacity: 1.0
         +transition(opacity, 0.5s)
@@ -182,7 +180,7 @@ body
         overflow: hidden
         text-overflow: ellipsis
       .description
-        color: #ccc
+        color: #aaa
         font-size: 1.2rem
         white-space: nowrap
         overflow: hidden
@@ -359,118 +357,6 @@ body
   textarea:focus, input:focus, input[type]:focus
     border-bottom: 1px solid rgb(80, 143, 230)
 
-
-
-.user-page
-  padding-top: 20px
-
-.user-profile
-  margin-bottom: 30px
-  margin-top: 15px
-  padding-left: 80px
-  position: relative
-  font-size: 18px
-
-  .user-avatar
-    position: absolute
-    left: 0
-    top: 0
-    width: 60px
-    height: 60px
-    border-radius: 60px
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: center center
-    border: 1px solid #ddd
-  .user-name
-    font-size: 24px
-    margin-bottom: 0px
-
-  .user-location
-    color: #999
-
-  .user-actions
-    margin-top: 5px
-
-#feedback-panel
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  background: rgba(#508FE6, 0.96)
-  z-index: 1000
-  padding-top: 52px
-  width: 400px
-  box-shadow: 0 0 5px rgba(#000, 0.8)
-  color: #fff
-  font-size: 12px
-  display: none
-
-  +xs
-    left: 0
-    width: auto
-  a
-    color: #fff
-  strong
-    color: yellow
-    font-weight: normal
-  .btn-default
-    color: #333
-    text-shadow: none
-    padding: 3px 8px
-
-  .project-info
-    font-size: 14px
-    text-shadow: 0 0 3px rgba(#000, 0.7)
-
-  .project-feedback
-    padding: 10px 30px
-    position: relative
-    .close-feedback-button
-      position: absolute
-      top: 5px
-      right: 5px
-      z-index: 100000
-      padding: 10px
-    h3
-      margin-bottom: 5px
-    hr
-      border-top: 1px solid rgba(#fff, 0.5)
-
-  .feedback-form
-    textarea
-      min-height: 100px
-      margin-bottom: 10px
-    .actions
-      text-align: right
-
-    label
-      text-shadow: none
-      font-weight: 300
-    .btn-primary
-      border: 1px solid #337AB7
-      color: #337AB7
-      background: #fff
-      text-transform: uppercase
-      text-shadow: none
-      &:hover
-        background: #E6E6E6
-        color: #000
-
-  .project-loading
-    font-size: 30px
-    padding: 30px 50px
-    text-align: center
-    color: rgba(#fff, 0.5)
-    display: none
-
-  &.loading
-    .project-loading
-      display: block
-    .project-feedback
-      display: none
-
-
 .audit-trail
   li
     margin-bottom: 15px
@@ -478,116 +364,3 @@ body
     em
       font-style: normal
       color: #999
-
-
-.content-page
-  h2
-    font-size: 18px
-  p
-    font-size: 14px
-    color: #aaa
-
-  .about-people
-    margin-top: 30px
-  .about-person
-    margin-left: 10px
-    margin-right: 10px
-    border-radius: 10px
-    text-align: center
-    margin-bottom: 20px
-    +xs
-      border-bottom: 1px solid #efefef
-      padding-bottom: 20px
-
-    h3
-      margin-top: 0
-      font-size: 18px
-      margin-bottom: 3px
-    .about-link
-      display: block
-      margin-bottom: 5px
-
-    .avatar
-      width: 100px
-      height: 100px
-      background-size: cover
-      background-position: center
-      background-repeat: no-repeat
-      display: inline-block
-      border-radius: 100px
-      margin-bottom: 5px
-
-    ul
-      margin-bottom: 0
-      font-size: 12px
-      li
-        background: #fafafa
-        border-radius: 5px
-        padding: 5px
-        max-width: 300px
-        margin: auto
-        margin-bottom: 5px
-
-    &.left
-      margin-left: 0
-    &.right
-      margin-right: 0
-
-  .faq-item
-    max-width: 750px
-    h3
-      font-size: 16px
-    p
-      line-height: 1.6
-
-  .content-nav
-    margin: auto
-    margin-top: 30px
-    max-width: 850px
-    // &.wide
-    //   max-width: 850px
-
-  .content-inner
-    max-width: 850px
-    margin: auto
-    padding: 30px
-    border: 1px solid #aaa
-    box-shadow: 0 1px 2px rgba(#000, 0.3)
-    border-radius: 3px
-    margin-top: 10px
-    // &.wide
-    //   max-width: 850px
-    h2
-      margin-top: -5px
-      font-size: 20px
-
-
-  .feature
-    margin-left: -30px
-    margin-right: -30px
-    padding-left: 30px
-    padding-right: 30px
-    background: #F7FAFE
-    margin-bottom: 15px
-    padding-top: 15px
-    padding-bottom: 15px
-    margin-top: 15px
-    h3
-      margin-top: 0
-      font-size: 16px
-      a
-        color: #333
-    p
-      color: #888
-    p:last-of-type
-      margin-bottom: 0
-
-  .governance, .contributors
-    h3
-      font-size: 16px
-
-    ul
-      padding-top: 10px
-      padding-left: 15px
-      li
-        margin-bottom: 10px

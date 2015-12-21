@@ -10,6 +10,8 @@
       %span -
       = link_to moderator.name, "/@#{moderator.screen_name}"
       = audit_description(log)
+      - if log.note
+        %em= log.note
 
 - if @audit_logs.blank?
   %p No actions have been taken yet by moderators.
