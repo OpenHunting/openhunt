@@ -7,9 +7,14 @@ class ListSubscribersController < ApplicationController
   def update
     @list_subscriber ||= ListSubscriber.new(email: params[:email])
     @list_subscriber.email = params[:email]
+    @list_subscriber.subscribed = (params[:subscribed] == "true")
     if @list_subscriber.save
       set_subscriber(@list_subscriber)
-      redirect_to "/subscribe/success"
+      if params[:redirect]
+        redirect_to params[:redirect]
+      else
+        redirect_to "/subscribe/success"
+      end
     else
       render :edit
     end
@@ -19,10 +24,6 @@ class ListSubscribersController < ApplicationController
     if current_subscriber.blank?
       redirect_to "/subscribe"
     end
-  end
-
-  def destroy
-    # TODO: unsubscribe
   end
 
   def confirm

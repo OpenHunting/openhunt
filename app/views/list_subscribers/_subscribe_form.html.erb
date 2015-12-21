@@ -1,11 +1,12 @@
 <div class="list-subscriber-form">
   <div class="container">
     <%= form_tag "/subscribe", method: :post do %>
-      <label for="email">
+      <label for="subscribe_email">
         Get the best products, delivered to you every day.
       </label>
+      <%= hidden_field_tag :subscribed, "true" %>
       <span class="subscribe-fields">
-        <input type="email" class="form-control" name="email" placeholder="your email..." />
+        <input type="email" class="form-control" id="subscribe_email" name="email" placeholder="your email..." />
         <button type="submit" class="btn btn-default">Subscribe</button>
       </span>
     <% end %>

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   get "/subscribe" => "list_subscribers#edit"
   get "/subscribe/success" => "list_subscribers#success"
   post "/subscribe" => "list_subscribers#update"
-  delete "/subscribe" => "list_subscribers#destroy"
   get "/subscribe/confirm/:code" => "list_subscribers#confirm"
 
   get "/audit" => "pages#audit_log"
