@@ -1,0 +1,10 @@
+- if notice.present?
+  .flash-message.flash-notice
+    %p
+      = notice
+      = link_to "Hide this message", "#", :class => "flash-hide-btn"
+- elsif alert.present?
+  .flash-message.flash-alert
+    %p
+      = alert
+      = link_to "Hide this message", "#", :class => "flash-hide-btn"
