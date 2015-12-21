@@ -28,10 +28,10 @@ body
       float: left
     &:hover
       background: #508FE6
-      color: #fff
+      // color: #fff
     &.active
       background: #333
-      color: #fff
+      // color: #fff
   .navbar-header
     min-width: 220px
     white-space: nowrap
@@ -118,16 +118,16 @@ body
     cursor: pointer
 
     &.selected
-      background-color: #eee !important
+      background-color: #fafafa !important
       cursor: default
       .item-details .description
-        color: #aaa
+        color: #999
     &:hover
       // border-radius: 8px
       // background-color: rgba(#eee, 0.5)
       background-color: rgba(#508FE6, 0.05)
       .item-details .description
-        color: #aaa
+        color: #999
       .item-comments .posted-by
         opacity: 1.0
         +transition(opacity, 0.5s)
@@ -182,7 +182,7 @@ body
         overflow: hidden
         text-overflow: ellipsis
       .description
-        color: #ccc
+        color: #aaa
         font-size: 1.2rem
         white-space: nowrap
         overflow: hidden
@@ -397,22 +397,23 @@ body
   top: 0
   right: 0
   bottom: 0
-  background: rgba(#508FE6, 0.96)
+  background: #fff
   z-index: 1000
   padding-top: 52px
   width: 400px
-  box-shadow: 0 0 5px rgba(#000, 0.8)
-  color: #fff
+  box-shadow: 0 0 5px rgba(#000, 0.4)
+  // color: #fff
   font-size: 12px
   display: none
+  color: #777
 
   +xs
     left: 0
     width: auto
-  a
-    color: #fff
+  // a
+  //   color: #fff
   strong
-    color: yellow
+    color: #000
     font-weight: normal
   .btn-default
     color: #333
@@ -421,26 +422,25 @@ body
 
   .project-info
     font-size: 14px
-    text-shadow: 0 0 3px rgba(#000, 0.7)
 
   .project-feedback
-    padding: 10px 30px
+    padding: 0px 20px
     position: relative
     .close-feedback-button
       position: absolute
-      top: 5px
-      right: 5px
+      top: -10px
+      right: 3px
       z-index: 100000
       padding: 10px
     h3
       margin-bottom: 5px
-    hr
-      border-top: 1px solid rgba(#fff, 0.5)
 
   .feedback-form
     textarea
       min-height: 100px
       margin-bottom: 10px
+      border: 1px solid #ccc
+      box-shadow: none
     .actions
       text-align: right
 
@@ -591,3 +591,30 @@ body
       padding-left: 15px
       li
         margin-bottom: 10px
+
+
+.email-subscribe
+  padding: 8px 0
+  margin-top: -5px
+  text-align: center
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+
+  // background: rgba(#5693E7, 0.2)
+  background: #5693E7
+  label
+    color: #fff
+    text-shadow: 0 0 3px rgba(#000, 0.5)
+  label, .form-control
+    display: inline-block
+    margin-top: 3px
+    margin-bottom: 3px
+  .form-control
+    border-color: #efefef
+    box-shadow: none
+    width: auto
+    margin-left: 10px
+  .subscribe-fields
+    white-space: nowrap
