@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"
 
-  get "/subscribe/lookup" => "list_subscribers#lookup"
   get "/subscribe" => "list_subscribers#edit"
+  get "/subscribe/success" => "list_subscribers#success"
   post "/subscribe" => "list_subscribers#update"
   delete "/subscribe" => "list_subscribers#destroy"
   get "/subscribe/confirm/:code" => "list_subscribers#confirm"

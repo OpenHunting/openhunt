@@ -36,6 +36,7 @@ gem 'react-rails', '~> 1.5.0'
 
 # Validation
 gem 'validate_url'
+gem 'validate_email'
 
 # Configuration
 gem 'config'

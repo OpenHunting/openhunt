@@ -153,8 +153,10 @@ class User < ActiveRecord::Base
   end
 
   def set_subscriber(subscriber)
-    self.list_subscriber = subscriber
-    self.save!
+    if subscriber.present?
+      subscriber.user = self
+      subscriber.save!
+    end
   end
 
   def make_moderator(user)

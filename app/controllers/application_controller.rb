@@ -23,11 +23,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_subscriber
   def current_subscriber
     @__current_subcriber ||= begin
-      if current_user.present?
-        current_user.list_subscriber
-      else
-        session[:subscriber_id].present? ? ListSubscriber.where(id: session[:subscriber_id]).first : nil
-      end
+      current_user.try(:list_subscriber) || (session[:subscriber_id].present? ? ListSubscriber.where(id: session[:subscriber_id]).first : nil)
     end
   end
 
@@ -57,7 +53,7 @@ class ApplicationController < ActionController::Base
 
   def associate_subscriber
     if current_user.present? and current_subscriber.present?
-      user.set_subscriber(current_subscriber)
+      current_user.set_subscriber(current_subscriber)
     end
   end
 

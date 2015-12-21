@@ -1,16 +1,24 @@
 class ListSubscribersController < ApplicationController
   before_filter :load_list_subscriber
 
-  def lookup
-    # TODO: lookup by email
-  end
-
   def edit
-    # TODO: show edit form
   end
 
   def update
-    # TODO: edit email
+    @list_subscriber ||= ListSubscriber.new(email: params[:email])
+    @list_subscriber.email = params[:email]
+    if @list_subscriber.save
+      set_subscriber(@list_subscriber)
+      redirect_to "/subscribe/success"
+    else
+      render :edit
+    end
+  end
+
+  def success
+    if current_subscriber.blank?
+      redirect_to "/subscribe"
+    end
   end
 
   def destroy
@@ -25,5 +33,6 @@ class ListSubscribersController < ApplicationController
   def load_list_subscriber
     @list_subscriber = current_subscriber
   end
+
 
 end
