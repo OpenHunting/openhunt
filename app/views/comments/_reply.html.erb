@@ -1,0 +1,33 @@
+<% comments.each do |comment| %>
+  <div class="comments-show">
+    <div class="comment">
+      <div class="user-avatar" style="background-image:url('<%= comment.user.profile_image_url%>');"></div>
+      <div class="comment-detail">
+        <div class="comment-author">
+          <%= comment.user.name %>
+        </div>
+        <div class="comment-body">
+          <%= comment.body %>
+        </div>
+        <div class="comment-nav">
+          <div class="comment-reply">reply</div>
+          <div class="comment-timestamp"></div>
+        </div>
+        <div class="reply-form">
+          <%= form_for @new_comment do |f| %>
+            <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+            <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+            <%= f.hidden_field :comment_id, value: comment.id %>
+            <div class="field form-group">
+              <%= f.text_area :body, class: 'form-control' %>
+            </div>
+            <div class="field form-group">
+              <%= submit_tag "Post Reply", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= render partial: "comments/reply", locals: {comments: comment.children} %>
+  </div>
+<% end %>

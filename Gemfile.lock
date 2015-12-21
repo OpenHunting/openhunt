@@ -42,11 +42,17 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_commentable_with_threading (2.0.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
     addressable (2.3.8)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.3)
+    awesome_nested_set (3.0.2)
+      activerecord (>= 4.0.0, < 5)
     babel-source (5.8.34)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -213,6 +219,7 @@ GEM
     rails-assets-es5-shim (4.3.1)
     rails-assets-jquery (2.1.4)
     rails-assets-lodash (3.10.1)
+    rails-assets-moment (2.10.6)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -334,6 +341,7 @@ PLATFORMS
 DEPENDENCIES
   active_attr
   active_model_serializers (~> 0.9.3)
+  acts_as_commentable_with_threading
   annotate
   bourbon (= 3.2.4)
   byebug
@@ -360,6 +368,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-es5-shim!
   rails-assets-lodash!
+  rails-assets-moment!
   rails_12factor
   react-rails (~> 1.5.0)
   rollbar (~> 2.4.0)

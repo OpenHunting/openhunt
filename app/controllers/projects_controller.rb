@@ -109,6 +109,8 @@ class ProjectsController < ApplicationController
     load_project
     load_feedback
 
+    @new_comment = Comment.build_from(@project, current_user.id, "" )
+
     if params[:partial]
       render partial: "projects/feedback", project: @project, feedback: @feedback
     else

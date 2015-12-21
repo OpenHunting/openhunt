@@ -1,0 +1,18 @@
+<div class="comments-header">
+  <h4>
+    <%= commentable.comment_threads.count == 0 ? "no" : commentable.comment_threads.count %> comments
+  </h4>
+</div>
+
+<%= render partial: "comments/form", locals: {new_comment: new_comment} %>
+
+<div class="comments-container">
+  <%= render partial: "comments/reply", locals: {comments: commentable.root_comments} %>
+</div>
+<script>
+  $(document).ready(function() {
+    $('.comment-reply').on('click', function(e) {
+      $(e.target).closest('.comment').find('.reply-form').toggle();
+    });
+  })
+</script>

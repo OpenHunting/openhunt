@@ -20,6 +20,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-lodash'
   gem 'rails-assets-es5-shim'
+  gem 'rails-assets-moment'
 end
 
 gem 'omniauth'
@@ -30,6 +31,9 @@ gem 'twitter', '5.11.0'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers', '~> 0.9.3'
+
+# Comments
+gem 'acts_as_commentable_with_threading'
 
 # React
 gem 'react-rails', '~> 1.5.0'

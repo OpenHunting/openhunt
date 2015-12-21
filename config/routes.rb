@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post "/vote/:slug" => "projects#vote"
   delete "/vote/:slug" => "projects#unvote"
 
+  post "/comments" => "comments#create"
+
   get "/audit" => "pages#audit_log"
 
   get "/about" => "pages#about"
