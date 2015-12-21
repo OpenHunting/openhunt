@@ -1,20 +1,24 @@
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %a.navbar-brand{href: "/"} Open Hunt
-      %a.navbar-about.toggle-about{href: "/about", class: ("active" if current_page?(action: "about", controller: "pages"))}
-        -# What… Why?
+      %a.navbar-brand{href: '/'} Open Hunt
+      %a.navbar-about.toggle-about{href: '/about', class: ('active' if current_page?(action: 'about', controller: 'pages'))}
         About
     %ul.nav.navbar-nav.navbar-right
-      -# %li{class: ("active" if current_page?(action: "about", controller: "pages"))}
-      -#   %a.navbar-about.toggle-about{href: "/about" } About
-      %li{class: ("active" if current_page?(action: "new", controller: "projects"))}
-        %a{:href => "/new"} + Post
+      %li{class: ('active' if current_page?(action: 'new', controller: 'projects'))}
+        %a{:href => '/new'} + Post
       - if current_user.present?
-        %li.profile-nav(title="View Your Profile")
-          -# %a{"data-method" => "POST", :href => "/logout"} Logout
-          %a(href="/@#{current_user.screen_name}")
+        %li.profile-nav
+          %a{:class => 'dropdown-toggle', :href => '#', 'data-toggle' => 'dropdown'}
             .user-avatar(style="background-image:url('#{current_user.profile_image_url}');")
+            %span{:class => 'caret'}
+          %ul{:class => 'dropdown-menu'}
+            %li{:class => 'dropdown-header'}
+              = current_user.screen_name
+            %li{class: ('active' if current_page?(action: 'show', controller: 'users', screen_name: current_user.screen_name))}
+              %a{:href => "/@#{current_user.screen_name}"} Profile
+            %li
+              %a{:href => '/logout', 'data-method' => 'POST'} Logout
       - else
         %li
-          %a{:href => "/login"} Login
+          %a{:href => '/login'} Login
