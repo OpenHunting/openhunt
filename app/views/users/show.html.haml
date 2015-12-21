@@ -22,19 +22,19 @@
             - else
               %a.btn.btn-xs.btn-default(data-method="post" href="/make_moderator/@#{@user.screen_name}") Add Moderator
 
-            - if current_user == @user
-              .user-form
-                = form_tag "/subscribe?redirect=#{request.path}" do
-                  .form-group
-                    %label(for="email") Email Address
-                    = email_field_tag :email, current_user.list_subscriber.try(:email), class: "form-control"
-                  .form-group.pull-left
-                    %label.checkbox-wrapper
-                      = check_box_tag :subscribed, "true", current_user.list_subscriber.try(:subscribed?)
-                      Subscribe to Daily Newsletter
+        - if current_user == @user
+          .user-form
+            = form_tag "/subscribe?redirect_url=#{request.path}" do
+              .form-group
+                %label(for="email") Email Address
+                = email_field_tag :email, current_user.list_subscriber.try(:email), class: "form-control"
+              .form-group.pull-left
+                %label.checkbox-wrapper
+                  = check_box_tag :subscribed, "true", current_user.list_subscriber.try(:subscribed?)
+                  Subscribe to Daily Newsletter
 
-                  .pull-right
-                    %button.btn.btn-default(type="submit") Save
+              .pull-right
+                %button.btn.btn-default(type="submit") Save
 
     .col-sm-6
       .project-list.row

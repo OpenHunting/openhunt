@@ -11,9 +11,9 @@ class ListSubscribersController < ApplicationController
     if @list_subscriber.save
       set_subscriber(@list_subscriber)
 
-      if params[:redirect]
+      if params[:redirect_url]
         flash[:notice] = "Subscription settings saved."
-        redirect_to params[:redirect]
+        redirect_to params[:redirect_url]
       else
         redirect_to "/subscribe/success"
       end
