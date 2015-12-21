@@ -10,6 +10,7 @@
 #  updated_at   :datetime         not null
 #  confirmed    :boolean          default(FALSE)
 #  confirm_code :string
+#  format       :string
 #
 
 class ListSubscriber < ActiveRecord::Base

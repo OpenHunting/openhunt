@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221081710) do
+ActiveRecord::Schema.define(version: 20151221232302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "audit_logs", force: :cascade do |t|
     t.integer  "moderator_id"
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151221081710) do
     t.datetime "updated_at",                   null: false
     t.boolean  "confirmed",    default: false
     t.string   "confirm_code"
+    t.string   "format"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 20151221081710) do
   add_index "projects", ["bucket"], name: "index_projects_on_bucket", using: :btree
   add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "role_id_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "screen_name",                       null: false
     t.string   "name"
@@ -77,6 +84,7 @@ ActiveRecord::Schema.define(version: 20151221081710) do
     t.boolean  "banned",            default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "role_id"
   end
 
   add_index "users", ["screen_name"], name: "index_users_on_screen_name", using: :btree

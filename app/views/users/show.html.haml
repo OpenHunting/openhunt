@@ -27,6 +27,9 @@
               .form-group
                 %label(for="email") Email Address
                 = email_field_tag :email, current_user.list_subscriber.try(:email), class: "form-control"
+              .form-group
+                %label(for="format") Format
+                = select_tag :format, '<option value="html">HTML</option><option value="text">Text</option>'.html_safe, class: "form-control"
               .form-group.pull-left
                 %label.checkbox-wrapper
                   = check_box_tag :subscribed, "true", current_user.list_subscriber.try(:subscribed?)
