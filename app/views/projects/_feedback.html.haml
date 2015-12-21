@@ -39,7 +39,6 @@
     .feedback-listing
       - @feedback.each do |feedback|
         - user = feedback.user
-        - created_at_friendly = distance_of_time_in_words(feedback.created_at.to_datetime, DateTime.now) + ' ago.'
         .feedback-single.row
           .feedback-header.col-md-12
             .feedback-body
@@ -47,7 +46,7 @@
           .feedback-footer.col-md-12
             .row
               .feedback-created.col-md-8
-                = created_at_friendly
+                = date_human(feedback.created_at)
               .feedback-user.col-md-4
                 %a.user-avatar(href="/@#{user.screen_name}")
                   %img{src: user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}"}

@@ -91,6 +91,12 @@ module ApplicationHelper
     end
   end
 
+  def date_human(past)
+    present = Datetime.now
+
+    distance_of_time_in_words(past, present) + ' ago.'
+  end
+
   def audit_description(log)
     result = case log.item_type
     when "make_moderator"
