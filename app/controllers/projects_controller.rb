@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote, :hide, :unhide]
+  before_filter :require_user, only: [:new, :create, :validate, :vote_confirm, :vote, :unvote, :hide, :unhide, :edit, :update]
   before_filter :check_existing_project, only: [:new, :create]
 
   def index
@@ -81,6 +81,7 @@ class ProjectsController < ApplicationController
 
   def create
     form = ProjectForm.new(params)
+
     if form.valid?
       project = Project.new(form.attributes)
       project.user = current_user
@@ -93,24 +94,51 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    load_project
+    return unless check_permissions
+  end
+
+  # PATCH /update/:slug, data: { ... }
+  def update
+    load_project
+    return unless check_permissions
+
+    result = current_user.update_project(@project, project_params)
+
+    if result.success?
+      url = "/detail/#{@project.slug}"
+      if result.audit_log.present?
+        redirect_to "/audit/#{result.audit_log.id}/edit?redirect_url=#{url}"
+      else
+        redirect_to url
+      end
+    else
+      @errors = result.errors
+      render :edit
+    end
+  end
+
   def hide
     load_project
-    current_user.hide_project(@project)
-    redirect_to "/feedback/#{@project.slug}"
+    result = current_user.hide_project(@project)
+    redirect_url = "/detail/#{@project.slug}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
   def unhide
     load_project
-    current_user.unhide_project(@project)
-    redirect_to "/feedback/#{@project.slug}"
+    result = current_user.unhide_project(@project)
+    redirect_url = "/detail/#{@project.slug}"
+    redirect_to "/audit/#{result.id}/edit?redirect_url=#{redirect_url}"
   end
 
-  def feedback
+  def detail
     load_project
     load_feedback
 
     if params[:partial]
-      render partial: "projects/feedback", project: @project, feedback: @feedback
+      render partial: "projects/detail", project: @project, feedback: @feedback
     else
       flash.keep
       redirect_to "/#open=#{@project.slug}"
@@ -125,14 +153,14 @@ class ProjectsController < ApplicationController
     @feedback.user_id = current_user.try(:id)
     @feedback.project_id = @project.id
     @feedback.body = params[:body].presence || ""
-    @feedback.anonymous = !!params[:anonymous]
-    @feedback.session_id = current_session
+    @feedback.anonymous = (params[:anonymous] == "true")
+    @feedback.anon_user_hash = anon_user_hash
 
     if @feedback.save
       respond_to do |format|
         format.html do
           flash[:notice] = "Feedback was saved. Thanks!"
-          redirect_to "/feedback/#{@project.id}"
+          redirect_to "/detail/#{@project.id}"
         end
         format.json do
           render json: @feedback, root: "feedback"
@@ -142,7 +170,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         format.html do
           flash[:alert] = "Unable to save feedback."
-          redirect_to "/feedback/#{@project.id}"
+          redirect_to "/detail/#{@project.id}"
         end
         format.json do
           render json: {
@@ -171,7 +199,7 @@ class ProjectsController < ApplicationController
       }).limit(10)
     else
       @feedback = Feedback.where({
-        session_id: current_session,
+        anon_user_hash: anon_user_hash,
         project_id: @project.id
       }).limit(10)
     end
@@ -184,6 +212,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def check_permissions
+    if current_user.can_update?(@project)
+      return true
+    else
+      redirect_to "/detail/#{@project.slug}"
+      return false
+    end
+  end
+
   def check_existing_project
     if !moderator? and current_user.submitted_project_today?
       render :already_submitted
@@ -191,5 +228,9 @@ class ProjectsController < ApplicationController
     else
       return true
     end
+  end
+
+  def project_params
+    params.permit(:name, :url, :description)
   end
 end

@@ -81,11 +81,29 @@ class User < ActiveRecord::Base
     Project.where(id: project_ids).includes(:user)
   end
 
+  def is_submitter?(project)
+    projects.where(id: project.id).count > 0
+  end
+
+  def can_update?(project)
+    return true if moderator?
+
+    if is_submitter?(project) and project.created_at >= Settings.project_edit_window.minutes.ago
+      return true
+    end
+
+    return false
+  end
+
   def submitted_project_today?
     return true if banned?
 
     bucket = Project.bucket(Time.find_zone!(Settings.base_timezone).now)
     Project.where(user_id: self.id, bucket: bucket).count > 0
+  end
+
+  def update_project(project, data)
+    UpdateProject.call(project: project, params: data, user: self)
   end
 
   def hide_project(project)
@@ -100,7 +118,7 @@ class User < ActiveRecord::Base
       target_id: project.id,
       target_type: "Project",
       target_display: project.name,
-      target_url: "/feedback/#{project.slug}"
+      target_url: "/detail/#{project.slug}"
     })
   end
 
@@ -116,12 +134,13 @@ class User < ActiveRecord::Base
       target_id: project.id,
       target_type: "Project",
       target_display: project.name,
-      target_url: "/feedback/#{project.slug}"
+      target_url: "/detail/#{project.slug}"
     })
   end
 
   def ban_user(user)
     return unless moderator?
+    return if self.id == user.id
 
     user.banned = true
     user.save!
@@ -150,6 +169,13 @@ class User < ActiveRecord::Base
       target_display: user.screen_name,
       target_url: "/@#{user.screen_name}"
     })
+  end
+
+  def set_subscriber(subscriber)
+    if subscriber.present?
+      subscriber.user = self
+      subscriber.save!
+    end
   end
 
   def make_moderator(user)

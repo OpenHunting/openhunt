@@ -20,16 +20,45 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def login_user(user)
-    session[:user_id] = user.try(:id)
+  helper_method :current_subscriber
+  def current_subscriber
+    @__current_subcriber ||= begin
+      current_user.try(:list_subscriber) || (session[:subscriber_id].present? ? ListSubscriber.where(id: session[:subscriber_id]).first : nil)
+    end
   end
 
-  def logout_user
+  def set_subscriber(list_subscriber)
+    session[:subscriber_id] = list_subscriber.try(:id)
+
+    associate_subscriber
+
+    list_subscriber
+  end
+
+  def clear_subscriber
+    session[:subscriber_id] = nil
+  end
+
+  def set_user(user)
+    session[:user_id] = user.try(:id)
+
+    associate_subscriber
+
+    current_user
+  end
+
+  def clear_user
     session[:user_id] = nil
   end
 
-  helper_method :current_session
-  def current_session
+  def associate_subscriber
+    if current_user.present? and current_subscriber.present?
+      current_user.set_subscriber(current_subscriber)
+    end
+  end
+
+  helper_method :anon_user_hash
+  def anon_user_hash
     session[:session_id] ||= begin
       new_session_id = SecureRandom.base64(15).tr('+/=lIO0-', 'pqrsxyzb')
       session[:session_id] = new_session_id
