@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
 
   # whether or not the user is a project owner
   def project_owner?(project)
+    # TODO: this is not necessarily the project owner, just the person who posted it
     project.user_id == self.id
   end
 
