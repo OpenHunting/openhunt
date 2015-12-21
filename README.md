@@ -5,7 +5,7 @@ Open Hunt is a brand new community for fans and builders of early stage technolo
 
 ## Dependencies
 
-* Ruby on Rails (2.1.4) [install](http://railsapps.github.io/installrubyonrails-mac.html)
+* Ruby on Rails (Rails 4.2.5 on Ruby 2.1.4) [install](http://railsapps.github.io/installrubyonrails-mac.html)
 
 * PostgreSQL [install on mac](http://postgresapp.com/) | [install on linux](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
