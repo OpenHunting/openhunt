@@ -10,30 +10,30 @@
       $(".project-listing").removeClass("selected");
       $(`.project-listing[data-project-slug='${slug}']`).addClass("selected");
 
-      var feedbackPanel = $("#feedback-panel");
-      feedbackPanel.fadeIn();
+      var detailPanel = $("#detail-panel");
+      detailPanel.fadeIn();
 
       // return if its already loaded
-      if(feedbackPanel.data("current-project-slug") === slug) {
+      if(detailPanel.data("current-project-slug") === slug) {
         return;
       }
-      feedbackPanel.data("current-project-slug", slug);
+      detailPanel.data("current-project-slug", slug);
 
-      feedbackPanel.addClass("loading");
+      detailPanel.addClass("loading");
       console.log("LOADING FROM AJAX...");
       $.ajax({
         type: "GET",
-        url: `/feedback/${slug}`,
+        url: `/detail/${slug}`,
         data: {partial: true},
         success: (html) => {
-          feedbackPanel.find(".project-feedback").replaceWith(html);
+          detailPanel.find(".project-feedback").replaceWith(html);
         },
         error: (xhr) => {
           console.error("Unable to load feedback:", slug, xhr)
           closeFeedback();
         },
         complete: (json) => {
-          feedbackPanel.removeClass("loading");
+          detailPanel.removeClass("loading");
         }
       });
     };
@@ -41,7 +41,7 @@
     var closeFeedback = () => {
       history.replaceState("", document.title, "/");
 
-      $("#feedback-panel").fadeOut();
+      $("#detail-panel").fadeOut();
       $(".project-listing").removeClass("selected");
     };
 
@@ -67,16 +67,16 @@
 
     $(document).on("click touchstart", ".close-feedback", (e) => {
       e.preventDefault();
-      var feedbackPanel = $("#feedback-panel");
-      var slug = feedbackPanel.data("current-project-slug");
+      var detailPanel = $("#detail-panel");
+      var slug = detailPanel.data("current-project-slug");
 
       $.ajax({
         type: "POST",
         url: `/feedback/${slug}`,
         dataType: "json",
         data: {
-          body: feedbackPanel.find("textarea[name=body]").val(),
-          anonymous: feedbackPanel.find("input[name=anonymous]").is(":checked")
+          body: detailPanel.find("textarea[name=body]").val(),
+          anonymous: detailPanel.find("input[name=anonymous]").is(":checked")
         },
         success: (json) => {
 

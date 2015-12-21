@@ -1,0 +1,113 @@
+@import "mixins"
+
+.content-page
+  h2
+    font-size: 18px
+  p
+    font-size: 14px
+    color: #aaa
+
+  .about-people
+    margin-top: 30px
+  .about-person
+    margin-left: 10px
+    margin-right: 10px
+    border-radius: 10px
+    text-align: center
+    margin-bottom: 20px
+    +xs
+      border-bottom: 1px solid #efefef
+      padding-bottom: 20px
+
+    h3
+      margin-top: 0
+      font-size: 18px
+      margin-bottom: 3px
+    .about-link
+      display: block
+      margin-bottom: 5px
+
+    .avatar
+      width: 100px
+      height: 100px
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+      display: inline-block
+      border-radius: 100px
+      margin-bottom: 5px
+
+    ul
+      margin-bottom: 0
+      font-size: 12px
+      li
+        background: #fafafa
+        border-radius: 5px
+        padding: 5px
+        max-width: 300px
+        margin: auto
+        margin-bottom: 5px
+
+    &.left
+      margin-left: 0
+    &.right
+      margin-right: 0
+
+  .faq-item
+    max-width: 750px
+    h3
+      font-size: 16px
+    p
+      line-height: 1.6
+
+  .content-nav
+    margin: auto
+    margin-top: 30px
+    max-width: 850px
+    // &.wide
+    //   max-width: 850px
+
+  .content-inner
+    max-width: 850px
+    margin: auto
+    padding: 30px
+    border: 1px solid #aaa
+    box-shadow: 0 1px 2px rgba(#000, 0.3)
+    border-radius: 3px
+    margin-top: 10px
+    // &.wide
+    //   max-width: 850px
+    h2
+      margin-top: -5px
+      font-size: 20px
+
+
+  .feature
+    margin-left: -30px
+    margin-right: -30px
+    padding-left: 30px
+    padding-right: 30px
+    background: #F7FAFE
+    margin-bottom: 15px
+    padding-top: 15px
+    padding-bottom: 15px
+    margin-top: 15px
+    h3
+      margin-top: 0
+      font-size: 16px
+      a
+        color: #333
+    p
+      color: #888
+    p:last-of-type
+      margin-bottom: 0
+
+  .governance, .contributors
+    h3
+      font-size: 16px
+
+    ul
+      padding-top: 10px
+      padding-left: 15px
+      li
+        margin-bottom: 10px

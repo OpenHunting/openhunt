@@ -1,0 +1,11 @@
+%div#new-product.row
+  %div.new-product-wrapper.col-md-6.col-sm-12.col-xs-12.col-md-offset-3
+    %h2 Add a Note
+    %p.text-center Explain why you just did what you did
+    = form_tag "/audit/#{@log.id}", method: :patch do
+      %div{:class => "form-group #{error_class(:note)}"}
+        %label{:for => "note"} Note
+        = text_field_tag "note", @log.note, class: "form-control", placeholder: "Why did you do this?"
+        = field_errors(:note)
+      .form-actions.text-center
+        %button.btn.btn-primary.btn-super{:type => "submit"} Add Note

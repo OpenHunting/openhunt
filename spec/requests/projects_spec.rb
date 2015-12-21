@@ -14,7 +14,7 @@ RSpec.describe "Projects", :type => :request do
     end
   end
 
-  context "create project" do
+  context "create" do
     let(:user) { FactoryGirl.create(:user) }
     let(:params) { {
       name: 'asdf',
@@ -35,10 +35,30 @@ RSpec.describe "Projects", :type => :request do
       post("/new", params)
       user2 = FactoryGirl.create(:user)
       ApplicationController.any_instance.stub(:current_user).and_return(user2)
-      params["name"] = 'asdf banana'
-      params["url"] = 'http://asdf.com'
+      params[:name] = 'asdf banana'
+      params[:url] = 'http://asdf.com'
       post("/new", params)
       expect(Project.count).to eql 1
+    end
+  end
+
+  context "update" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { user.projects.create(FactoryGirl.attributes_for(:project))}
+    before :each do
+      DatabaseCleaner.clean
+      ApplicationController.any_instance.stub(:current_user).and_return(user)
+    end
+    it "updates the project name" do
+      patch "/update/#{project.slug}", name: "banana"
+      expect(project.reload.name).to eql "banana"
+    end
+    it "redirects moderator to audit note" do
+      user.update_attributes(moderator: true)
+      patch "/update/#{project.slug}", name: "banana"
+      follow_redirect!
+      log = AuditLog.first
+      expect(path).to eql "/audit/1/edit"
     end
   end
 end
