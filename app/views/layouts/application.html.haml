@@ -15,8 +15,11 @@
     = csrf_meta_tags
 
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
-  - unless @skip_header
+  - if @skip_header
+    - flash.keep
+  - else
     = render "layouts/navbar"
+    = render "layouts/flash_messages"
 
   = content_for(:after_header)
 

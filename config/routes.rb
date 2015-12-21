@@ -43,5 +43,9 @@ Rails.application.routes.draw do
   get "/recent" => "projects#recent", format: [:atom, :rss]
   get "/popular" => "projects#index", format: [:atom, :rss]
 
+  if Rails.env.development?
+    get "/test_flash" => "pages#test_flash"
+  end
+
   root "projects#index"
 end
