@@ -29,7 +29,6 @@ RSpec.describe "Projects", :type => :request do
       patch "/audit/#{log.id}", note: "testtesttest"
       follow_redirect!
       expect(response.body).to include "testtesttest"
-byebug
       expect(AuditLog.first.note).to eql "testtesttest"
     end
   end

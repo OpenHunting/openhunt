@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe SendDailyDigest do
   let(:submitter) {FactoryGirl.create(:user)}
+  let(:list_subscriber) { submitter.create_list_subscriber(email: "test@test.com") }
   let(:project) { submitter.projects.create(FactoryGirl.attributes_for(:project,  bucket: "20151214")) }
-  let(:contents) { [] }
+  let(:contents) {
+    { "projects" => [ project ] }
+  }
   let(:digest) { DailyDigest.create(
     sent: false,
     contents: contents,
@@ -23,10 +26,17 @@ RSpec.describe SendDailyDigest do
     expect(result.digest).to eql digest
   end
 
-  it "gets recipients" do
-    digest
-    submitter
+  it "excludes sent digest" do
+    digest.update_attributes(sent: true)
     result = SendDailyDigest.call
-    expect(result.recipients.first).to eql submitter
+    expect(result.success?).to be false
+  end
+
+  it "sends emails recipients" do
+    ActionMailer::Base.deliveries = []
+    digest
+    list_subscriber
+    SendDailyDigest.call
+    expect(ActionMailer::Base.deliveries.count).to eql 1
   end
 end
