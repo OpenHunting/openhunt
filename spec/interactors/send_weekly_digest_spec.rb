@@ -45,4 +45,10 @@ RSpec.describe SendWeeklyDigest do
     SendWeeklyDigest.call
     expect(ActionMailer::Base.deliveries.count).to eql 1
   end
+
+  it "sets digest.sent to true" do
+    digest
+    result = SendWeeklyDigest.call
+    expect(WeeklyDigest.first.sent).to eql true
+  end
 end

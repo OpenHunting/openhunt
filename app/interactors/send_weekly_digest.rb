@@ -5,6 +5,7 @@ class SendWeeklyDigest < BaseInteractor
     context.digest = get_digest_by_bucket_range
     fail_if_found_none
     send_to_subscribers
+    set_sent_to_true!
   end
 
   def identify_bucket_range
@@ -35,5 +36,9 @@ class SendWeeklyDigest < BaseInteractor
       # QUESTION: should we store the digest id into 'subscriber.sent_digests'
       # to help ensure we never send the same digest to the same subsciber twice?
     end
+  end
+
+  def set_sent_to_true!
+    context.digest.update_attributes!(sent: true)
   end
 end

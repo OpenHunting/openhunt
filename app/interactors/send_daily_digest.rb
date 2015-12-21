@@ -5,6 +5,7 @@ class SendDailyDigest < BaseInteractor
     context.digest = get_digest_by_bucket
     fail_if_found_none
     send_to_subscribers
+    set_sent_to_true!
   end
 
   def identify_bucket
@@ -30,4 +31,9 @@ class SendDailyDigest < BaseInteractor
       # to help ensure we never send the same digest to the same subsciber twice?
     end
   end
+
+  def set_sent_to_true!
+    context.digest.update_attributes!(sent: true)
+  end
+
 end

@@ -39,4 +39,10 @@ RSpec.describe SendDailyDigest do
     SendDailyDigest.call
     expect(ActionMailer::Base.deliveries.count).to eql 1
   end
+
+  it "sets digest.sent to true" do
+    digest
+    result = SendDailyDigest.call
+    expect(DailyDigest.first.sent).to eql true
+  end
 end
