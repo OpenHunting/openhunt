@@ -10,8 +10,11 @@
           <%= comment.body %>
         </div>
         <div class="comment-nav">
+          <%# TODO: show time in users timezone
+          comment.created_at.strftime("%H:%M %P on %F")
+          %>
+          <div class="comment-timestamp"><%= comment.created_at.strftime("%F")%></div>
           <div class="comment-reply">reply</div>
-          <div class="comment-timestamp"></div>
         </div>
         <div class="reply-form">
           <%= form_for @new_comment do |f| %>
