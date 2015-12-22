@@ -1,4 +1,4 @@
-<%= form_for(@new_comment, remote: true) do |f| %>
+<%= form_for(@new_comment) do |f| %>
   <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
   <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
   <div class="field form-group">

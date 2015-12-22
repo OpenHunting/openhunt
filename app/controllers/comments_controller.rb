@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         make_child_comment
-        format.html  { redirect_to(:back, :notice => 'Comment was successfully added.') }
+        format.html  { redirect_to("#open=#{commentable.slug}", :notice => 'Comment was successfully added.') }
       else
-        format.html  { render :action => "new" }
+        format.html  { redirect_to("#open=#{commentable.slug}", :notice => 'There was a problem, we could not save your comment.') }
       end
     end
   end
