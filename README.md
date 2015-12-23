@@ -5,7 +5,7 @@ Open Hunt is a brand new community for fans and builders of early stage technolo
 
 ## Dependencies
 
-* Ruby on Rails (2.1.4) [install](http://railsapps.github.io/installrubyonrails-mac.html)
+* Ruby on Rails (Rails 4.2.5 on Ruby 2.1.4) [install](http://railsapps.github.io/installrubyonrails-mac.html)
 
 * PostgreSQL [install on mac](http://postgresapp.com/) | [install on linux](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
@@ -67,6 +67,27 @@ twitter_key: "PASTE_REAL_KEY_HERE"
 # pull the value for "Consumer Secret (API Secret)"
 twitter_secret: "PASTE_REAL_SECRET_HERE"
 ```
+
+
+## Override Database configuration on development
+
+Configure an ENV variable locally for `DATABASE_URL`. Configuration instructions [here.](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)
+
+    postgresql://localhost/myopenhunt
+
+
+
+## Getting Sample data
+
+In dev mode it's useful to generate a randomly generated list of users, posts, and votes.
+
+    rake db:seed
+
+
+## Dev Login
+
+In dev mode, it's useful to be able to log in as any user. To do this, navigate to: http://locahost:3000/devauth
+
 
 ## License
 

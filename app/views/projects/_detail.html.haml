@@ -20,20 +20,23 @@
 
   - if current_user.try(:project_owner?, @project)
     .feedback-listing
-      - @feedbacks.each do |feedback|
-        - user = feedback.user
-        .feedback-single
-          - unless feedback.anonymous?
-            .pull-right
-              %a.user-avatar(href="/@#{user.screen_name}")
-                = image_tag user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}", size: "30x30"
+      - if @project.feedbacks_count > 0
+        - @feedbacks.each do |feedback|
+          - user = feedback.user
+          .feedback-single
+            - unless feedback.anonymous?
+              .pull-right
+                %a.user-avatar(href="/@#{user.screen_name}")
+                  = image_tag user.profile_image_url, class: 'img-circle', 'data-toggle'=>"tooltip", :title=>"@#{user.screen_name} #{user.location}", size: "30x30"
 
-          .feedback-body
-            = simple_format feedback.body
-            .feedback-created-at
-              = date_human feedback.created_at
+            .feedback-body
+              = simple_format feedback.body
+              .feedback-created-at
+                = date_human feedback.created_at
 
-          %hr
+            %hr
+      - else
+        %p No feedback has been submitted.
 
 
   - else

@@ -7,7 +7,8 @@ class ProjectForm
 
   attribute :url
   validates_presence_of :url
-  # validates_url :url, :allow_blank => true # do we need to ever allow a blank url?
+  validates_url :url, :allow_blank => true, :message => "Oops! Looks like the URL isn't valid. Try checking if the site actually exists first."
+  # may need to validate if domain actually exists, since the URI parser Addressable::URI used in validates_url gem is very lenient
   validate :check_unique_url
 
   attr_accessor :current_project_id
@@ -20,6 +21,12 @@ class ProjectForm
 
     if dupe_project.present? and dupe_project.id != current_project_id
       errors.add(:url, "has already been submitted")
+    end
+  end
+
+  def ensure_http_on_url
+    unless self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
+      self.url = "http://#{self.url}"
     end
   end
 

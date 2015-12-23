@@ -11,6 +11,14 @@
       loading = true;
       console.log("loading bucket...", bucket);
 
+      $(".buckets").append `
+        <div class='project-list loading-bucket'>
+          <p>Loading more</p>
+          <div class="loader">Loading...</div>
+
+        </div>
+      `
+
       $.ajax({
         type: "GET",
         url: `/date/${bucket}`,
@@ -20,7 +28,7 @@
         },
         success: (html) => {
           var projectList = $(html);
-          $(".buckets").append(projectList);
+          $(".buckets").find(".loading-bucket").replaceWith(projectList);
 
           if(projectList.is(".end-of-buckets")) {
             console.log("Reached the end.");
