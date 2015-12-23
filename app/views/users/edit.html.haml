@@ -1,7 +1,7 @@
 .user-page
   %h2 Settings
   .user-form
-    = form_tag "/subscribe?redirect_url=#{request.path}", method: :post do
+    = form_tag "/subscribe?redirect_url=/", method: :post do
       .form-group
         %label(for="email") Email Address
         = email_field_tag :email, @user.list_subscriber.try(:email), class: "form-control"
