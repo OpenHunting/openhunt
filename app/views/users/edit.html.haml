@@ -12,6 +12,10 @@
         %label.checkbox-wrapper
           = check_box_tag :subscribed, "true", @user.list_subscriber.try(:subscribed?)
           Subscribe to Daily Newsletter
+      .form-group.pull-left
+        %label.checkbox-wrapper
+          = check_box_tag :weekly, "true", @user.list_subscriber.try(:weekly?)
+          Subscribe to Weekly Newsletter
 
       .pull-right
         %button.btn.btn-default(type="submit") Save
