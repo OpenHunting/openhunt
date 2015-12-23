@@ -7,7 +7,6 @@ class ProjectForm
 
   attribute :url
   validates_presence_of :url
-  validate :check_uri_scheme
   validates_url :url, :allow_blank => true, :message => "Oops! Looks like the URL isn't valid. Try checking if the site actually exists first."
   # may need to validate if domain actually exists, since the URI parser Addressable::URI used in validates_url gem is very lenient
   validate :check_unique_url
@@ -25,7 +24,7 @@ class ProjectForm
     end
   end
 
-  def check_uri_scheme
+  def ensure_http_on_url
     unless self.url[/\Ahttp:\/\//] || self.url[/\Ahttps:\/\//]
       self.url = "http://#{self.url}"
     end
