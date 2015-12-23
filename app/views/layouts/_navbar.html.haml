@@ -18,6 +18,8 @@
               = current_user.screen_name
             %li{class: ('active' if current_page?(action: 'show', controller: 'users', screen_name: current_user.screen_name))}
               %a{:href => "/@#{current_user.screen_name}"} Profile
+            %li{class: ('active' if current_page?(action: 'edit', controller: 'users'))}
+              %a{:href => "/settings"} Settings
             - if current_user.moderator?
               %li{class: ("active" if current_page?(action: "index", controller: "audit_logs"))}
                 %a{:href => "/audit"} Audit Trail
