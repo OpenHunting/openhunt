@@ -217,7 +217,7 @@ class ProjectsController < ApplicationController
   end
 
   def load_bucket(bucket)
-    @projects = Project.for_bucket(bucket).includes(:user).to_a
+    @projects = Project.for_bucket(bucket).where(hidden: false).includes(:user).to_a
     if current_user.present?
       @vote_ids = current_user.match_votes(@projects.map(&:id))
     end
