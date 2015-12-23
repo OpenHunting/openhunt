@@ -9,8 +9,8 @@
   $(document).on("click touchstart", ".flash-hide-btn", (e) => {
     e.preventDefault();
 
-    var flashElement = $(this).closest(".flash-message");
-    hideFlash();
+    var flashElement = $(e.target).closest(".flash-message");
+    hideFlash(flashElement);
   });
 
   $(document).ready(() => {

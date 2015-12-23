@@ -81,6 +81,7 @@ class ProjectsController < ApplicationController
 
   def create
     form = ProjectForm.new(params)
+    form.ensure_http_on_url
 
     if form.valid?
       project = Project.new(form.attributes)

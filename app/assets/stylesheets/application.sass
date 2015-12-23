@@ -47,6 +47,7 @@ body
       padding-top: 7px
       .user-avatar
         border-radius: 40px
+        vertical-align: middle
         background-repeat: no-repeat
         background-size: cover
         background-position: center
@@ -143,45 +144,51 @@ body
       text-decoration: none
       position: absolute
       color: #333
-      left: 3px
-      top: -7px
+      left: 15px
+      top: 3px
+      height: 40px
+      +transition(all, 0.5s)
+      &:hover
+        background-color: #508FE6
+        border-radius: 3px
+        .box .arrow .triangle, .box .counter
+          color: white
+
       .box
         // background-color: #ccc
-        height: 50px
+        height: 100%
         width: 35px
         .arrow
           text-align: center
-          height: 30px
-          font-size: 2rem
+          height: 50%
           .triangle
             font-size: 1.2rem
             +transition(all, 0.5s)
         .counter
           text-align: center
-          height: 20px
+          height: 50%
           font-size: 1.1rem
+          +transition(all, 0.5s)
       &:hover .box .arrow .triangle
-        font-size: 1.5rem
       &.on
         color: #508fe6
         &:hover .box .arrow .triangle
-          font-size: 1.2rem
 
 
     .item-details
       position: relative
-      padding-left: 45px
+      padding-left: 60px
       overflow: hidden
       text-overflow: ellipsis
       .title
         font-size: 1.8rem
-        color: #000
+        color: rgba(51,51,51,1)
         white-space: nowrap
         overflow: hidden
         text-overflow: ellipsis
       .description
-        color: #aaa
-        font-size: 1.2rem
+        color: rgba(51,51,51,0.6)
+        font-size: 1.4rem
         white-space: nowrap
         overflow: hidden
         text-overflow: ellipsis
@@ -225,6 +232,20 @@ body
       display: block
     .more-projects-btn
       display: none
+
+  &.loading-bucket
+    height: 68px
+    padding: 13px
+    // background: #fafafa
+    border-radius: 8px
+    .loader
+      transform: scale(0.4)
+    p
+      text-align: center
+      margin: 0
+      color: #999
+      text-transform: uppercase
+      font-size: 10px
 
   &.end-of-buckets
     font-size: 15px
@@ -344,6 +365,8 @@ body
       height: 50px
     &.has-error
       color: #a94442
+      .help-block
+        color: #a94442
     p.help-block
       text-transform: uppercase
       font-size: 1.2rem

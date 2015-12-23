@@ -12,4 +12,5 @@
 #  confirmed    :boolean          default(FALSE)
 #  confirm_code :string
 #  weekly       :boolean
+#  email_format :string
 #

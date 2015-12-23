@@ -54,7 +54,11 @@ ActiveRecord::Schema.define(version: 20151221174852) do
     t.datetime "updated_at",                   null: false
     t.boolean  "confirmed",    default: false
     t.string   "confirm_code"
+<<<<<<< HEAD
     t.boolean  "weekly"
+=======
+    t.string   "email_format"
+>>>>>>> master
   end
 
   create_table "projects", force: :cascade do |t|

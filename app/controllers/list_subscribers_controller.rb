@@ -7,7 +7,9 @@ class ListSubscribersController < ApplicationController
   def update
     @list_subscriber ||= ListSubscriber.new(email: params[:email])
     @list_subscriber.email = params[:email]
+    @list_subscriber.email_format = params[:email_format]
     @list_subscriber.subscribed = (params[:subscribed] == "true")
+
     if @list_subscriber.save
       set_subscriber(@list_subscriber)
 
