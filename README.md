@@ -68,6 +68,18 @@ twitter_key: "PASTE_REAL_KEY_HERE"
 twitter_secret: "PASTE_REAL_SECRET_HERE"
 ```
 
+## Getting Sample data
+
+In dev mode it's useful to generate a randomly generated list of users, posts, and votes.
+
+    rake db:seed
+
+
+## Dev Login
+
+In dev mode, it's useful to be able to log in as any user. To do this, navigate to: http://locahost:3000/devauth
+
+
 ## License
 
 Open Hunt is released under the MIT License.
