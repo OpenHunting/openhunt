@@ -10,7 +10,7 @@
     e.preventDefault();
 
     var flashElement = $(this).closest(".flash-message");
-    hideFlash();
+    hideFlash(flashElement);
   });
 
   $(document).ready(() => {

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_user, only: [:ban, :unban, :make_moderator, :remove_moderator]
+  before_filter :require_user, only: [:ban, :unban, :make_moderator, :remove_moderator, :edit, :update]
 
   def show
     load_user
@@ -14,6 +14,16 @@ class UsersController < ApplicationController
     if current_user.present?
       @vote_ids = current_user.match_votes((@voted_projects+@submitted_projects).map(&:id))
     end
+  end
+
+  def edit
+    @user = current_user
+
+  end
+
+  def update
+    @user = current_user
+    
   end
 
   def ban

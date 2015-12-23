@@ -1,0 +1,17 @@
+.user-page
+  %h2 Settings
+  .user-form
+    = form_tag "/subscribe?redirect_url=#{request.path}", method: :post do
+      .form-group
+        %label(for="email") Email Address
+        = email_field_tag :email, @user.list_subscriber.try(:email), class: "form-control"
+      .form-group
+        %label(for="email_format") Format
+        = select_tag :email_format, options_for_select({"HTML" => "html", "Text" => "text"}, @user.list_subscriber.try(:email_format)), class: "form-control"
+      .form-group.pull-left
+        %label.checkbox-wrapper
+          = check_box_tag :subscribed, "true", @user.list_subscriber.try(:subscribed?)
+          Subscribe to Daily Newsletter
+
+      .pull-right
+        %button.btn.btn-default(type="submit") Save
