@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20151221232302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "audit_logs", force: :cascade do |t|
     t.integer  "moderator_id"
@@ -27,6 +28,23 @@ ActiveRecord::Schema.define(version: 20151221232302) do
     t.datetime "updated_at",     null: false
     t.string   "note"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
+    t.integer  "user_id",          null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "body",                           null: false
@@ -77,7 +95,6 @@ ActiveRecord::Schema.define(version: 20151221232302) do
     t.boolean  "banned",            default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.integer  "role_id"
   end
 
   add_index "users", ["screen_name"], name: "index_users_on_screen_name", using: :btree

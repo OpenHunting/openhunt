@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get "/differences" => "pages#differences"
   get "/governance" => "pages#governance"
   get "/@:screen_name" => "users#show"
+  get "/settings" => "users#edit"
+  post "/settings" => "users#update"
   post "/ban/@:screen_name" => "users#ban"
   post "/unban/@:screen_name" => "users#unban"
   post "/make_moderator/@:screen_name" => "users#make_moderator"
