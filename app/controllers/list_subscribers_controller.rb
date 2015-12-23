@@ -20,7 +20,7 @@ class ListSubscribersController < ApplicationController
         redirect_to "/subscribe/success"
       end
     else
-      render :edit
+      redirect_to "/settings" # this goes to the UsersController.
     end
   end
 
