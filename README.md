@@ -68,6 +68,15 @@ twitter_key: "PASTE_REAL_KEY_HERE"
 twitter_secret: "PASTE_REAL_SECRET_HERE"
 ```
 
+
+## Override Database configuration on development
+
+Configure an ENV variable locally for `DATABASE_URL`. Configuration instructions [here.](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)
+
+    postgresql://localhost/myopenhunt
+
+
+
 ## Getting Sample data
 
 In dev mode it's useful to generate a randomly generated list of users, posts, and votes.
