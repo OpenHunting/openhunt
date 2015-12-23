@@ -32,12 +32,17 @@ RSpec.describe DigestMailer, type: :mailer do
       }.to change { deliveries.count }.by 1
     end
 
-    it "shows the digest bucket date" do
+    it "sends text and html email" do
       DigestMailer.daily_email(list_subscriber, digest).deliver
-      expect(deliveries.first.body).to include "OpenHunt Daily Digest"
-      expect(deliveries.first.body).to include project.name
-      expect(deliveries.first.body).to include project.url
-      expect(deliveries.first.body).to include project.description
+      expect(deliveries.first.html_part.body).to include "OpenHunt Daily Digest"
+      expect(deliveries.first.html_part.body).to include project.name
+      expect(deliveries.first.html_part.body).to include project.url
+      expect(deliveries.first.html_part.body).to include project.description
+
+      expect(deliveries.first.text_part.body).to include "OpenHunt Daily Digest"
+      expect(deliveries.first.text_part.body).to include project.name
+      expect(deliveries.first.text_part.body).to include project.url
+      expect(deliveries.first.text_part.body).to include project.description
     end
   end
 
@@ -63,12 +68,17 @@ RSpec.describe DigestMailer, type: :mailer do
         DigestMailer.weekly_email(list_subscriber, digest).deliver
       }.to change { deliveries.count }.by 1
     end
-    it "shows the digest bucket date" do
+    it "sends text and html email" do
       DigestMailer.weekly_email(list_subscriber, digest).deliver
-      expect(deliveries.first.body).to include "OpenHunt Weekly Digest"
-      expect(deliveries.first.body).to include project.name
-      expect(deliveries.first.body).to include project.url
-      expect(deliveries.first.body).to include project.description
+      expect(deliveries.first.html_part.body).to include "OpenHunt Weekly Digest"
+      expect(deliveries.first.html_part.body).to include project.name
+      expect(deliveries.first.html_part.body).to include project.url
+      expect(deliveries.first.html_part.body).to include project.description
+
+      expect(deliveries.first.text_part.body).to include "OpenHunt Weekly Digest"
+      expect(deliveries.first.text_part.body).to include project.name
+      expect(deliveries.first.text_part.body).to include project.url
+      expect(deliveries.first.text_part.body).to include project.description
     end
   end
 end

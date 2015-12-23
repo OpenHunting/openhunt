@@ -8,7 +8,9 @@ class DigestMailerPreview < ActionMailer::Preview
 
   def daily_email
     submitter = FactoryGirl.create(:user)
-    list_subscriber = submitter.create_list_subscriber(email: "test@test.com")
+    list_subscriber = submitter.create_list_subscriber(
+      email: "test@test.com"
+    )
     project = submitter.projects.create(FactoryGirl.attributes_for(:project,  bucket: "20151214"))
     contents =
       { "projects" => [ project ] }

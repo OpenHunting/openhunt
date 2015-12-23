@@ -1,0 +1,20 @@
+OpenHunt Weekly Digest <%= @bucket_range %>
+========================================
+
+<% @buckets.each do |bucket| %>
+  <%= bucket["bucket"] %>
+
+  <% bucket["projects"].each do |project_hash| %>
+    <%= project_hash["name"] %>
+    <%= project_hash["votes_count"].to_s + " votes" %>
+    <%= project_hash["url"] %>
+    <%= project_hash["description"] %>
+
+    - - - - - - - - - - - - - - - - - - -
+  <% end %>
+<% end %>
+
+
+https://www.openhunt.co
+
+change subscription settings at https://www.openhunt.co/settings
