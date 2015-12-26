@@ -42,8 +42,7 @@
             'delay':0,
             'placement':'left'
           });
-
-          console.log("init tooltips")
+          
         },
         error: (xhr) => {
           console.error(xhr);
