@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get "/popular" => "projects#index", format: [:atom, :rss]
 
   # legacy routes
-  get "/feedback/:slug" => "projects#feedback"
+  get "/feedback/:slug" => "projects#detail"
 
   if Rails.env.development?
     get "/test_flash" => "pages#test_flash"
