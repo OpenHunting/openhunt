@@ -27,14 +27,23 @@
         data: {partial: true},
         success: (html) => {
           detailPanel.find(".project-feedback").replaceWith(html);
+          initializeTooltips();
         },
         error: (xhr) => {
-          console.error("Unable to load feedback:", slug, xhr)
+          console.error("Unable to load feedback:", slug, xhr);
           closeFeedback();
         },
         complete: (json) => {
           detailPanel.removeClass("loading");
         }
+      });
+    };
+
+    var initializeTooltips = () => {
+      $('[data-toggle="tooltip"]').tooltip({
+        'animation':false,
+        'delay':0,
+        'placement':'left'
       });
     };
 
