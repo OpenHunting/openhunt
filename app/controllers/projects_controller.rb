@@ -195,6 +195,7 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = Project.where(slug: params[:slug]).first
+    raise ActiveRecord::RecordNotFound, "Project not found for slug: #{params[:slug]}"
   end
 
   def load_feedbacks
