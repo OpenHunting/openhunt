@@ -37,7 +37,7 @@ class Project < ActiveRecord::Base
     where(hidden: false)
   end
 
-  before_save :set_slug
+  before_create :set_slug
   def set_slug
     if self.name.present?
       self.slug = name.parameterize
