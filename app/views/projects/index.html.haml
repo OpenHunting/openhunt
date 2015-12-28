@@ -7,7 +7,7 @@
   = auto_discovery_link_tag(:atom, format: :atom, controller: :projects, action: :recent)
 
 
-- unless current_subscriber.present?
+- if show_subcribe_form?
   - content_for :after_header do
     = render "list_subscribers/subscribe_form"
 

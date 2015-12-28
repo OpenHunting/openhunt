@@ -16,3 +16,4 @@
 //= require lodash
 //= require vendor/lodash-inflection
 //= require bootstrap
+//= require vendor/js.cookie-2.0.4.min
