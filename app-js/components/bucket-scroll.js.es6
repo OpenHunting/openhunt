@@ -36,6 +36,13 @@
           }
 
           loading = false;
+
+          $('[data-toggle="tooltip"]').tooltip({
+            'animation':false,
+            'delay':0,
+            'placement':'left'
+          });
+          
         },
         error: (xhr) => {
           console.error(xhr);
