@@ -37,12 +37,8 @@
 
           loading = false;
 
-          $('[data-toggle="tooltip"]').tooltip({
-            'animation':false,
-            'delay':0,
-            'placement':'left'
-          });
-          
+          $(document).trigger("initalizeTooltips")
+
         },
         error: (xhr) => {
           console.error(xhr);
