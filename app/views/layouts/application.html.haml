@@ -6,14 +6,11 @@
     %meta{"content" => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{"charset" => "utf-8"}/
 
-    - unless !@rss  # <= 'audit_logs_controller' breaks if it tries to include rss link generators
-      = auto_discovery_link_tag(:rss, format: :rss)
-      = auto_discovery_link_tag(:rss, format: :rss, action: :recent)
-      = auto_discovery_link_tag(:atom, format: :atom)
-      = auto_discovery_link_tag(:atom, format: :atom, action: :recent)
-
     = stylesheet_link_tag "dependencies", "application", media: 'all'
+    = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
     = csrf_meta_tags
+
+    = content_for(:head)
 
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
   - if @skip_header
@@ -33,5 +30,4 @@
   - if Settings.include_analytics
     = render "layouts/analytics"
   = javascript_include_tag "dependencies", "application"
-  = javascript_include_tag "https://use.fonticons.com/cbcf708f.js"
   = render "layouts/rollbar"

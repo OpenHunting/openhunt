@@ -36,6 +36,9 @@
           }
 
           loading = false;
+
+          $(document).trigger("initalizeTooltips")
+
         },
         error: (xhr) => {
           console.error(xhr);

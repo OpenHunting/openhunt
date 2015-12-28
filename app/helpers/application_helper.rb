@@ -136,4 +136,8 @@ module ApplicationHelper
       link_to title, url_for(controller: "pages", action: action)
     end
   end
+
+  def show_subcribe_form?
+    current_subscriber.blank? and !cookies[:hide_subscribe]
+  end
 end

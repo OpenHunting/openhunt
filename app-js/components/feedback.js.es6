@@ -27,9 +27,10 @@
         data: {partial: true},
         success: (html) => {
           detailPanel.find(".project-feedback").replaceWith(html);
+          $(document).trigger("initalizeTooltips")
         },
         error: (xhr) => {
-          console.error("Unable to load feedback:", slug, xhr)
+          console.error("Unable to load feedback:", slug, xhr);
           closeFeedback();
         },
         complete: (json) => {

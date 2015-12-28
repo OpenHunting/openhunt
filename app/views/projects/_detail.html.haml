@@ -1,6 +1,6 @@
 .project-feedback
   %span.close.close-feedback-button
-    %span.icon.icon-times
+    %i.fa.fa-times
   .project-info
     %h3
       %a(href="#{@project.url}" target="_blank")= @project.name
@@ -10,11 +10,14 @@
       %a.btn.btn-xs.btn-default(href="#{@project.url}" target="_blank") Open Site
       - if moderator?
         - if @project.hidden?
-          %a.btn.btn-xs.btn-default(href="/unhide/#{@project.slug}" data-method="post" data-confirm="Restore this project?") Not Spam
+          %a.btn.btn-xs.btn-default(href="/unhide/#{@project.slug}" data-method="post" data-confirm="Restore this product?") Moderate: Unhide
         - else
-          %a.btn.btn-xs.btn-default(href="/hide/#{@project.slug}" data-method="post" data-confirm="Remove this site as spam?") Remove Spam
+          %a.btn.btn-xs.btn-default(href="/hide/#{@project.slug}" data-method="post" data-confirm="Remove this product?") Moderate: Hide
       - if current_user.try(:can_update?, @project)
-        %a.btn.btn-xs.btn-default(href="/edit/#{@project.slug}" data-method="get") Edit
+        %a.btn.btn-xs.btn-default(href="/edit/#{@project.slug}" data-method="get")
+          - if moderator?
+            Moderate:
+          Edit
 
     %hr
 

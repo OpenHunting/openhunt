@@ -1,6 +1,13 @@
 - body_css "bucket-scroll"
 
-- unless current_subscriber.present?
+- content_for :head do
+  = auto_discovery_link_tag(:rss, format: :rss)
+  = auto_discovery_link_tag(:rss, format: :rss, controller: :projects, action: :recent)
+  = auto_discovery_link_tag(:atom, format: :atom)
+  = auto_discovery_link_tag(:atom, format: :atom, controller: :projects, action: :recent)
+
+
+- if show_subcribe_form?
   - content_for :after_header do
     = render "list_subscribers/subscribe_form"
 
