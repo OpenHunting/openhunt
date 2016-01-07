@@ -13,6 +13,7 @@
     = content_for(:head)
 
 %body(class="#{body_css} #{'show-intro' if show_intro?}")
+
   - if @skip_header
     - flash.keep
   - else
@@ -25,7 +26,6 @@
     = yield
 
   = render "layouts/detail_panel"
-  = render "pages/about_screen"
 
   - if Settings.include_analytics
     = render "layouts/analytics"
