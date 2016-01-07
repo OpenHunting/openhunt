@@ -19,7 +19,7 @@
           %li{:class => ('active' if current_page?(action: 'faqs', controller: 'help'))}
             %a{:href => '/help/faqs'} FAQ's
           %li{:class => ('active' if current_page?(action: 'contact', controller: 'help'))}
-            %a{:href => '/help/team'} Contact
+            %a{:href => '/help/contact'} Contact
 
       - if current_user.present?
         %li.profile-nav
