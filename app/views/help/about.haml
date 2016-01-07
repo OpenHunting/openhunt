@@ -1,0 +1,25 @@
+.help-container
+  .row
+    .col-md-3
+      .list-group
+        %a.list-group-item{:href => '/help/about', :class => ('active' if current_page?(action: 'about', controller: 'help'))} About
+        %a.list-group-item{:href => '/help/team', :class => ('active' if current_page?(action: 'team', controller: 'help'))} Team
+        %a.list-group-item{:href => '/help/guidelines', :class => ('active' if current_page?(action: 'guidelines', controller: 'help'))} Guidelines
+        %a.list-group-item{:href => '/help/faqs', :class => ('active' if current_page?(action: 'faqs', controller: 'help'))} FAQ's
+        %a.list-group-item{:href => '/help/contact', :class => ('active' if current_page?(action: 'contact', controller: 'help'))} Contact
+    .col-md-9
+      %h1 About
+      %p
+        Open Hunt is a brand new community for fans and builders of
+        early stage technology products. We aim to be <strong>completely open
+        and transparent</strong>, without insiders or gatekeepers who control
+        who gets listed and who gets left out.
+      %p
+        This list may be overwhelming initially, but we're actively working on tools to let the community surface the best products to the top.
+      %p
+        You can get involved: <a href="http://github.com/openhunting/openhunt/issues">file an issue</a>
+        or submit a <a href="http://github.com/openhunting/openhunt">pull request</a>. With your support, we can create an
+        alternative product enthusiast community that lasts.
+      %p Thank you!
+      %p
+        %strong The Open Hunt team
