@@ -2,16 +2,27 @@
 %p
   List of all actions that Open Hunt moderators have taken on the site.
 
-%ul.list-unstyled.audit-trail
-  - @audit_logs.each do |log|
-    - moderator = log.moderator
-    %li
-      %em= log.created_at.strftime("%a %b %d, %Y at %I:%M%p")
-      %span -
-      = link_to moderator.name, "/@#{moderator.screen_name}"
-      = audit_description(log)
-      - if log.note
-        %em= log.note
-
-- if @audit_logs.blank?
-  %p No actions have been taken yet by moderators.
+- if not @audit_logs.blank?
+  %table.table.table-striped
+    %thead
+      %tr
+        %td Date
+        %td Moderator
+        %td Log
+        %td Reason
+    %tbody
+      - @audit_logs.each do |log|
+        - moderator = log.moderator
+        %tr
+          %td
+            = log.created_at.strftime("%a %b %d, %Y at %I:%M%p")
+          %td
+            %a{:href => '/@' + moderator.screen_name}
+              = moderator.screen_name
+          %td
+            = audit_description(log)
+          %td
+            - if log.note
+              = log.note
+- else
+  %p No logs are available at this time.
