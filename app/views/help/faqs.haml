@@ -1,22 +1,19 @@
-.content-page
-  .content-nav= render "pages/content_nav"
-  .content-inner
-    %h2 FAQ
-
-    .faq-item
+.help-container
+  .row
+    = render 'layouts/help'
+    .col-md-10
+      %h1 FAQ's
       %h3 What is Open Hunt?
       %p
         A community of early stage tech product enthusiasts and builders.
         You can use it to find new products early, give feedback, and post the product
         you are working on to get feedback.
-
-    .faq-item
+      %hr
       %h3
         Who are you?
       %p
-        Learn about us <a href="/people">here</a>.
-
-    .faq-item
+        Learn about us <a href="/help/team">here</a>.
+      %hr
       %h3
         So, you just ripped off Product Hunt then?
       %p
@@ -24,83 +21,68 @@
         (before they went in a different <a href="http://producthunt.com">direction</a>). We had to start somewhere,
         and we’ll be focused on updating the site with a more unique look and feel as soon as we can.
         Please <a href="mailto:all@openhunt.co">email us</a> if you’d like to help!
-
-    .faq-item
+      %hr
       %h3
         How exactly are you different than Product Hunt?
       %p
         At launch, we have a few key differences with Product Hunt. <a href="/differences">Read more</a>.
-
-    .faq-item
+      %hr
       %h3
         What is your relationship with Product Hunt?
       %p
         We were early users of Product Hunt (since their <a href="https://news.ycombinator.com/item?id=7144815">launch on HN</a>). We don’t have any other relationship with them, aside from admiring what an important community they have built. We think Ryan Hoover is a great person and our site is in no way an attack on him or what he's built.
-
       %p
         Open Hunt is aimed at providing an alternative community, one that is differentiated and targeted at early stage products and people interested in using them. We sincerely hope Product Hunt continues to grow and succeed, and we have no doubt that they will.
-
-    .faq-item
+      %hr
       %h3
         Why the stupid &amp; derivative name?
       %p
         Just a working title. We’ll change it soon. We’d like to have the community help us pick the actual name for this site (by vote).
-
-
-    .faq-item
+      %hr
       %h3
         Will Open Hunt make money?
       %p
         If Open Hunt builds a sizable community, it will have plenty of costs (server, design, development). we may offset those costs with some ads. If we get that far, we will set up a non-profit organization to handle this revenue.
-
-    .faq-item
+      %hr
       %h3
         Will Open Hunt take investment?
       %p
         Under no circumstances will we take investment.
-
-    .faq-item
+      %hr
       %h3
         Can Open Hunt be acquired?
       %p
         No, we will not transfer ownership of the site and data to any company.
-
-    .faq-item
+      %hr
       %h3
         How will you handle spam and bad content?
       %p
         Moderators will have the ability to ban users and hide content indicated as spam. Eventually,
         moderation ability will be based on karma (in progress). At the moment, moderators can grant
         other users moderation abilities (tracked via the <a href="/audit">audit trail</a>).
-
-    .faq-item
+      %hr
       %h3
         How will Open Hunt change over time?
       %p
         Our community elected council will meet regularly to discuss improvements and changes to the site. All meetings will be via slack and released publicly.
-
-    .faq-item
+      %hr
       %h3
         How does community governance work?
       %p
         We’re setting up a system where the key site decisions are made by the community (via elected representatives).
         In addition, some questions will be brought to a vote by the community members.
-        <a href="/governance">Learn more.</a>
-
-    .faq-item
+        <a href="/help/guidelines">Learn more.</a>
+      %hr
       %h3
         How do I view feedback that people have posted for me?
       %p
         We'll have a few different verification options (e.g. send a code to [any]@yourdomain.com) so you can connect and see feedback posted on your product. This feature is coming shortly (like... today :)
-
-    .faq-item
+      %hr
       %h3
         Can I post my product again?
       %p
         Yes, though we will require some buffer time required between posts. Hopefully that gives you some time to make product improvements!
-
-
-    .faq-item
+      %hr
       %h3
         Will Open Hunt survive?
       %p

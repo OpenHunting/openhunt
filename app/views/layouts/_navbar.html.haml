@@ -2,11 +2,24 @@
   .container
     .navbar-header
       %a.navbar-brand{href: '/'} Open Hunt
-      %a.navbar-about.toggle-about{href: '/about', class: ('active' if current_page?(action: 'about', controller: 'pages'))}
-        About
     %ul.nav.navbar-nav.navbar-right
       %li{class: ('active' if current_page?(action: 'new', controller: 'projects'))}
         %a{:href => '/new'} + Post
+      %li
+        %a{:class => 'dropdown-toggle', :href => '#', 'data-toggle' => 'dropdown'}
+          Help
+          %span{:class => 'caret'}
+        %ul{:class => 'dropdown-menu'}
+          %li{:class => ('active' if current_page?(action: 'about', controller: 'help'))}
+            %a{:href => '/help/about'} About
+          %li{:class => ('active' if current_page?(action: 'team', controller: 'help'))}
+            %a{:href => '/help/team'} Team
+          %li{:class => ('active' if current_page?(action: 'guidelines', controller: 'help'))}
+            %a{:href => '/help/guidelines'} Guidelines
+          %li{:class => ('active' if current_page?(action: 'faqs', controller: 'help'))}
+            %a{:href => '/help/faqs'} FAQ's
+          %li{:class => ('active' if current_page?(action: 'contact', controller: 'help'))}
+            %a{:href => '/help/contact'} Contact
 
       - if current_user.present?
         %li.profile-nav
