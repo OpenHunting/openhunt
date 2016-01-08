@@ -69,7 +69,20 @@
       triggerScroll();
     });
 
-    triggerScroll();
+
+    // ghetto fix for homepage
+    setTimeout(() => {
+      triggerScroll();
+    }, 500);
+    setTimeout(() => {
+      triggerScroll();
+    }, 1000);
+    setTimeout(() => {
+      triggerScroll();
+    }, 1500);
+    setTimeout(() => {
+      triggerScroll();
+    }, 2000);
 
   });
 })();
