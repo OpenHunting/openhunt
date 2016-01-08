@@ -11,15 +11,15 @@
           %span{:class => 'caret'}
         %ul{:class => 'dropdown-menu'}
           %li{:class => ('active' if current_page?(action: 'about', controller: 'help'))}
-            %a{:href => '/help/about'} About
+            %a{:href => '/about'} About
           %li{:class => ('active' if current_page?(action: 'team', controller: 'help'))}
-            %a{:href => '/help/team'} Team
+            %a{:href => '/team'} Team
           %li{:class => ('active' if current_page?(action: 'guidelines', controller: 'help'))}
-            %a{:href => '/help/guidelines'} Guidelines
+            %a{:href => '/guidelines'} Guidelines
           %li{:class => ('active' if current_page?(action: 'faqs', controller: 'help'))}
-            %a{:href => '/help/faqs'} FAQ's
+            %a{:href => '/faqs'} FAQ's
           %li{:class => ('active' if current_page?(action: 'contact', controller: 'help'))}
-            %a{:href => '/help/contact'} Contact
+            %a{:href => '/contact'} Contact
 
       - if current_user.present?
         %li.profile-nav

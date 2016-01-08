@@ -27,11 +27,11 @@ Rails.application.routes.draw do
   patch '/audit/:id' => 'audit_logs#update'
 
   # Help
-  get '/help/about' => 'help#about'
-  get '/help/team' => 'help#team'
-  get '/help/guidelines' => 'help#guidelines'
-  get '/help/faqs' => 'help#faqs'
-  get '/help/contact' => 'help#contact'
+  get '/about' => 'help#about'
+  get '/team' => 'help#team'
+  get '/guidelines' => 'help#guidelines'
+  get '/faqs' => 'help#faqs'
+  get '/contact' => 'help#contact'
 
   # User
   get '/@:screen_name' => 'users#show'
